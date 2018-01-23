@@ -16,6 +16,8 @@
 		386179021FBD57280059FE89 /* EULA.html in Resources */ = {isa = PBXBuildFile; fileRef = 386179011FBD57280059FE89 /* EULA.html */; };
 		386179041FBD57310059FE89 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386179031FBD57300059FE89 /* Secrets.swift */; };
 		386179061FBD57530059FE89 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386179051FBD57530059FE89 /* Constants.swift */; };
+		38EE18042016EC3400D126C0 /* NFCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EE18032016EC3400D126C0 /* NFCTableViewController.swift */; };
+		38EE18062016ED5900D126C0 /* NFCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EE18052016ED5900D126C0 /* NFCTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,9 @@
 		386179011FBD57280059FE89 /* EULA.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = EULA.html; sourceTree = "<group>"; };
 		386179031FBD57300059FE89 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		386179051FBD57530059FE89 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		38EE18022016EB8000D126C0 /* RewardWallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RewardWallet.entitlements; sourceTree = "<group>"; };
+		38EE18032016EC3400D126C0 /* NFCTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTableViewController.swift; sourceTree = "<group>"; };
+		38EE18052016ED5900D126C0 /* NFCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTableViewCell.swift; sourceTree = "<group>"; };
 		3E670663E5803CDC7EBD5AE2 /* Pods-RewardWalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RewardWalletTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RewardWalletTests/Pods-RewardWalletTests.debug.xcconfig"; sourceTree = "<group>"; };
 		46B4E69B4F4BCECF6079DD62 /* Pods-RewardWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RewardWallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RewardWallet/Pods-RewardWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		8A62C2EEC39E426F1F92380C /* Pods-RewardWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RewardWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-RewardWallet/Pods-RewardWallet.release.xcconfig"; sourceTree = "<group>"; };
@@ -71,6 +76,7 @@
 		386178B11FBD527F0059FE89 = {
 			isa = PBXGroup;
 			children = (
+				38EE18022016EB8000D126C0 /* RewardWallet.entitlements */,
 				386178BC1FBD527F0059FE89 /* Source */,
 				386178CE1FBD527F0059FE89 /* Tests */,
 				386178BB1FBD527F0059FE89 /* Products */,
@@ -134,6 +140,7 @@
 		386178DC1FBD52F20059FE89 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				38EE18032016EC3400D126C0 /* NFCTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -141,6 +148,7 @@
 		386178DD1FBD52FA0059FE89 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				38EE18052016ED5900D126C0 /* NFCTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -236,6 +244,14 @@
 					386178B91FBD527F0059FE89 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.NearFieldCommunicationTagReading = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					386178CA1FBD527F0059FE89 = {
 						CreatedOnToolsVersion = 9.1;
@@ -387,7 +403,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38EE18062016ED5900D126C0 /* NFCTableViewCell.swift in Sources */,
 				386179041FBD57310059FE89 /* Secrets.swift in Sources */,
+				38EE18042016EC3400D126C0 /* NFCTableViewController.swift in Sources */,
 				386178BE1FBD527F0059FE89 /* AppDelegate.swift in Sources */,
 				386179061FBD57530059FE89 /* Constants.swift in Sources */,
 			);
@@ -535,11 +553,12 @@
 			baseConfigurationReference = 46B4E69B4F4BCECF6079DD62 /* Pods-RewardWallet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RewardWallet.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9EUCWD26TP;
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.rewardwallet.iosclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -554,11 +573,12 @@
 			baseConfigurationReference = 8A62C2EEC39E426F1F92380C /* Pods-RewardWallet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RewardWallet.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9EUCWD26TP;
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.rewardwallet.iosclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
