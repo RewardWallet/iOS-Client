@@ -28,6 +28,8 @@ class NFCTableViewController: UITableViewController {
         
         // Begin scanning
         self.nfcSession.begin()
+        
+        tableView.tableFooterView = UIView()
     }
     
 }

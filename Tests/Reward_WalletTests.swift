@@ -7,13 +7,14 @@
 //
 
 import XCTest
-@testable import Reward_Wallet
+@testable import RewardWallet
 
-class Reward_WalletTests: XCTestCase {
+class RewardWalletTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        
     }
     
     override func tearDown() {
@@ -30,6 +31,16 @@ class Reward_WalletTests: XCTestCase {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
+        }
+    }
+    
+    func testTransaction() {
+        
+        measure {
+            API.shared.testTransaction(block: { (response, error) in
+                print(response)
+                print(error)
+            })
         }
     }
     

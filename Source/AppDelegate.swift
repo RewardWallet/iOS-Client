@@ -15,11 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        API.shared.connectToParseServer()
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UINavigationController(rootViewController: NFCTableViewController())
         window?.makeKeyAndVisible()
-                
+        
+        API.shared.testTransaction(block: { (response, error) in
+            print(response)
+            print(error)
+        })
+        
         return true
     }
 

@@ -1,11 +1,17 @@
-platform :ios, '10.0'
+platform :ios, '11.0'
 
 target 'RewardWallet' do
     
   use_frameworks!
+  inhibit_all_warnings!
 
   # Pods for Reward Wallet
-  # pod 'DynamicTabBarController', :path => '~/Documents/iOS/DynamicTabBarController'
+  
+  # http://parseplatform.org
+  pod 'Parse'
+  
+  # https://github.com/SVProgressHUD/SVProgressHUD
+  pod 'SVProgressHUD'
 
   target 'RewardWalletTests' do
     inherit! :search_paths

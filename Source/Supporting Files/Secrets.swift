@@ -6,7 +6,7 @@
 //  Copyright © 2017 Nathan Tannar. All rights reserved.
 //
 
-let APPLICATION_ID = "G0OYmfAMuI4ORbtWssrYWrwSfEqZbpxafRA8Mo2b"
-let CLIENT_KEY = "Ihk6kg7wyEHOvn914tYJw0ArgYzkzbrHp6TtZVNq"
-let SERVER_URL = "https://nathantannar.me/api/dev"
+let APPLICATION_ID = "myAppId"
+let CLIENT_KEY = "myMasterKey"
+let SERVER_URL = "https://localhost:1337/parse"
 let FACEBOOK_APPLICATION_ID = ""
