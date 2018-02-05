@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1ADAC9B0BD3049E70A62528D /* Pods_RewardWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21D076C2198EC0690DE45F8F /* Pods_RewardWallet.framework */; };
 		30B4477F9567B434BA06236D /* Pods_RewardWalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0980C85416795BAF64D5E49A /* Pods_RewardWalletTests.framework */; };
+		383735292028C82300E592F0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 383735282028C82300E592F0 /* README.md */; };
+		3837352B2028C8E100E592F0 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3837352A2028C8E100E592F0 /* AppRouter.swift */; };
 		386178BE1FBD527F0059FE89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386178BD1FBD527F0059FE89 /* AppDelegate.swift */; };
 		386178C21FBD527F0059FE89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 386178C11FBD527F0059FE89 /* Assets.xcassets */; };
 		386178C51FBD527F0059FE89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 386178C31FBD527F0059FE89 /* LaunchScreen.storyboard */; };
@@ -38,6 +40,8 @@
 /* Begin PBXFileReference section */
 		0980C85416795BAF64D5E49A /* Pods_RewardWalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RewardWalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D076C2198EC0690DE45F8F /* Pods_RewardWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RewardWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		383735282028C82300E592F0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3837352A2028C8E100E592F0 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		386178BA1FBD527F0059FE89 /* RewardWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RewardWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		386178BD1FBD527F0059FE89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		386178C11FBD527F0059FE89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 		386178B11FBD527F0059FE89 = {
 			isa = PBXGroup;
 			children = (
+				383735282028C82300E592F0 /* README.md */,
 				38EE18022016EB8000D126C0 /* RewardWallet.entitlements */,
 				386178BC1FBD527F0059FE89 /* Source */,
 				386178CE1FBD527F0059FE89 /* Tests */,
@@ -108,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				386178BD1FBD527F0059FE89 /* AppDelegate.swift */,
+				3837352A2028C8E100E592F0 /* AppRouter.swift */,
 				38764C93201E716C005DDD82 /* Networking */,
 				386178DE1FBD52FE0059FE89 /* Models */,
 				386178DD1FBD52FA0059FE89 /* Views */,
@@ -317,6 +323,7 @@
 			files = (
 				386178C21FBD527F0059FE89 /* Assets.xcassets in Resources */,
 				386179021FBD57280059FE89 /* EULA.html in Resources */,
+				383735292028C82300E592F0 /* README.md in Resources */,
 				386178C51FBD527F0059FE89 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,12 +363,14 @@
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/URLNavigator/URLNavigator.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URLNavigator.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -448,6 +457,7 @@
 				386ACB3820257DCC00B71C50 /* UIForcePressGestureRecognizer.swift in Sources */,
 				386ACB3A20257DD800B71C50 /* UIView+AutoLayout.swift in Sources */,
 				386178BE1FBD527F0059FE89 /* AppDelegate.swift in Sources */,
+				3837352B2028C8E100E592F0 /* AppRouter.swift in Sources */,
 				38764C95201E71AF005DDD82 /* API.swift in Sources */,
 				386ACB3620257DC300B71C50 /* CardView.swift in Sources */,
 				386179061FBD57530059FE89 /* Constants.swift in Sources */,

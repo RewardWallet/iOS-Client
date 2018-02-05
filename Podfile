@@ -12,6 +12,9 @@ target 'RewardWallet' do
   
   # https://github.com/SVProgressHUD/SVProgressHUD
   pod 'SVProgressHUD'
+  
+  # https://github.com/devxoul/URLNavigator
+  pod 'URLNavigator'
 
   target 'RewardWalletTests' do
     inherit! :search_paths

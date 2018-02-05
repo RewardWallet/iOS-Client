@@ -9,7 +9,7 @@
 //
 
 import AudioToolbox
-import UIKit
+import UIKit.UIGestureRecognizerSubclass
 
 /// A UIGestureRecognizer that fires a selelector on 3D Touch.
 open class UIForcePressGestureRecognizer: UIGestureRecognizer {

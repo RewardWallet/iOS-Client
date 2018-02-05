@@ -20,7 +20,7 @@ class API: NSObject {
     /// Initialization private, use the static `shared` property
     override private init() { super.init() }
     
-    func connectToParseServer() {
+    func setup() {
         let config = ParseClientConfiguration {
             $0.applicationId = "myAppId"
             $0.clientKey = "myMasterKey"
