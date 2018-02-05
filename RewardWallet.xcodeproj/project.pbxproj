@@ -16,6 +16,10 @@
 		386179021FBD57280059FE89 /* EULA.html in Resources */ = {isa = PBXBuildFile; fileRef = 386179011FBD57280059FE89 /* EULA.html */; };
 		386179041FBD57310059FE89 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386179031FBD57300059FE89 /* Secrets.swift */; };
 		386179061FBD57530059FE89 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386179051FBD57530059FE89 /* Constants.swift */; };
+		386ACB3420257DBF00B71C50 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386ACB3320257DBF00B71C50 /* WalletView.swift */; };
+		386ACB3620257DC300B71C50 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386ACB3520257DC300B71C50 /* CardView.swift */; };
+		386ACB3820257DCC00B71C50 /* UIForcePressGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386ACB3720257DCC00B71C50 /* UIForcePressGestureRecognizer.swift */; };
+		386ACB3A20257DD800B71C50 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386ACB3920257DD800B71C50 /* UIView+AutoLayout.swift */; };
 		38764C95201E71AF005DDD82 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38764C94201E71AF005DDD82 /* API.swift */; };
 		38EE18042016EC3400D126C0 /* NFCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EE18032016EC3400D126C0 /* NFCTableViewController.swift */; };
 		38EE18062016ED5900D126C0 /* NFCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EE18052016ED5900D126C0 /* NFCTableViewCell.swift */; };
@@ -45,6 +49,10 @@
 		386179011FBD57280059FE89 /* EULA.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = EULA.html; sourceTree = "<group>"; };
 		386179031FBD57300059FE89 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		386179051FBD57530059FE89 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		386ACB3320257DBF00B71C50 /* WalletView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
+		386ACB3520257DC300B71C50 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		386ACB3720257DCC00B71C50 /* UIForcePressGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIForcePressGestureRecognizer.swift; sourceTree = "<group>"; };
+		386ACB3920257DD800B71C50 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		38764C94201E71AF005DDD82 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		38EE18022016EB8000D126C0 /* RewardWallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RewardWallet.entitlements; sourceTree = "<group>"; };
 		38EE18032016EC3400D126C0 /* NFCTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTableViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +131,7 @@
 		386178DA1FBD52D60059FE89 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				386ACB3720257DCC00B71C50 /* UIForcePressGestureRecognizer.swift */,
 				386178C31FBD527F0059FE89 /* LaunchScreen.storyboard */,
 				386179051FBD57530059FE89 /* Constants.swift */,
 				386179031FBD57300059FE89 /* Secrets.swift */,
@@ -152,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				38EE18052016ED5900D126C0 /* NFCTableViewCell.swift */,
+				386ACB3220257DB100B71C50 /* WalletViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -166,8 +176,18 @@
 		386178DF1FBD53060059FE89 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				386ACB3920257DD800B71C50 /* UIView+AutoLayout.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		386ACB3220257DB100B71C50 /* WalletViews */ = {
+			isa = PBXGroup;
+			children = (
+				386ACB3320257DBF00B71C50 /* WalletView.swift */,
+				386ACB3520257DC300B71C50 /* CardView.swift */,
+			);
+			path = WalletViews;
 			sourceTree = "<group>";
 		};
 		38764C93201E716C005DDD82 /* Networking */ = {
@@ -424,8 +444,12 @@
 				38EE18062016ED5900D126C0 /* NFCTableViewCell.swift in Sources */,
 				386179041FBD57310059FE89 /* Secrets.swift in Sources */,
 				38EE18042016EC3400D126C0 /* NFCTableViewController.swift in Sources */,
+				386ACB3420257DBF00B71C50 /* WalletView.swift in Sources */,
+				386ACB3820257DCC00B71C50 /* UIForcePressGestureRecognizer.swift in Sources */,
+				386ACB3A20257DD800B71C50 /* UIView+AutoLayout.swift in Sources */,
 				386178BE1FBD527F0059FE89 /* AppDelegate.swift in Sources */,
 				38764C95201E71AF005DDD82 /* API.swift in Sources */,
+				386ACB3620257DC300B71C50 /* CardView.swift in Sources */,
 				386179061FBD57530059FE89 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
