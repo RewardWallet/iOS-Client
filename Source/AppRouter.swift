@@ -12,7 +12,7 @@ import SafariServices
 
 enum AppRoute {
     
-    case welcome, login, signup
+    case welcome, login, signup, wallet
     
     var pattern: URLPattern {
         
@@ -22,11 +22,12 @@ enum AppRoute {
         case .welcome: return urlScheme + "welcome"
         case .login: return urlScheme + "login"
         case .signup: return urlScheme + "signup"
+        case .wallet: return urlScheme + "wallet"
         }
     }
     
     static func all() -> [AppRoute] {
-        return [.welcome, .login, .signup]
+        return [.welcome, .login, .signup, .wallet]
     }
 }
 
@@ -37,6 +38,7 @@ class AppRouter: Navigator {
     /// Initialization private, use the static `shared` property
     private override init() {
         super.init()
+        delegate = self
         registerPaths()
     }
     
@@ -65,6 +67,7 @@ class AppRouter: Navigator {
         return { (url, values, context) -> UIViewController? in
             // Code
             switch route {
+            case .wallet: return WalletViewController()
             default:
                 print("[ViewControllerFactory failed for route: \(route)")
                 return nil
@@ -87,4 +90,17 @@ class AppRouter: Navigator {
             return true
         }
     }
+
+}
+
+extension AppRouter: NavigatorDelegate {
+    
+    func shouldPush(viewController: UIViewController, from: UINavigationControllerType) -> Bool {
+        return true
+    }
+    
+    func shouldPresent(viewController: UIViewController, from: UIViewControllerType) -> Bool {
+        return true
+    }
+    
 }

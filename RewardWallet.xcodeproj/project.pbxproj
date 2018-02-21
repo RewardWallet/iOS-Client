@@ -11,6 +11,10 @@
 		30B4477F9567B434BA06236D /* Pods_RewardWalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0980C85416795BAF64D5E49A /* Pods_RewardWalletTests.framework */; };
 		383735292028C82300E592F0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 383735282028C82300E592F0 /* README.md */; };
 		3837352B2028C8E100E592F0 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3837352A2028C8E100E592F0 /* AppRouter.swift */; };
+		385CDF90202FBE9000623793 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385CDF8F202FBE9000623793 /* WalletViewController.swift */; };
+		385CDF92202FBEF400623793 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385CDF91202FBEF400623793 /* QRCodeView.swift */; };
+		385CDF94202FBF1B00623793 /* QRCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385CDF93202FBF1B00623793 /* QRCardView.swift */; };
+		385CDF96202FC06200623793 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385CDF95202FC06200623793 /* LaunchScreenViewController.swift */; };
 		386178BE1FBD527F0059FE89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386178BD1FBD527F0059FE89 /* AppDelegate.swift */; };
 		386178C21FBD527F0059FE89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 386178C11FBD527F0059FE89 /* Assets.xcassets */; };
 		386178C51FBD527F0059FE89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 386178C31FBD527F0059FE89 /* LaunchScreen.storyboard */; };
@@ -23,6 +27,8 @@
 		386ACB3820257DCC00B71C50 /* UIForcePressGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386ACB3720257DCC00B71C50 /* UIForcePressGestureRecognizer.swift */; };
 		386ACB3A20257DD800B71C50 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386ACB3920257DD800B71C50 /* UIView+AutoLayout.swift */; };
 		38764C95201E71AF005DDD82 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38764C94201E71AF005DDD82 /* API.swift */; };
+		38C0C8412030AF7E0009B230 /* RWNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0C8402030AF7E0009B230 /* RWNavigationController.swift */; };
+		38C0C8432030AF8F0009B230 /* RWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0C8422030AF8F0009B230 /* RWViewController.swift */; };
 		38EE18042016EC3400D126C0 /* NFCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EE18032016EC3400D126C0 /* NFCTableViewController.swift */; };
 		38EE18062016ED5900D126C0 /* NFCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EE18052016ED5900D126C0 /* NFCTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +48,10 @@
 		21D076C2198EC0690DE45F8F /* Pods_RewardWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RewardWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		383735282028C82300E592F0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3837352A2028C8E100E592F0 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		385CDF8F202FBE9000623793 /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		385CDF91202FBEF400623793 /* QRCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
+		385CDF93202FBF1B00623793 /* QRCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCardView.swift; sourceTree = "<group>"; };
+		385CDF95202FC06200623793 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		386178BA1FBD527F0059FE89 /* RewardWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RewardWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		386178BD1FBD527F0059FE89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		386178C11FBD527F0059FE89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,6 +68,8 @@
 		386ACB3720257DCC00B71C50 /* UIForcePressGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIForcePressGestureRecognizer.swift; sourceTree = "<group>"; };
 		386ACB3920257DD800B71C50 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		38764C94201E71AF005DDD82 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		38C0C8402030AF7E0009B230 /* RWNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWNavigationController.swift; sourceTree = "<group>"; };
+		38C0C8422030AF8F0009B230 /* RWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWViewController.swift; sourceTree = "<group>"; };
 		38EE18022016EB8000D126C0 /* RewardWallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RewardWallet.entitlements; sourceTree = "<group>"; };
 		38EE18032016EC3400D126C0 /* NFCTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTableViewController.swift; sourceTree = "<group>"; };
 		38EE18052016ED5900D126C0 /* NFCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTableViewCell.swift; sourceTree = "<group>"; };
@@ -158,7 +170,11 @@
 		386178DC1FBD52F20059FE89 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				38C0C8422030AF8F0009B230 /* RWViewController.swift */,
+				38C0C8402030AF7E0009B230 /* RWNavigationController.swift */,
 				38EE18032016EC3400D126C0 /* NFCTableViewController.swift */,
+				385CDF8F202FBE9000623793 /* WalletViewController.swift */,
+				385CDF95202FC06200623793 /* LaunchScreenViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -192,6 +208,8 @@
 			children = (
 				386ACB3320257DBF00B71C50 /* WalletView.swift */,
 				386ACB3520257DC300B71C50 /* CardView.swift */,
+				385CDF91202FBEF400623793 /* QRCodeView.swift */,
+				385CDF93202FBF1B00623793 /* QRCardView.swift */,
 			);
 			path = WalletViews;
 			sourceTree = "<group>";
@@ -454,12 +472,18 @@
 				386179041FBD57310059FE89 /* Secrets.swift in Sources */,
 				38EE18042016EC3400D126C0 /* NFCTableViewController.swift in Sources */,
 				386ACB3420257DBF00B71C50 /* WalletView.swift in Sources */,
+				38C0C8412030AF7E0009B230 /* RWNavigationController.swift in Sources */,
 				386ACB3820257DCC00B71C50 /* UIForcePressGestureRecognizer.swift in Sources */,
+				385CDF92202FBEF400623793 /* QRCodeView.swift in Sources */,
+				385CDF94202FBF1B00623793 /* QRCardView.swift in Sources */,
+				385CDF90202FBE9000623793 /* WalletViewController.swift in Sources */,
 				386ACB3A20257DD800B71C50 /* UIView+AutoLayout.swift in Sources */,
 				386178BE1FBD527F0059FE89 /* AppDelegate.swift in Sources */,
 				3837352B2028C8E100E592F0 /* AppRouter.swift in Sources */,
 				38764C95201E71AF005DDD82 /* API.swift in Sources */,
 				386ACB3620257DC300B71C50 /* CardView.swift in Sources */,
+				385CDF96202FC06200623793 /* LaunchScreenViewController.swift in Sources */,
+				38C0C8432030AF8F0009B230 /* RWViewController.swift in Sources */,
 				386179061FBD57530059FE89 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
