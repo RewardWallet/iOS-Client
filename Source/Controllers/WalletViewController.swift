@@ -2,9 +2,29 @@
 //  NFCTableViewController.swift
 //  RewardWallet
 //
-//  Created by Nathan Tannar on 1/22/18.
-//  Copyright © 2018 Nathan Tannar. All rights reserved.
+//  Copyright © 2017 Nathan Tannar.
 //
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
+//
+//  Created by Nathan Tannar on 2/20/18.
+//
+
 
 import UIKit
 
@@ -12,30 +32,37 @@ class WalletViewController: RWViewController {
     
     // MARK: - Properties
     
-    lazy var walletView = WalletView(frame: self.view.frame)
+    lazy var walletView: WalletView = { [unowned self] in
+        let view = WalletView(frame: self.view.frame)
+        view.contentInset.top = 20
+        view.contentInset.bottom = 60
+        view.minimalDistanceBetweenStackedCardViews = 60
+        view.preferableCardViewHeight = self.view.frame.height / 3
+        return view
+    }()
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.largeTitleDisplayMode = .always
-        view.backgroundColor = .white
-        view.addSubview(walletView)
-        walletView.fillSuperview()
-        walletView.contentInset.top = 40
-        
         title = "Wallet"
+        tabBarItem = UITabBarItem(title: title,
+                                  image: UIImage.icon_wallet?.withRenderingMode(.alwaysTemplate),
+                                  selectedImage: .icon_wallet)
+        
+        view.addSubview(walletView)
+        walletView.fillSuperview(inSafeArea: true)
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCard))
         
-        var coloredCardViews = [CardView]()
-        for index in 1...2 {
-            let card = MockCard()
-            card.index = index
-            coloredCardViews.append(card)
+        var cardViews = [DigitalCardView]()
+        for _ in 1...10 {
+            let card = DigitalCardView()
+            cardViews.append(card)
         }
         
-        walletView.reload(cardViews: coloredCardViews)
+        walletView.reload(cardViews: cardViews)
     }
     
     
@@ -43,51 +70,6 @@ class WalletViewController: RWViewController {
     
     @objc
     func addCard() {
-        walletView.insert(cardView: MockCard(), animated: true, presented: true)
+        walletView.insert(cardView: DigitalCardView(), animated: true, presented: true)
     }
 }
-
-class MockCard: QRCardView {
-    
-    var label: UILabel = {
-        let label = UILabel()
-        label.textColor = .white
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        return label
-    }()
-    
-    var index: Int = 0 {
-        didSet {
-            label.text = "#\(index)"
-        }
-    }
-
-    override func presentedDidUpdate() {
-//        UIView.animate(withDuration: 0.3) {
-//            self.backgroundColor = self.presented ? UIColor.red : .white
-//        }
-    }
-    
-    override func setupViews() {
-        super.setupViews()
-        
-        qrCodeView.value = "2bd792iasfF"
-        
-        layer.cornerRadius = 10
-        layer.shadowRadius = 3
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.3
-        layer.shadowOffset = CGSize(width: 0, height: 1)
-        backgroundColor = .red
-        
-        addSubview(label)
-        label.anchor(topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 8, leftConstant: 8, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 30)
-
-    }
-    
-    @objc
-    func deleteCard() {
-        walletView?.remove(cardView: self, animated: true, completion: nil)
-    }
-}
-

@@ -8,12 +8,25 @@
 
 import UIKit
 
+/// A RewardWallet base class for UINavigationController
 class RWNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationBar.isTranslucent = false
+        navigationBar.setBackgroundImage(nil, for: .default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.tintColor = .tertiaryColor
+        navigationBar.layer.shadowRadius = 3
+        navigationBar.layer.shadowColor = UIColor.darkGray.cgColor
+        navigationBar.layer.shadowOpacity = 0.3
+        navigationBar.layer.shadowOffset = CGSize(width: 0, height: 1)
+        
+        navigationBar.titleTextAttributes = [.foregroundColor: UIColor(r: 10, g: 10, b: 10)]
+        navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor(r: 10, g: 10, b: 10)]
+        
+        navigationBar.prefersLargeTitles = true
     }
 
 }

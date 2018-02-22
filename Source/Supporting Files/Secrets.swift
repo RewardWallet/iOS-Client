@@ -1,6 +1,6 @@
 //
 //  Secrets.swift
-//  Reward Wallet
+//  RewardWallet
 //
 //  Created by Nathan Tannar on 11/15/17.
 //  Copyright © 2017 Nathan Tannar. All rights reserved.

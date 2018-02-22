@@ -7,6 +7,8 @@
 //
 //  Forked from https://github.com/rshevchuk/Wallet
 //
+//  DO NOT MAKE MODIFICATIONS TO THIS FILE
+//
 
 import UIKit
 

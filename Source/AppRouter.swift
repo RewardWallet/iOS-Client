@@ -9,10 +9,11 @@
 import UIKit
 import URLNavigator
 import SafariServices
+import DynamicTabBarController
 
 enum AppRoute {
     
-    case welcome, login, signup, wallet
+    case welcome, login, signup, wallet, main
     
     var pattern: URLPattern {
         
@@ -23,11 +24,12 @@ enum AppRoute {
         case .login: return urlScheme + "login"
         case .signup: return urlScheme + "signup"
         case .wallet: return urlScheme + "wallet"
+        case .main: return urlScheme + "main"
         }
     }
     
     static func all() -> [AppRoute] {
-        return [.welcome, .login, .signup, .wallet]
+        return [.welcome, .login, .signup, .wallet, .main]
     }
 }
 
@@ -42,32 +44,43 @@ class AppRouter: Navigator {
         registerPaths()
     }
     
+    // MARK: - Public API
+    
+    
+    // MARK: - Private API
+    
     private func registerPaths() {
         
         for route in AppRoute.all() {
             register(route.pattern, viewControllerFactory(for: route))
         }
         
-//        register("navigator://user/<username>") { url, values, context in
-//            guard let username = values["username"] as? String else { return nil }
-//            return UserViewController(navigator: navigator, username: username)
-//        }
-//        register("http://<path:_>", self.webViewControllerFactory)
-//        register("https://<path:_>", self.webViewControllerFactory)
-//
-//        handle("navigator://alert", self.alert(navigator: navigator))
-//        handle("navigator://<path:_>") { (url, values, context) -> Bool in
-//            // No navigator match, do analytics or fallback function here
-//            print("[Navigator] NavigationMap.\(#function):\(#line) - global fallback function is called")
-//            return true
-//        }
+        //        register("navigator://user/<username>") { url, values, context in
+        //            guard let username = values["username"] as? String else { return nil }
+        //            return UserViewController(navigator: navigator, username: username)
+        //        }
+        //        register("http://<path:_>", self.webViewControllerFactory)
+        //        register("https://<path:_>", self.webViewControllerFactory)
+        //
+        //        handle("navigator://alert", self.alert(navigator: navigator))
+        //        handle("navigator://<path:_>") { (url, values, context) -> Bool in
+        //            // No navigator match, do analytics or fallback function here
+        //            print("[Navigator] NavigationMap.\(#function):\(#line) - global fallback function is called")
+        //            return true
+        //        }
     }
     
     private func viewControllerFactory(for route: AppRoute) -> ViewControllerFactory {
         return { (url, values, context) -> UIViewController? in
             // Code
             switch route {
-            case .wallet: return WalletViewController()
+            case .main:
+                let tabBarController = MainContainerController(viewControllers: [
+                    WalletViewController(),
+                    NotificationsViewController(),
+                    NFCTableViewController(),
+                ])
+                return RWNavigationController(rootViewController: tabBarController)
             default:
                 print("[ViewControllerFactory failed for route: \(route)")
                 return nil

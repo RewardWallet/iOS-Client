@@ -20,6 +20,8 @@ class NFCTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "NFC Test"
+        
         // Create the NFC Reader Session when the app starts
         self.nfcSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: false)
         
@@ -29,6 +31,7 @@ class NFCTableViewController: UITableViewController {
         // Begin scanning
         self.nfcSession.begin()
         
+        tableView.backgroundColor = .backgroundColor
         tableView.tableFooterView = UIView()
     }
     

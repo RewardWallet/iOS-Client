@@ -7,6 +7,8 @@
 //
 //  Forked from https://github.com/rshevchuk/Wallet
 //
+//  DO NOT MAKE MODIFICATIONS TO THIS FILE
+//
 
 import UIKit
 
@@ -20,7 +22,12 @@ open class CardView: UIView {
     
     /// A parent wallet view object, or nil if the card view is not visible.
     public var walletView: WalletView? {
-        return container()
+        var view = superview
+        while view != nil {
+            if let view = view as? WalletView { return view }
+            view = view?.superview
+        }
+        return nil
     }
     
     // MARK: - Properties [Private]
@@ -154,19 +161,5 @@ extension CardView: UIGestureRecognizerDelegate {
     ///  - parameter otherGestureRecognizer: An instance of a subclass of the abstract base class UIGestureRecognizer.
     open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return gestureRecognizer != tapGestureRecognizer && otherGestureRecognizer != tapGestureRecognizer
-    }
-}
-
-fileprivate extension UIView {
-    
-    func container<T: UIView>() -> T? {
-        var view = superview
-        while view != nil {
-            if let view = view as? T {
-                return view
-            }
-            view = view?.superview
-        }
-        return nil
     }
 }
