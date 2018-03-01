@@ -29,7 +29,7 @@ class MainContainerController: DynamicTabBarController {
             let itemHeight: CGFloat = 40
             let contentView = UIView(frame: CGRect(x: 0, y: 0, width: itemWidth, height: itemHeight))
             let button = UIButton(frame: CGRect(x: 0, y: 5, width: itemHeight - 10, height: itemHeight - 10))
-            button.setImage(.icon_rw_coin, for: .normal)
+            button.setImage(.coin, for: .normal)
             button.imageView?.contentMode = .scaleAspectFit
             button.addTarget(self, action: #selector(didTapHelp), for: .touchUpInside)
             contentView.addSubview(button)

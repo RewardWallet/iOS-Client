@@ -50,6 +50,11 @@
 		38ED9F3C203D4CAD008B410B /* MainContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ED9F3B203D4CAD008B410B /* MainContainerController.swift */; };
 		38EE18042016EC3400D126C0 /* NFCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EE18032016EC3400D126C0 /* NFCTableViewController.swift */; };
 		38EE18062016ED5900D126C0 /* NFCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EE18052016ED5900D126C0 /* NFCTableViewCell.swift */; };
+		38EF5C4220473D6500FD4EBF /* UIAnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF5C4020473D6500FD4EBF /* UIAnimatedTextField.swift */; };
+		38EF5C4320473D6500FD4EBF /* UILoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF5C4120473D6500FD4EBF /* UILoginViewController.swift */; };
+		38EF5C4820473DBA00FD4EBF /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF5C4720473DBA00FD4EBF /* WelcomeViewController.swift */; };
+		38EF5C4A20473DC200FD4EBF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF5C4920473DC200FD4EBF /* LoginViewController.swift */; };
+		38EF5C4C20473DCF00FD4EBF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF5C4B20473DCF00FD4EBF /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +118,11 @@
 		38EE18022016EB8000D126C0 /* RewardWallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RewardWallet.entitlements; sourceTree = "<group>"; };
 		38EE18032016EC3400D126C0 /* NFCTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTableViewController.swift; sourceTree = "<group>"; };
 		38EE18052016ED5900D126C0 /* NFCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTableViewCell.swift; sourceTree = "<group>"; };
+		38EF5C4020473D6500FD4EBF /* UIAnimatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAnimatedTextField.swift; sourceTree = "<group>"; };
+		38EF5C4120473D6500FD4EBF /* UILoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILoginViewController.swift; sourceTree = "<group>"; };
+		38EF5C4720473DBA00FD4EBF /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		38EF5C4920473DC200FD4EBF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		38EF5C4B20473DCF00FD4EBF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3E670663E5803CDC7EBD5AE2 /* Pods-RewardWalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RewardWalletTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RewardWalletTests/Pods-RewardWalletTests.debug.xcconfig"; sourceTree = "<group>"; };
 		46B4E69B4F4BCECF6079DD62 /* Pods-RewardWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RewardWallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RewardWallet/Pods-RewardWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		8A62C2EEC39E426F1F92380C /* Pods-RewardWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RewardWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-RewardWallet/Pods-RewardWallet.release.xcconfig"; sourceTree = "<group>"; };
@@ -191,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				386ACB3720257DCC00B71C50 /* UIForcePressGestureRecognizer.swift */,
+				38EF5C4420473D6800FD4EBF /* UILoginViewController */,
 				386178C31FBD527F0059FE89 /* LaunchScreen.storyboard */,
 				386179031FBD57300059FE89 /* Secrets.swift */,
 				38199236203D571700D7B7D1 /* Lorem.swift */,
@@ -212,12 +223,12 @@
 		386178DC1FBD52F20059FE89 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				38C0C8422030AF8F0009B230 /* RWViewController.swift */,
-				38C0C8402030AF7E0009B230 /* RWNavigationController.swift */,
-				38EE18032016EC3400D126C0 /* NFCTableViewController.swift */,
+				38EF5C4520473D9A00FD4EBF /* Base */,
+				38EF5C4620473DA200FD4EBF /* Auth */,
 				38ED9F3B203D4CAD008B410B /* MainContainerController.swift */,
 				385CDF8F202FBE9000623793 /* WalletViewController.swift */,
 				38ED9F39203D4859008B410B /* NotificationsViewController.swift */,
+				38EE18032016EC3400D126C0 /* NFCTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -287,6 +298,34 @@
 				38C6E3C4203D3AFB00DCD00D /* UIView+Style.swift */,
 			);
 			path = Styling;
+			sourceTree = "<group>";
+		};
+		38EF5C4420473D6800FD4EBF /* UILoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				38EF5C4020473D6500FD4EBF /* UIAnimatedTextField.swift */,
+				38EF5C4120473D6500FD4EBF /* UILoginViewController.swift */,
+			);
+			path = UILoginViewController;
+			sourceTree = "<group>";
+		};
+		38EF5C4520473D9A00FD4EBF /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				38C0C8422030AF8F0009B230 /* RWViewController.swift */,
+				38C0C8402030AF7E0009B230 /* RWNavigationController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		38EF5C4620473DA200FD4EBF /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				38EF5C4720473DBA00FD4EBF /* WelcomeViewController.swift */,
+				38EF5C4920473DC200FD4EBF /* LoginViewController.swift */,
+				38EF5C4B20473DCF00FD4EBF /* SignUpViewController.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		7C47FA396E1DD8F6ACF12222 /* Pods */ = {
@@ -549,11 +588,14 @@
 				38EE18042016EC3400D126C0 /* NFCTableViewController.swift in Sources */,
 				38ED9F3C203D4CAD008B410B /* MainContainerController.swift in Sources */,
 				38C6E3DC203D3B9400DCD00D /* UIWindow+Extenions.swift in Sources */,
+				38EF5C4820473DBA00FD4EBF /* WelcomeViewController.swift in Sources */,
 				38ED9F3A203D4859008B410B /* NotificationsViewController.swift in Sources */,
+				38EF5C4C20473DCF00FD4EBF /* SignUpViewController.swift in Sources */,
 				386ACB3420257DBF00B71C50 /* WalletView.swift in Sources */,
 				38C0C8412030AF7E0009B230 /* RWNavigationController.swift in Sources */,
 				386ACB3820257DCC00B71C50 /* UIForcePressGestureRecognizer.swift in Sources */,
 				385CDF92202FBEF400623793 /* QRCodeView.swift in Sources */,
+				38EF5C4220473D6500FD4EBF /* UIAnimatedTextField.swift in Sources */,
 				385CDF94202FBF1B00623793 /* QRCardView.swift in Sources */,
 				38C6E3DD203D3B9400DCD00D /* Date+Extensions.swift in Sources */,
 				38C6E3D5203D3B9400DCD00D /* UIDevice+Extensions.swift in Sources */,
@@ -564,10 +606,12 @@
 				386178BE1FBD527F0059FE89 /* AppDelegate.swift in Sources */,
 				38C6E3D9203D3B9400DCD00D /* UIButton+Extensions.swift in Sources */,
 				38C6E3C8203D3AFC00DCD00D /* Constants.swift in Sources */,
+				38EF5C4320473D6500FD4EBF /* UILoginViewController.swift in Sources */,
 				3837352B2028C8E100E592F0 /* AppRouter.swift in Sources */,
 				3819923C203D63DF00D7B7D1 /* UILabel.swift in Sources */,
 				38C6E3D8203D3B9400DCD00D /* NSAttributedString+Extensions.swift in Sources */,
 				38764C95201E71AF005DDD82 /* API.swift in Sources */,
+				38EF5C4A20473DC200FD4EBF /* LoginViewController.swift in Sources */,
 				38C6E3D6203D3B9400DCD00D /* UIImage+Extensions.swift in Sources */,
 				38C6E3C0203D31D100DCD00D /* DigitalCardView.swift in Sources */,
 				38C6E3C7203D3AFC00DCD00D /* UIView+Style.swift in Sources */,

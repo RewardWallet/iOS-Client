@@ -10,6 +10,10 @@ import UIKit
 
 /// A RewardWallet base class for UINavigationController
 class RWNavigationController: UINavigationController {
+    
+    var statusBar: UIView? {
+        return UIApplication.shared.value(forKey: "statusBar") as? UIView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +21,7 @@ class RWNavigationController: UINavigationController {
         navigationBar.isTranslucent = false
         navigationBar.setBackgroundImage(nil, for: .default)
         navigationBar.shadowImage = UIImage()
-        navigationBar.tintColor = .tertiaryColor
+        navigationBar.tintColor = .primaryColor
         navigationBar.layer.shadowRadius = 3
         navigationBar.layer.shadowColor = UIColor.darkGray.cgColor
         navigationBar.layer.shadowOpacity = 0.3

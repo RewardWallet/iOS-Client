@@ -91,4 +91,15 @@ extension UIColor {
         
         return isBlack || isWhite
     }
+    
+    var toImage: UIImage? {
+        let rect = CGRect(x: 0, y: 0, width: 10, height: 10)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        context?.setFillColor(self.cgColor)
+        context?.fill(rect)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img
+    }
 }

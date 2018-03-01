@@ -11,11 +11,11 @@ import UIKit
 enum Stylesheet {
     
     static var titleFont: UIFont {
-        return .boldSystemFont(ofSize: 18)
+        return .boldSystemFont(ofSize: 34)
     }
     
     static var subtitleFont: UIFont {
-        return .systemFont(ofSize: 16, weight: .semibold)
+        return .systemFont(ofSize: 28, weight: .semibold)
     }
     
     static var descriptionFont: UIFont {
@@ -35,6 +35,7 @@ enum Stylesheet {
         static let title = Style<UILabel> {
             $0.font = titleFont
             $0.numberOfLines = 0
+            $0.textAlignment = .center
             $0.adjustsFontSizeToFitWidth = true
         }
         
@@ -42,6 +43,7 @@ enum Stylesheet {
             $0.font = subtitleFont
             $0.textColor = .darkGray
             $0.numberOfLines = 0
+            $0.textAlignment = .center
             $0.adjustsFontSizeToFitWidth = true
         }
         
@@ -69,6 +71,10 @@ enum Stylesheet {
     }
     
     enum ImageView {
+        
+        static let fitted = Style<UIImageView> {
+            $0.contentMode = .scaleAspectFill
+        }
         
         static let roundedSquare = Style<UIImageView> {
             $0.layer.cornerRadius = 5
@@ -106,6 +112,14 @@ enum Stylesheet {
             $0.setTitleColor(titleColor, for: .normal)
             $0.setTitleColor(titleColor.withAlphaComponent(0.3), for: .highlighted)
             $0.titleLabel?.font = .boldSystemFont(ofSize: 14)
+        }
+        
+        static let roundedWhite = Style<UIButton> {
+            $0.layer.cornerRadius = 22
+            $0.backgroundColor = .white
+            $0.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+            $0.setTitleColor(.black, for: .normal)
+            $0.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
         }
         
     }

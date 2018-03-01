@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         API.shared.initialize()
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = AppRouter.shared.viewController(for: AppRoute.main.pattern.urlValue!)
+        window?.rootViewController = AppRouter.shared.viewController(for: AppRoute.welcome)
         window?.makeKeyAndVisible()
         
         return true

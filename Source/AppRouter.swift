@@ -46,6 +46,9 @@ class AppRouter: Navigator {
     
     // MARK: - Public API
     
+    func viewController(for route: AppRoute) -> UIViewController? {
+        return viewController(for: route.pattern)
+    }
     
     // MARK: - Private API
     
@@ -74,6 +77,8 @@ class AppRouter: Navigator {
         return { (url, values, context) -> UIViewController? in
             // Code
             switch route {
+            case .welcome:
+                return WelcomeViewController()
             case .main:
                 let tabBarController = MainContainerController(viewControllers: [
                     WalletViewController(),
