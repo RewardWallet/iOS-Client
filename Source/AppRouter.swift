@@ -50,6 +50,17 @@ class AppRouter: Navigator {
         return viewController(for: route.pattern)
     }
     
+    func present(_ route: AppRoute, wrap: UINavigationController.Type?, from: UIViewControllerType?, animated: Bool, completion: (() -> Void)?) {
+        
+        if from == nil, let viewController = viewController(for: route) {
+            // Switch the windows rootViewController when `from` is nil
+            UIApplication.shared.presentedWindow?.switchRootViewController(viewController, animated: animated, duration: 0.5, options: .transitionFlipFromRight, completion: completion)
+        } else {
+            present(route.pattern, context: nil, wrap: wrap, from: from, animated: animated, completion: completion)
+        }
+        
+    }
+    
     // MARK: - Private API
     
     private func registerPaths() {
@@ -79,8 +90,13 @@ class AppRouter: Navigator {
             switch route {
             case .welcome:
                 return WelcomeViewController()
+            case .login:
+                return LoginViewController()
+            case .signup:
+                return SignUpViewController()
             case .main:
                 let tabBarController = MainContainerController(viewControllers: [
+                    HomeViewController(),
                     WalletViewController(),
                     NotificationsViewController(),
                     NFCTableViewController(),

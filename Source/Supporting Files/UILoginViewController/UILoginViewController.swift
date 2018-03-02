@@ -28,7 +28,7 @@ import SystemConfiguration.CaptiveNetwork
 open class UILoginViewController: UIViewController {
     
     public enum LoginError {
-        case noEmail, noPassword, invalidEmail, invalidPassword, unknownUser, incorrectPassword, networkError
+        case noEmail, noPassword, invalidEmail, invalidPassword, unknownUser, incorrectPassword, networkError, passwordMismatch
     }
     
     // MARK: - Properties
@@ -167,10 +167,12 @@ open class UILoginViewController: UIViewController {
             presentError("Please enter your password")
         case .unknownUser:
             presentError("Unknown User")
+        case .passwordMismatch:
+            presentError("Passwords do not match")
         }
     }
     
-    open func presentError(_ text: String) {
+    open func presentError(_ text: String?) {
         print(text)
     }
     
@@ -186,6 +188,7 @@ open class UILoginViewController: UIViewController {
         guard emailText.isValidEmail else { return handleError(.invalidEmail) }
         guard passwordText.count >= minimumPasswordLength else { return handleError(.invalidPassword) }
         guard UIApplication.shared.isConnectedToNetwork else { return handleError(.networkError) }
+        view.endEditing(true)
         authorize(emailText, password: passwordText)
     }
     

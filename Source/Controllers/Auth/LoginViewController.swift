@@ -8,30 +8,55 @@
 
 import UIKit
 
-final class LoginViewController: UILoginViewController {
-    
-    // MARK: - Properties
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
+class LoginViewController: UILoginViewController {
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .white
         tintColor = .primaryColor
+        loginButton.backgroundColor = .secondaryColor
         emailTextField.tintColor = .secondaryColor
         passwordTextField.tintColor = .secondaryColor
         passwordResetButton.isHidden = true
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancel))
+        
+        #if DEBUG
+            emailTextField.text = "ntannar@sfu.ca"
+            passwordTextField.text = "password"
+        #endif
+    }
+    
+    // MARK: - Error Handling
+    
+    override func presentError(_ text: String? = "Sorry, an unexpected error occurred") {
+        // TODO: Change to a notification of some kind
+        print(text ?? "Error")
     }
     
     // MARK: - User Actions
     
     @objc
     func didTapCancel() {
+        view.endEditing(true)
         dismiss(animated: true, completion: nil)
     }
+    
+    override func authorize(_ email: String, password: String) {
+        
+        API.shared.showProgressHUD(ignoreUserInteraction: true)
+        User.loginInBackground(email: email, password: password) { (success, error) in
+            API.shared.dismissProgressHUD()
+            guard success else {
+                self.presentError(error?.localizedDescription)
+                return
+            }
+            AppRouter.shared.present(.main, wrap: PlainNavigationController.self,
+                                     from: nil, animated: true, completion: nil)
+        }
+        
+    }
+    
 }

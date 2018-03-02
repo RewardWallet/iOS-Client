@@ -18,6 +18,14 @@ enum Stylesheet {
         return .systemFont(ofSize: 28, weight: .semibold)
     }
     
+    static var headerFont: UIFont {
+        return .systemFont(ofSize: 16, weight: .medium)
+    }
+    
+    static var subheaderFont: UIFont {
+        return .systemFont(ofSize: 14, weight: .medium)
+    }
+    
     static var descriptionFont: UIFont {
         return .systemFont(ofSize: 14, weight: .regular)
     }
@@ -44,6 +52,21 @@ enum Stylesheet {
             $0.textColor = .darkGray
             $0.numberOfLines = 0
             $0.textAlignment = .center
+            $0.adjustsFontSizeToFitWidth = true
+        }
+        
+        static let header = Style<UILabel> {
+            $0.font = headerFont
+            $0.numberOfLines = 1
+            $0.textAlignment = .left
+            $0.adjustsFontSizeToFitWidth = true
+        }
+        
+        static let subheader = Style<UILabel> {
+            $0.font = subheaderFont
+            $0.textColor = .darkGray
+            $0.numberOfLines = 1
+            $0.textAlignment = .left
             $0.adjustsFontSizeToFitWidth = true
         }
         

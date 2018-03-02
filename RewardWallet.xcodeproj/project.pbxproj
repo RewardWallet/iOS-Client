@@ -9,12 +9,18 @@
 /* Begin PBXBuildFile section */
 		1ADAC9B0BD3049E70A62528D /* Pods_RewardWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21D076C2198EC0690DE45F8F /* Pods_RewardWallet.framework */; };
 		30B4477F9567B434BA06236D /* Pods_RewardWalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0980C85416795BAF64D5E49A /* Pods_RewardWalletTests.framework */; };
+		381534D82048B9F0004572A5 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381534D72048B9F0004572A5 /* SplashScreenView.swift */; };
 		38199237203D571700D7B7D1 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38199235203D571700D7B7D1 /* Random.swift */; };
 		38199238203D571700D7B7D1 /* Lorem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38199236203D571700D7B7D1 /* Lorem.swift */; };
 		3819923A203D5D8C00D7B7D1 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38199239203D5D8C00D7B7D1 /* GradientView.swift */; };
 		3819923C203D63DF00D7B7D1 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3819923B203D63DF00D7B7D1 /* UILabel.swift */; };
 		383735292028C82300E592F0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 383735282028C82300E592F0 /* README.md */; };
 		3837352B2028C8E100E592F0 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3837352A2028C8E100E592F0 /* AppRouter.swift */; };
+		384613BD2048C04E0087A38E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384613BC2048C04E0087A38E /* User.swift */; };
+		384613BF2048C1A30087A38E /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384613BE2048C1A30087A38E /* PushNotification.swift */; };
+		384613C12048C4370087A38E /* PrimaryNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384613C02048C4370087A38E /* PrimaryNavigationController.swift */; };
+		384613C32048C4760087A38E /* PlainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384613C22048C4760087A38E /* PlainNavigationController.swift */; };
+		385C1E052048CA1D0080FE19 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C1E042048CA1D0080FE19 /* HomeViewController.swift */; };
 		385CDF90202FBE9000623793 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385CDF8F202FBE9000623793 /* WalletViewController.swift */; };
 		385CDF92202FBEF400623793 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385CDF91202FBEF400623793 /* QRCodeView.swift */; };
 		385CDF94202FBF1B00623793 /* QRCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385CDF93202FBF1B00623793 /* QRCardView.swift */; };
@@ -70,12 +76,18 @@
 /* Begin PBXFileReference section */
 		0980C85416795BAF64D5E49A /* Pods_RewardWalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RewardWalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D076C2198EC0690DE45F8F /* Pods_RewardWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RewardWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		381534D72048B9F0004572A5 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		38199235203D571700D7B7D1 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		38199236203D571700D7B7D1 /* Lorem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lorem.swift; sourceTree = "<group>"; };
 		38199239203D5D8C00D7B7D1 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		3819923B203D63DF00D7B7D1 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		383735282028C82300E592F0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3837352A2028C8E100E592F0 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		384613BC2048C04E0087A38E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		384613BE2048C1A30087A38E /* PushNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
+		384613C02048C4370087A38E /* PrimaryNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryNavigationController.swift; sourceTree = "<group>"; };
+		384613C22048C4760087A38E /* PlainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainNavigationController.swift; sourceTree = "<group>"; };
+		385C1E042048CA1D0080FE19 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		385CDF8F202FBE9000623793 /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		385CDF91202FBEF400623793 /* QRCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
 		385CDF93202FBF1B00623793 /* QRCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCardView.swift; sourceTree = "<group>"; };
@@ -226,6 +238,7 @@
 				38EF5C4520473D9A00FD4EBF /* Base */,
 				38EF5C4620473DA200FD4EBF /* Auth */,
 				38ED9F3B203D4CAD008B410B /* MainContainerController.swift */,
+				385C1E042048CA1D0080FE19 /* HomeViewController.swift */,
 				385CDF8F202FBE9000623793 /* WalletViewController.swift */,
 				38ED9F39203D4859008B410B /* NotificationsViewController.swift */,
 				38EE18032016EC3400D126C0 /* NFCTableViewController.swift */,
@@ -239,6 +252,7 @@
 				38EE18052016ED5900D126C0 /* NFCTableViewCell.swift */,
 				38C6E3BF203D31D100DCD00D /* DigitalCardView.swift */,
 				38199239203D5D8C00D7B7D1 /* GradientView.swift */,
+				381534D72048B9F0004572A5 /* SplashScreenView.swift */,
 				386ACB3220257DB100B71C50 /* WalletViews */,
 			);
 			path = Views;
@@ -247,6 +261,7 @@
 		386178DE1FBD52FE0059FE89 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				384613BC2048C04E0087A38E /* User.swift */,
 				38C6E3C1203D320100DCD00D /* DigitalCard.swift */,
 			);
 			path = Models;
@@ -286,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				38764C94201E71AF005DDD82 /* API.swift */,
+				384613BE2048C1A30087A38E /* PushNotification.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -314,6 +330,8 @@
 			children = (
 				38C0C8422030AF8F0009B230 /* RWViewController.swift */,
 				38C0C8402030AF7E0009B230 /* RWNavigationController.swift */,
+				384613C02048C4370087A38E /* PrimaryNavigationController.swift */,
+				384613C22048C4760087A38E /* PlainNavigationController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -582,9 +600,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				384613BF2048C1A30087A38E /* PushNotification.swift in Sources */,
 				38EE18062016ED5900D126C0 /* NFCTableViewCell.swift in Sources */,
 				38C6E3DF203D3B9400DCD00D /* String+Extensions.swift in Sources */,
 				386179041FBD57310059FE89 /* Secrets.swift in Sources */,
+				384613C32048C4760087A38E /* PlainNavigationController.swift in Sources */,
 				38EE18042016EC3400D126C0 /* NFCTableViewController.swift in Sources */,
 				38ED9F3C203D4CAD008B410B /* MainContainerController.swift in Sources */,
 				38C6E3DC203D3B9400DCD00D /* UIWindow+Extenions.swift in Sources */,
@@ -595,9 +615,11 @@
 				38C0C8412030AF7E0009B230 /* RWNavigationController.swift in Sources */,
 				386ACB3820257DCC00B71C50 /* UIForcePressGestureRecognizer.swift in Sources */,
 				385CDF92202FBEF400623793 /* QRCodeView.swift in Sources */,
+				384613C12048C4370087A38E /* PrimaryNavigationController.swift in Sources */,
 				38EF5C4220473D6500FD4EBF /* UIAnimatedTextField.swift in Sources */,
 				385CDF94202FBF1B00623793 /* QRCardView.swift in Sources */,
 				38C6E3DD203D3B9400DCD00D /* Date+Extensions.swift in Sources */,
+				385C1E052048CA1D0080FE19 /* HomeViewController.swift in Sources */,
 				38C6E3D5203D3B9400DCD00D /* UIDevice+Extensions.swift in Sources */,
 				38C6E3DE203D3B9400DCD00D /* UIColor+Extensions.swift in Sources */,
 				385CDF90202FBE9000623793 /* WalletViewController.swift in Sources */,
@@ -617,12 +639,14 @@
 				38C6E3C7203D3AFC00DCD00D /* UIView+Style.swift in Sources */,
 				38199238203D571700D7B7D1 /* Lorem.swift in Sources */,
 				386ACB3620257DC300B71C50 /* CardView.swift in Sources */,
+				381534D82048B9F0004572A5 /* SplashScreenView.swift in Sources */,
 				38C6E3C9203D3AFC00DCD00D /* Stylesheet.swift in Sources */,
 				38C6E3C2203D320100DCD00D /* DigitalCard.swift in Sources */,
 				38C6E3DB203D3B9400DCD00D /* UIAlertController+Extensions.swift in Sources */,
 				3819923A203D5D8C00D7B7D1 /* GradientView.swift in Sources */,
 				38C0C8432030AF8F0009B230 /* RWViewController.swift in Sources */,
 				38199237203D571700D7B7D1 /* Random.swift in Sources */,
+				384613BD2048C04E0087A38E /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

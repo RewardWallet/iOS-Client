@@ -8,6 +8,7 @@
 
 import Foundation
 import Parse
+import SVProgressHUD
 
 class API: NSObject {
     
@@ -15,21 +16,44 @@ class API: NSObject {
     
     static let shared = API()
     
+    private var isIgnoreingUserInteraction: Bool {
+        return UIApplication.shared.isIgnoringInteractionEvents
+    }
+    
     // MARK: - Initialization
     
     /// Initialization private, use the static `shared` property
-    override private init() { super.init() }
+    override private init() {
+        super.init()
+        SVProgressHUD.setHapticsEnabled(true)
+        SVProgressHUD.setRingRadius(30)
+        SVProgressHUD.setBackgroundColor(UIColor(r: 250, g: 250, b: 250))
+    }
     
     func initialize() {
         let config = ParseClientConfiguration {
-            $0.applicationId = "myAppId"
-            $0.clientKey = "myMasterKey"
-            $0.server = "http://localhost:1337/parse"
+            $0.applicationId = "bgLNDAw0XZhLF1lWYdll8pByveBqh9IBtTMJZOqa"
+            $0.clientKey = "FZnarnKjQxFYDNKryh3IV4O0m2mNhxIM73hP6b3f"
+            $0.server = "https://parseapi.back4app.com/"
         }
         Parse.initialize(with: config)
     }
     
     // MARK: - Methods [Public]
+    
+    func showProgressHUD(ignoreUserInteraction: Bool) {
+        SVProgressHUD.show()
+        if ignoreUserInteraction {
+            UIApplication.shared.beginIgnoringInteractionEvents()
+        }
+    }
+    
+    func dismissProgressHUD() {
+        SVProgressHUD.dismiss()
+        if isIgnoreingUserInteraction {
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }
+    }
     
     func testTransaction(block: @escaping CompletionBlock) {
         

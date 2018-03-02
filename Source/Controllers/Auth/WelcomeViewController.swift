@@ -10,6 +10,7 @@ import UIKit
 
 fileprivate let kInitialAnchorConstant: CGFloat = -30
 fileprivate let kFinalAnchorConstant: CGFloat = 200
+fileprivate let kFlipFromRightAnimation: String = "flipFromRight"
 
 class WelcomeViewController: RWViewController {
     
@@ -50,33 +51,7 @@ class WelcomeViewController: RWViewController {
         return button
     }()
     
-    let backgroundView: UIView = {
-        class ContentView: UIView {
-            // Draws a rectangle with a triangular inset at the top mid x
-            override func draw(_ rect: CGRect) {
-                guard let context = UIGraphicsGetCurrentContext() else { return }
-                context.beginPath()
-                let scale = -kInitialAnchorConstant
-                context.move(to: CGPoint(x: rect.minX, y: rect.minY))
-                context.addLine(to: CGPoint(x: rect.midX - scale, y: rect.minY))
-                context.addLine(to: CGPoint(x: rect.midX, y: rect.minY + scale))
-                context.addLine(to: CGPoint(x: rect.midX + scale, y: rect.minY))
-                context.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
-                context.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-                context.addLine(to: CGPoint(x: rect.minY, y: rect.maxY))
-                context.closePath()
-                context.setFillColor(UIColor.primaryColor.cgColor)
-                context.fillPath()
-            }
-        }
-        let view = ContentView()
-        let gradientView = GradientView()
-        gradientView.colors = [.primaryColor, .secondaryColor]
-        view.addSubview(gradientView)
-        gradientView.anchor(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 50)
-        view.backgroundColor = .white
-        return view
-    }()
+    let backgroundView = SplashScreenView()
     
     private var backgroundViewTopAnchor: NSLayoutConstraint?
     private var hasAnimatedFirstLaunch: Bool = false
@@ -92,7 +67,7 @@ class WelcomeViewController: RWViewController {
         view.addSubview(titleLabel)
         view.addSubview(subtitleLabel)
         view.addSubview(backgroundView)
-        backgroundView.addSubview(logoImageView)
+        view.addSubview(logoImageView)
         backgroundView.addSubview(loginButton)
         backgroundView.addSubview(signUpButton)
         
@@ -101,8 +76,8 @@ class WelcomeViewController: RWViewController {
         titleLabel.anchor(left: view.layoutMarginsGuide.leftAnchor, bottom: subtitleLabel.topAnchor, right: view.layoutMarginsGuide.rightAnchor, leftConstant: 24, bottomConstant: 10, rightConstant: 24, heightConstant: 40)
         subtitleLabel.anchor(left: titleLabel.leftAnchor, bottom: backgroundView.topAnchor, right: titleLabel.rightAnchor, bottomConstant: 40, heightConstant: 20)
         
-        logoImageView.anchorCenterXToSuperview()
-        logoImageView.anchor(backgroundView.topAnchor, topConstant: 50, widthConstant: 150, heightConstant: 150)
+        logoImageView.anchorCenterToSuperview()
+        logoImageView.anchor(widthConstant: 150, heightConstant: 150)
         
         loginButton.anchorCenterXToSuperview()
         loginButton.anchor(bottom: signUpButton.topAnchor, bottomConstant: 10, widthConstant: 200, heightConstant: 44)
@@ -114,6 +89,7 @@ class WelcomeViewController: RWViewController {
         logoImageView.alpha = hasAnimatedLaunch ? 1 : 0
         loginButton.alpha = hasAnimatedLaunch ? 1 : 0
         signUpButton.alpha = hasAnimatedLaunch ? 1 : 0
+        backgroundView.gradientView.alpha = hasAnimatedLaunch ? 1 : 0
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -143,11 +119,13 @@ class WelcomeViewController: RWViewController {
     // MARK: - Animations
     
     private func maximizeBackgroundView() {
+        logoImageView.isHidden = false
         UIView.animate(withDuration: 1, delay: 0.3, options: [], animations: {
             // Alpha animation shouldn't be done in a spring animation
             self.loginButton.alpha = 1
             self.signUpButton.alpha = 1
             self.logoImageView.alpha = 1
+            self.backgroundView.gradientView.alpha = 1
         })
         UIView.animate(withDuration: 1, delay: 0.3, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: [.curveEaseOut], animations: {
             self.backgroundViewTopAnchor?.constant = kFinalAnchorConstant
@@ -160,11 +138,13 @@ class WelcomeViewController: RWViewController {
     }
     
     private func minimizeBackgroundView() {
+        logoImageView.layer.removeAnimation(forKey: kFlipFromRightAnimation)
         UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: {
             // Alpha animation shouldn't be done in a spring animation
             self.loginButton.alpha = 0
             self.signUpButton.alpha = 0
             self.logoImageView.alpha = 0
+            self.backgroundView.gradientView.alpha = 0
         })
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: [.curveEaseOut], animations: {
             self.backgroundViewTopAnchor?.constant = kInitialAnchorConstant
@@ -182,7 +162,7 @@ class WelcomeViewController: RWViewController {
         transition.subtype = "fromRight"
         transition.duration = 2
         transition.repeatCount = .infinity
-        logoImageView.layer.add(transition, forKey: "flipFromRight")
+        logoImageView.layer.add(transition, forKey: kFlipFromRightAnimation)
     }
     
     // MARK: - User Actions
@@ -191,14 +171,15 @@ class WelcomeViewController: RWViewController {
     @objc
     func didTapLogin() {
         
-        let navigationController = RWNavigationController(rootViewController: LoginViewController())
-        present(navigationController, animated: true, completion: nil)
+        AppRouter.shared.present(.login, wrap: PrimaryNavigationController.self,
+                                 from: self, animated: true, completion: nil)
     }
     
     @objc
     func didTapSignUp() {
         
-        
+        AppRouter.shared.present(.signup, wrap: PrimaryNavigationController.self,
+                                 from: self, animated: true, completion: nil)
         
 //        let emitter = CAEmitterLayer()
 //        emitter.emitterPosition = CGPoint(x: view.frame.size.width / 2.0, y: 0)

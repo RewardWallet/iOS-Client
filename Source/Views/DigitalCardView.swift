@@ -15,9 +15,9 @@ class DigitalCardView: CardView {
     
     weak var model: DigitalCard? { didSet { syncViewWithModel() } }
     
-    let titleLabel = UILabel(style: Stylesheet.Labels.title)
+    let titleLabel = UILabel(style: Stylesheet.Labels.header)
     
-    let subtitleLabel = UILabel(style: Stylesheet.Labels.subtitle)
+    let subtitleLabel = UILabel(style: Stylesheet.Labels.subheader)
     
     let logoImageView = UIImageView(style: Stylesheet.ImageView.roundedSquare)
     
