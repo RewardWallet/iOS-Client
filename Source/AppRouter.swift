@@ -13,7 +13,7 @@ import DynamicTabBarController
 
 enum AppRoute {
     
-    case welcome, login, signup, wallet, main
+    case welcome, login, signup, onboarding, explore, wallet, notifications, account
     
     var pattern: URLPattern {
         
@@ -23,13 +23,16 @@ enum AppRoute {
         case .welcome: return urlScheme + "welcome"
         case .login: return urlScheme + "login"
         case .signup: return urlScheme + "signup"
+        case .onboarding: return urlScheme + "onboarding"
+        case .explore: return urlScheme + "explore"
         case .wallet: return urlScheme + "wallet"
-        case .main: return urlScheme + "main"
+        case .notifications: return urlScheme + "notifications"
+        case .account: return urlScheme + "account"
         }
     }
     
     static func all() -> [AppRoute] {
-        return [.welcome, .login, .signup, .wallet, .main]
+        return [.welcome, .login, .signup, .onboarding, .explore, .wallet, .notifications, .account]
     }
 }
 
@@ -94,17 +97,19 @@ class AppRouter: Navigator {
                 return LoginViewController()
             case .signup:
                 return SignUpViewController()
-            case .main:
+            case .onboarding:
+                return RWViewController() // TODO Add Onboarding
+            case .explore, .wallet, .notifications, .account:
+                let index = [.explore, .wallet, .notifications, .account].index(of: route)!
                 let tabBarController = MainContainerController(viewControllers: [
-                    HomeViewController(),
+                    ExploreViewController(),
                     WalletViewController(),
                     NotificationsViewController(),
+                    AccountViewController(),
                     NFCTableViewController(),
                 ])
+                tabBarController.displayViewController(at: index, animated: false)
                 return RWNavigationController(rootViewController: tabBarController)
-            default:
-                print("[ViewControllerFactory failed for route: \(route)")
-                return nil
             }
         }
     }

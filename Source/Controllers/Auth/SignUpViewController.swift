@@ -57,7 +57,7 @@ final class SignUpViewController: LoginViewController {
                 self.presentError(error?.localizedDescription)
                 return
             }
-            AppRouter.shared.present(.main, wrap: PlainNavigationController.self,
+            AppRouter.shared.present(.onboarding, wrap: PlainNavigationController.self,
                                      from: nil, animated: true, completion: nil)
         }
 

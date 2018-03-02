@@ -50,6 +50,10 @@ extension UIImage {
         return UIImage(named: "Shop")
     }
     
+    static var icon_user: UIImage? {
+        return UIImage(named: "User")
+    }
+    
     static var icon_wallet: UIImage? {
         return UIImage(named: "Bank Card Back Side")
     }

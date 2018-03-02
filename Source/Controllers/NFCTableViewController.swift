@@ -28,11 +28,14 @@ class NFCTableViewController: UITableViewController {
         // A custom description that helps users understand how they can use NFC reader mode in your app.
         self.nfcSession.alertMessage = "You can hold you NFC-tag to the back-top of your iPhone"
         
-        // Begin scanning
-        self.nfcSession.begin()
-        
         tableView.backgroundColor = .backgroundColor
         tableView.tableFooterView = UIView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // Begin scanning
+        self.nfcSession.begin()
     }
     
 }

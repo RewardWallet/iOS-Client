@@ -20,7 +20,7 @@
 		384613BF2048C1A30087A38E /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384613BE2048C1A30087A38E /* PushNotification.swift */; };
 		384613C12048C4370087A38E /* PrimaryNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384613C02048C4370087A38E /* PrimaryNavigationController.swift */; };
 		384613C32048C4760087A38E /* PlainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384613C22048C4760087A38E /* PlainNavigationController.swift */; };
-		385C1E052048CA1D0080FE19 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C1E042048CA1D0080FE19 /* HomeViewController.swift */; };
+		385C1E052048CA1D0080FE19 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C1E042048CA1D0080FE19 /* ExploreViewController.swift */; };
 		385CDF90202FBE9000623793 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385CDF8F202FBE9000623793 /* WalletViewController.swift */; };
 		385CDF92202FBEF400623793 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385CDF91202FBEF400623793 /* QRCodeView.swift */; };
 		385CDF94202FBF1B00623793 /* QRCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385CDF93202FBF1B00623793 /* QRCardView.swift */; };
@@ -35,6 +35,7 @@
 		386ACB3820257DCC00B71C50 /* UIForcePressGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386ACB3720257DCC00B71C50 /* UIForcePressGestureRecognizer.swift */; };
 		386ACB3A20257DD800B71C50 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386ACB3920257DD800B71C50 /* UIView+AutoLayout.swift */; };
 		38764C95201E71AF005DDD82 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38764C94201E71AF005DDD82 /* API.swift */; };
+		387F324020492B38001EA599 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F323F20492B38001EA599 /* AccountViewController.swift */; };
 		38C0C8412030AF7E0009B230 /* RWNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0C8402030AF7E0009B230 /* RWNavigationController.swift */; };
 		38C0C8432030AF8F0009B230 /* RWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0C8422030AF8F0009B230 /* RWViewController.swift */; };
 		38C6E3C0203D31D100DCD00D /* DigitalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6E3BF203D31D100DCD00D /* DigitalCardView.swift */; };
@@ -87,7 +88,7 @@
 		384613BE2048C1A30087A38E /* PushNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
 		384613C02048C4370087A38E /* PrimaryNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryNavigationController.swift; sourceTree = "<group>"; };
 		384613C22048C4760087A38E /* PlainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainNavigationController.swift; sourceTree = "<group>"; };
-		385C1E042048CA1D0080FE19 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		385C1E042048CA1D0080FE19 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		385CDF8F202FBE9000623793 /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		385CDF91202FBEF400623793 /* QRCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
 		385CDF93202FBF1B00623793 /* QRCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCardView.swift; sourceTree = "<group>"; };
@@ -106,6 +107,7 @@
 		386ACB3720257DCC00B71C50 /* UIForcePressGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIForcePressGestureRecognizer.swift; sourceTree = "<group>"; };
 		386ACB3920257DD800B71C50 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		38764C94201E71AF005DDD82 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		387F323F20492B38001EA599 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		3896A1B1203D3E1100267EC5 /* xcode-build-bump.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "xcode-build-bump.sh"; sourceTree = "<group>"; };
 		3896A1B3203D3E1500267EC5 /* xcode-version-bump.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "xcode-version-bump.sh"; sourceTree = "<group>"; };
 		38C0C8402030AF7E0009B230 /* RWNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWNavigationController.swift; sourceTree = "<group>"; };
@@ -238,9 +240,10 @@
 				38EF5C4520473D9A00FD4EBF /* Base */,
 				38EF5C4620473DA200FD4EBF /* Auth */,
 				38ED9F3B203D4CAD008B410B /* MainContainerController.swift */,
-				385C1E042048CA1D0080FE19 /* HomeViewController.swift */,
+				385C1E042048CA1D0080FE19 /* ExploreViewController.swift */,
 				385CDF8F202FBE9000623793 /* WalletViewController.swift */,
 				38ED9F39203D4859008B410B /* NotificationsViewController.swift */,
+				387F323F20492B38001EA599 /* AccountViewController.swift */,
 				38EE18032016EC3400D126C0 /* NFCTableViewController.swift */,
 			);
 			path = Controllers;
@@ -602,6 +605,7 @@
 			files = (
 				384613BF2048C1A30087A38E /* PushNotification.swift in Sources */,
 				38EE18062016ED5900D126C0 /* NFCTableViewCell.swift in Sources */,
+				387F324020492B38001EA599 /* AccountViewController.swift in Sources */,
 				38C6E3DF203D3B9400DCD00D /* String+Extensions.swift in Sources */,
 				386179041FBD57310059FE89 /* Secrets.swift in Sources */,
 				384613C32048C4760087A38E /* PlainNavigationController.swift in Sources */,
@@ -619,7 +623,7 @@
 				38EF5C4220473D6500FD4EBF /* UIAnimatedTextField.swift in Sources */,
 				385CDF94202FBF1B00623793 /* QRCardView.swift in Sources */,
 				38C6E3DD203D3B9400DCD00D /* Date+Extensions.swift in Sources */,
-				385C1E052048CA1D0080FE19 /* HomeViewController.swift in Sources */,
+				385C1E052048CA1D0080FE19 /* ExploreViewController.swift in Sources */,
 				38C6E3D5203D3B9400DCD00D /* UIDevice+Extensions.swift in Sources */,
 				38C6E3DE203D3B9400DCD00D /* UIColor+Extensions.swift in Sources */,
 				385CDF90202FBE9000623793 /* WalletViewController.swift in Sources */,
