@@ -30,9 +30,17 @@ target 'RewardWallet' do
   # Gets main colors in an image
   # https://github.com/jathu/UIImageColors
   pod 'UIImageColors'
+  
+  # Better UICollectionViews
+  # https://github.com/instagram/IGListKit
+  pod 'IGListKit'
 
   target 'RewardWalletTests' do
     inherit! :search_paths
-    # Pods for testing
-
+    
+    # Pods for Testing
+    
+    
+  end
+  
 end

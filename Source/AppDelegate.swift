@@ -19,7 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         API.shared.initialize()
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = AppRouter.shared.viewController(for: AppRoute.welcome)
+        if User.current() != nil, let exploreVC = AppRouter.shared.viewController(for: .explore) {
+            window?.rootViewController = exploreVC
+        } else {
+            window?.rootViewController = AppRouter.shared.viewController(for: .welcome)
+        }
         window?.makeKeyAndVisible()
         
         return true

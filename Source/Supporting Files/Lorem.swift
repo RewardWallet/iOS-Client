@@ -83,8 +83,8 @@ public class Lorem {
      
      - returns: Returns an array of `count` words.
      */
-    public class func words(nbWords: Int = 3) -> [String] {
-        return wordList.random(nbWords)
+    public class func words(count: Int = 3) -> [String] {
+        return wordList.random(count)
     }
     
     /**
@@ -95,7 +95,7 @@ public class Lorem {
      - returns: Returns a string of `count` words.
      */
     public class func words(nbWords : Int = 3) -> String {
-        return words(nbWords: nbWords).joined(separator: " ")
+        return words(count: nbWords).joined(separator: " ")
     }
     
     /**

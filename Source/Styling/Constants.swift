@@ -23,7 +23,7 @@ extension UIColor {
     }
     
     static var backgroundColor: UIColor {
-        return UIColor(r: 250, g: 250, b: 250)
+        return .white
     }
     
 }

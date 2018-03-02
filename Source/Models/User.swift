@@ -11,7 +11,7 @@ import Parse
 
 class User: PFUser {
     
-    @NSManaged var fullname: String?
+//    @NSManaged var someValue: String?
  
     override class func current() -> User? {
         return PFUser.current() as? User

@@ -30,12 +30,20 @@
 		386178D01FBD527F0059FE89 /* Reward_WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386178CF1FBD527F0059FE89 /* Reward_WalletTests.swift */; };
 		386179021FBD57280059FE89 /* EULA.html in Resources */ = {isa = PBXBuildFile; fileRef = 386179011FBD57280059FE89 /* EULA.html */; };
 		386179041FBD57310059FE89 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386179031FBD57300059FE89 /* Secrets.swift */; };
+		3862F9972049318100F3A70A /* LabelSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3862F9962049318100F3A70A /* LabelSectionController.swift */; };
+		3862F99A204931A600F3A70A /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3862F999204931A600F3A70A /* LabelCell.swift */; };
+		3862F9A1204935BF00F3A70A /* SearchSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3862F99F204935BF00F3A70A /* SearchSectionController.swift */; };
+		3862F9A2204935BF00F3A70A /* SpinnerSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3862F9A0204935BF00F3A70A /* SpinnerSectionController.swift */; };
+		3862F9A5204935CF00F3A70A /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3862F9A3204935CF00F3A70A /* SearchCell.swift */; };
+		3862F9A6204935CF00F3A70A /* SpinnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3862F9A4204935CF00F3A70A /* SpinnerCell.swift */; };
 		386ACB3420257DBF00B71C50 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386ACB3320257DBF00B71C50 /* WalletView.swift */; };
 		386ACB3620257DC300B71C50 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386ACB3520257DC300B71C50 /* CardView.swift */; };
 		386ACB3820257DCC00B71C50 /* UIForcePressGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386ACB3720257DCC00B71C50 /* UIForcePressGestureRecognizer.swift */; };
 		386ACB3A20257DD800B71C50 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386ACB3920257DD800B71C50 /* UIView+AutoLayout.swift */; };
 		38764C95201E71AF005DDD82 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38764C94201E71AF005DDD82 /* API.swift */; };
 		387F324020492B38001EA599 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F323F20492B38001EA599 /* AccountViewController.swift */; };
+		387F324520492F7D001EA599 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F324420492F7D001EA599 /* Transaction.swift */; };
+		387F324720492F92001EA599 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F324620492F92001EA599 /* Business.swift */; };
 		38C0C8412030AF7E0009B230 /* RWNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0C8402030AF7E0009B230 /* RWNavigationController.swift */; };
 		38C0C8432030AF8F0009B230 /* RWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0C8422030AF8F0009B230 /* RWViewController.swift */; };
 		38C6E3C0203D31D100DCD00D /* DigitalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6E3BF203D31D100DCD00D /* DigitalCardView.swift */; };
@@ -102,12 +110,20 @@
 		386178D11FBD527F0059FE89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		386179011FBD57280059FE89 /* EULA.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = EULA.html; sourceTree = "<group>"; };
 		386179031FBD57300059FE89 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		3862F9962049318100F3A70A /* LabelSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelSectionController.swift; sourceTree = "<group>"; };
+		3862F999204931A600F3A70A /* LabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
+		3862F99F204935BF00F3A70A /* SearchSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSectionController.swift; sourceTree = "<group>"; };
+		3862F9A0204935BF00F3A70A /* SpinnerSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerSectionController.swift; sourceTree = "<group>"; };
+		3862F9A3204935CF00F3A70A /* SearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		3862F9A4204935CF00F3A70A /* SpinnerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerCell.swift; sourceTree = "<group>"; };
 		386ACB3320257DBF00B71C50 /* WalletView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
 		386ACB3520257DC300B71C50 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		386ACB3720257DCC00B71C50 /* UIForcePressGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIForcePressGestureRecognizer.swift; sourceTree = "<group>"; };
 		386ACB3920257DD800B71C50 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		38764C94201E71AF005DDD82 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		387F323F20492B38001EA599 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		387F324420492F7D001EA599 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		387F324620492F92001EA599 /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		3896A1B1203D3E1100267EC5 /* xcode-build-bump.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "xcode-build-bump.sh"; sourceTree = "<group>"; };
 		3896A1B3203D3E1500267EC5 /* xcode-version-bump.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "xcode-version-bump.sh"; sourceTree = "<group>"; };
 		38C0C8402030AF7E0009B230 /* RWNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWNavigationController.swift; sourceTree = "<group>"; };
@@ -194,7 +210,8 @@
 				38764C93201E716C005DDD82 /* Networking */,
 				386178DE1FBD52FE0059FE89 /* Models */,
 				386178DD1FBD52FA0059FE89 /* Views */,
-				386178DC1FBD52F20059FE89 /* Controllers */,
+				387F324320492E66001EA599 /* SectionControllers */,
+				386178DC1FBD52F20059FE89 /* ViewControllers */,
 				386178DB1FBD52E40059FE89 /* Assets */,
 				386178DF1FBD53060059FE89 /* Extensions */,
 				386178DA1FBD52D60059FE89 /* Supporting Files */,
@@ -234,28 +251,29 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		386178DC1FBD52F20059FE89 /* Controllers */ = {
+		386178DC1FBD52F20059FE89 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				38EF5C4520473D9A00FD4EBF /* Base */,
+				38C0C8422030AF8F0009B230 /* RWViewController.swift */,
+				387F324220492E45001EA599 /* NavigationControllers */,
+				387F324120492E3C001EA599 /* TabBarControllers */,
 				38EF5C4620473DA200FD4EBF /* Auth */,
-				38ED9F3B203D4CAD008B410B /* MainContainerController.swift */,
 				385C1E042048CA1D0080FE19 /* ExploreViewController.swift */,
 				385CDF8F202FBE9000623793 /* WalletViewController.swift */,
 				38ED9F39203D4859008B410B /* NotificationsViewController.swift */,
 				387F323F20492B38001EA599 /* AccountViewController.swift */,
 				38EE18032016EC3400D126C0 /* NFCTableViewController.swift */,
 			);
-			path = Controllers;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		386178DD1FBD52FA0059FE89 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				38EE18052016ED5900D126C0 /* NFCTableViewCell.swift */,
 				38C6E3BF203D31D100DCD00D /* DigitalCardView.swift */,
 				38199239203D5D8C00D7B7D1 /* GradientView.swift */,
 				381534D72048B9F0004572A5 /* SplashScreenView.swift */,
+				3862F9982049318700F3A70A /* Cells */,
 				386ACB3220257DB100B71C50 /* WalletViews */,
 			);
 			path = Views;
@@ -265,6 +283,8 @@
 			isa = PBXGroup;
 			children = (
 				384613BC2048C04E0087A38E /* User.swift */,
+				387F324420492F7D001EA599 /* Transaction.swift */,
+				387F324620492F92001EA599 /* Business.swift */,
 				38C6E3C1203D320100DCD00D /* DigitalCard.swift */,
 			);
 			path = Models;
@@ -289,6 +309,17 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		3862F9982049318700F3A70A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				38EE18052016ED5900D126C0 /* NFCTableViewCell.swift */,
+				3862F999204931A600F3A70A /* LabelCell.swift */,
+				3862F9A3204935CF00F3A70A /* SearchCell.swift */,
+				3862F9A4204935CF00F3A70A /* SpinnerCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		386ACB3220257DB100B71C50 /* WalletViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +340,34 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		387F324120492E3C001EA599 /* TabBarControllers */ = {
+			isa = PBXGroup;
+			children = (
+				38ED9F3B203D4CAD008B410B /* MainContainerController.swift */,
+			);
+			path = TabBarControllers;
+			sourceTree = "<group>";
+		};
+		387F324220492E45001EA599 /* NavigationControllers */ = {
+			isa = PBXGroup;
+			children = (
+				38C0C8402030AF7E0009B230 /* RWNavigationController.swift */,
+				384613C02048C4370087A38E /* PrimaryNavigationController.swift */,
+				384613C22048C4760087A38E /* PlainNavigationController.swift */,
+			);
+			path = NavigationControllers;
+			sourceTree = "<group>";
+		};
+		387F324320492E66001EA599 /* SectionControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3862F99F204935BF00F3A70A /* SearchSectionController.swift */,
+				3862F9A0204935BF00F3A70A /* SpinnerSectionController.swift */,
+				3862F9962049318100F3A70A /* LabelSectionController.swift */,
+			);
+			path = SectionControllers;
+			sourceTree = "<group>";
+		};
 		38C6E3C3203D3A6000DCD00D /* Styling */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,17 +385,6 @@
 				38EF5C4120473D6500FD4EBF /* UILoginViewController.swift */,
 			);
 			path = UILoginViewController;
-			sourceTree = "<group>";
-		};
-		38EF5C4520473D9A00FD4EBF /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				38C0C8422030AF8F0009B230 /* RWViewController.swift */,
-				38C0C8402030AF7E0009B230 /* RWNavigationController.swift */,
-				384613C02048C4370087A38E /* PrimaryNavigationController.swift */,
-				384613C22048C4760087A38E /* PlainNavigationController.swift */,
-			);
-			path = Base;
 			sourceTree = "<group>";
 		};
 		38EF5C4620473DA200FD4EBF /* Auth */ = {
@@ -604,8 +652,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				384613BF2048C1A30087A38E /* PushNotification.swift in Sources */,
+				3862F9A5204935CF00F3A70A /* SearchCell.swift in Sources */,
 				38EE18062016ED5900D126C0 /* NFCTableViewCell.swift in Sources */,
 				387F324020492B38001EA599 /* AccountViewController.swift in Sources */,
+				3862F9A1204935BF00F3A70A /* SearchSectionController.swift in Sources */,
+				387F324720492F92001EA599 /* Business.swift in Sources */,
+				3862F9A2204935BF00F3A70A /* SpinnerSectionController.swift in Sources */,
 				38C6E3DF203D3B9400DCD00D /* String+Extensions.swift in Sources */,
 				386179041FBD57310059FE89 /* Secrets.swift in Sources */,
 				384613C32048C4760087A38E /* PlainNavigationController.swift in Sources */,
@@ -616,6 +668,7 @@
 				38ED9F3A203D4859008B410B /* NotificationsViewController.swift in Sources */,
 				38EF5C4C20473DCF00FD4EBF /* SignUpViewController.swift in Sources */,
 				386ACB3420257DBF00B71C50 /* WalletView.swift in Sources */,
+				3862F9972049318100F3A70A /* LabelSectionController.swift in Sources */,
 				38C0C8412030AF7E0009B230 /* RWNavigationController.swift in Sources */,
 				386ACB3820257DCC00B71C50 /* UIForcePressGestureRecognizer.swift in Sources */,
 				385CDF92202FBEF400623793 /* QRCodeView.swift in Sources */,
@@ -631,6 +684,9 @@
 				386ACB3A20257DD800B71C50 /* UIView+AutoLayout.swift in Sources */,
 				386178BE1FBD527F0059FE89 /* AppDelegate.swift in Sources */,
 				38C6E3D9203D3B9400DCD00D /* UIButton+Extensions.swift in Sources */,
+				3862F99A204931A600F3A70A /* LabelCell.swift in Sources */,
+				387F324520492F7D001EA599 /* Transaction.swift in Sources */,
+				3862F9A6204935CF00F3A70A /* SpinnerCell.swift in Sources */,
 				38C6E3C8203D3AFC00DCD00D /* Constants.swift in Sources */,
 				38EF5C4320473D6500FD4EBF /* UILoginViewController.swift in Sources */,
 				3837352B2028C8E100E592F0 /* AppRouter.swift in Sources */,
