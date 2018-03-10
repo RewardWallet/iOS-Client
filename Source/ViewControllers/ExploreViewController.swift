@@ -19,7 +19,7 @@ final class ExploreViewController: RWViewController {
     }()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
-    let mapView = UIView() // Some background content
+    let mapView = MKMapView() // Some background content
     
     fileprivate let searchToken: NSNumber = 123
     fileprivate var searchFilter: String = ""

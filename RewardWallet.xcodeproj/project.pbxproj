@@ -70,6 +70,7 @@
 		38EF5C4820473DBA00FD4EBF /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF5C4720473DBA00FD4EBF /* WelcomeViewController.swift */; };
 		38EF5C4A20473DC200FD4EBF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF5C4920473DC200FD4EBF /* LoginViewController.swift */; };
 		38EF5C4C20473DCF00FD4EBF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF5C4B20473DCF00FD4EBF /* SignUpViewController.swift */; };
+		FA11566C2053AF6700A8FFC2 /* RFIDTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11566B2053AF6600A8FFC2 /* RFIDTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +158,7 @@
 		46B4E69B4F4BCECF6079DD62 /* Pods-RewardWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RewardWallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RewardWallet/Pods-RewardWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		8A62C2EEC39E426F1F92380C /* Pods-RewardWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RewardWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-RewardWallet/Pods-RewardWallet.release.xcconfig"; sourceTree = "<group>"; };
 		E53B904B51B14C1AD7249156 /* Pods-RewardWalletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RewardWalletTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RewardWalletTests/Pods-RewardWalletTests.release.xcconfig"; sourceTree = "<group>"; };
+		FA11566B2053AF6600A8FFC2 /* RFIDTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RFIDTableViewController.swift; path = Source/ViewControllers/RFIDTableViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +265,7 @@
 				38ED9F39203D4859008B410B /* NotificationsViewController.swift */,
 				387F323F20492B38001EA599 /* AccountViewController.swift */,
 				38EE18032016EC3400D126C0 /* NFCTableViewController.swift */,
+				FA11566B2053AF6600A8FFC2 /* RFIDTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -558,6 +561,7 @@
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/DeckTransition/DeckTransition.framework",
 				"${BUILT_PRODUCTS_DIR}/DynamicTabBarController/DynamicTabBarController.framework",
+				"${BUILT_PRODUCTS_DIR}/IGListKit/IGListKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/UIImageColors/UIImageColors.framework",
@@ -568,6 +572,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeckTransition.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicTabBarController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGListKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImageColors.framework",
@@ -676,6 +681,7 @@
 				38EF5C4220473D6500FD4EBF /* UIAnimatedTextField.swift in Sources */,
 				385CDF94202FBF1B00623793 /* QRCardView.swift in Sources */,
 				38C6E3DD203D3B9400DCD00D /* Date+Extensions.swift in Sources */,
+				FA11566C2053AF6700A8FFC2 /* RFIDTableViewController.swift in Sources */,
 				385C1E052048CA1D0080FE19 /* ExploreViewController.swift in Sources */,
 				38C6E3D5203D3B9400DCD00D /* UIDevice+Extensions.swift in Sources */,
 				38C6E3DE203D3B9400DCD00D /* UIColor+Extensions.swift in Sources */,
