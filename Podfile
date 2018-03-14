@@ -9,31 +9,31 @@ target 'RewardWallet' do
   
   # Easily connect and create objects for Parse Server
   # http://parseplatform.org
-  pod 'Parse', '~> 1.16.0'
+  pod 'Parse'
   
   # A nice replacement to UITabBarController
   # https://github.com/nathantannar4/DynamicTabBarController
-  pod 'DynamicTabBarController', :git => 'https://github.com/nathantannar4/DynamicTabBarController', :branch => 'master'
+  pod 'DynamicTabBarController'
   
   # Popular progress indicator for aync network calls
   # https://github.com/SVProgressHUD/SVProgressHUD
-  pod 'SVProgressHUD', '~> 2.2.5'
+  pod 'SVProgressHUD'
   
   # Used for easily registering URL routes and navigating to them
   # https://github.com/devxoul/URLNavigator
-  pod 'URLNavigator', '~> 2.0.4'
+  pod 'URLNavigator'
   
   # Custom transition delegate similar to the Apple Music app
   # https://github.com/HarshilShah/DeckTransition
-  pod 'DeckTransition', '~> 2.0.0'
+  pod 'DeckTransition'
   
   # Gets main colors in an image
   # https://github.com/jathu/UIImageColors
-  pod 'UIImageColors', '~> 2.0.0'
+  pod 'UIImageColors'
   
   # Better UICollectionViews
   # https://github.com/instagram/IGListKit
-  pod 'IGListKit', '~> 3.2.0'
+  pod 'IGListKit'
 
   target 'RewardWalletTests' do
     inherit! :search_paths

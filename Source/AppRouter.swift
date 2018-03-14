@@ -107,7 +107,6 @@ class AppRouter: Navigator {
                     NotificationsViewController(),
                     AccountViewController(),
                     NFCTableViewController(),
-                    RFIDTableViewController(),
                 ])
                 tabBarController.displayViewController(at: index, animated: false)
                 return RWNavigationController(rootViewController: tabBarController)
