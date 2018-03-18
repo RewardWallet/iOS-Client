@@ -16,6 +16,9 @@ class RWNavigationController: UINavigationController {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
+        if navigationBar.isHidden {
+            return viewControllers.first?.preferredStatusBarStyle ?? .default
+        }
         return (navigationBar.barTintColor?.isDark ?? false) ? .lightContent : .default
     }
 
@@ -25,10 +28,10 @@ class RWNavigationController: UINavigationController {
         navigationBar.isTranslucent = false
         navigationBar.setBackgroundImage(nil, for: .default)
         navigationBar.shadowImage = UIImage()
-        navigationBar.layer.shadowRadius = 3
-        navigationBar.layer.shadowColor = UIColor.darkGray.cgColor
-        navigationBar.layer.shadowOpacity = 0.3
-        navigationBar.layer.shadowOffset = CGSize(width: 0, height: 1)
+//        navigationBar.layer.shadowRadius = 3
+//        navigationBar.layer.shadowColor = UIColor.darkGray.cgColor
+//        navigationBar.layer.shadowOpacity = 0.3
+//        navigationBar.layer.shadowOffset = CGSize(width: 0, height: 1)
         
     }
 

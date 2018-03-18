@@ -34,6 +34,10 @@ target 'RewardWallet' do
   # Better UICollectionViews
   # https://github.com/instagram/IGListKit
   pod 'IGListKit'
+  
+  # Popular image cache library
+  # https://github.com/onevcat/Kingfisher
+  pod 'Kingfisher'
 
   target 'RewardWalletTests' do
     inherit! :search_paths

@@ -28,7 +28,7 @@ class WelcomeViewController: RWViewController {
         $0.text = "A reward program for small businesses"
     }
     
-    let logoImageView = UIImageView(style: Stylesheet.ImageView.fitted) {
+    let logoImageView = UIImageView(style: Stylesheet.ImageViews.fitted) {
         $0.image = .coin
     }
     

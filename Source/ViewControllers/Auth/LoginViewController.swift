@@ -53,7 +53,7 @@ class LoginViewController: UILoginViewController {
                 self.presentError(error?.localizedDescription)
                 return
             }
-            AppRouter.shared.present(.explore, wrap: PlainNavigationController.self,
+            AppRouter.shared.present(.explore, wrap: nil,
                                      from: nil, animated: true, completion: nil)
         }
         

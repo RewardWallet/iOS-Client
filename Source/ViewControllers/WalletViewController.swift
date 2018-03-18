@@ -41,15 +41,24 @@ class WalletViewController: RWViewController {
         return view
     }()
     
-    // MARK: - View Life Cycle
+    // MARK: - Initialization
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nil, bundle: nil)
         title = "Wallet"
         tabBarItem = UITabBarItem(title: title,
                                   image: UIImage.icon_wallet?.withRenderingMode(.alwaysTemplate),
                                   selectedImage: .icon_wallet)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - View Life Cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         view.addSubview(walletView)
         walletView.fillSuperview(inSafeArea: true)

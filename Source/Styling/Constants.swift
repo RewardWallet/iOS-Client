@@ -22,8 +22,44 @@ extension UIColor {
         return .red
     }
     
+    static var greenColor: UIColor {
+        return UIColor(hex: "43A047") // Material Green 600
+    }
+    
+    static var redColor: UIColor {
+        return UIColor(hex: "D32F2F") // Material Red 700
+    }
+    
+    static var grayColor: UIColor {
+        return UIColor(hex: "9E9E9E") // Material Gray 500
+    }
+    
+    static var shadowColor: UIColor {
+        return UIColor(hex: "757575") // Material Gray 600
+    }
+    
+    static var offWhite: UIColor {
+        return UIColor(white: 0.96, alpha: 1)
+    }
+    
+    static var orangeColor: UIColor {
+        return UIColor(r: 245, g: 134, b: 49)
+    }
+    
+    static var yellowColor: UIColor {
+        return UIColor(r: 254, g: 201, b: 62)
+    }
+    
     static var backgroundColor: UIColor {
         return .white
+    }
+    
+    static var facebookBlue: UIColor {
+        return UIColor(hex: "3b5998")
+    }
+    
+    static var googleOffWhite: UIColor {
+        return UIColor(hex: "EEEEEE")
     }
     
 }
@@ -54,12 +90,28 @@ extension UIImage {
         return UIImage(named: "User")
     }
     
+    static var icon_logOut: UIImage? {
+        return UIImage(named: "Logout")
+    }
+    
     static var icon_wallet: UIImage? {
         return UIImage(named: "Bank Card Back Side")
     }
     
+    static var icon_about: UIImage? {
+        return UIImage(named: "About")
+    }
+    
     static var icon_bell: UIImage? {
         return UIImage(named: "Appointment Reminders")
+    }
+    
+    static var iconStar: UIImage? {
+        return UIImage(named: "icon-star")
+    }
+    
+    static var iconStarFilled: UIImage? {
+        return UIImage(named: "icon-star-filled")
     }
     
 }

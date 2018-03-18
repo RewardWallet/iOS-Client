@@ -13,27 +13,43 @@ import DynamicTabBarController
 
 enum AppRoute {
     
-    case welcome, login, signup, onboarding, explore, wallet, notifications, account
+    // Auth
+    case welcome, login, signup, onboarding, logout
+    
+    // Explore
+    case explore
+    
+    // Wallet
+    case wallet
+    
+    // Notifications
+    case notifications
+    
+    // Account
+    case account, profile
+    
+    // RewardWallet
+    case about
     
     var pattern: URLPattern {
         
-        let urlScheme = "rewardWallet://"
+        let urlScheme = "rewardWallet://rewardwallet.io/"
         
         switch self {
         case .welcome: return urlScheme + "welcome"
         case .login: return urlScheme + "login"
         case .signup: return urlScheme + "signup"
         case .onboarding: return urlScheme + "onboarding"
+        case .logout: return urlScheme + "logout"
         case .explore: return urlScheme + "explore"
         case .wallet: return urlScheme + "wallet"
         case .notifications: return urlScheme + "notifications"
         case .account: return urlScheme + "account"
+        case .profile: return urlScheme + "profile"
+        case .about: return urlScheme + "about"
         }
     }
     
-    static func all() -> [AppRoute] {
-        return [.welcome, .login, .signup, .onboarding, .explore, .wallet, .notifications, .account]
-    }
 }
 
 class AppRouter: Navigator {
@@ -53,22 +69,55 @@ class AppRouter: Navigator {
         return viewController(for: route.pattern)
     }
     
-    func present(_ route: AppRoute, wrap: UINavigationController.Type?, from: UIViewControllerType?, animated: Bool, completion: (() -> Void)?) {
+    @discardableResult
+    func present(_ route: AppRoute, wrap: UINavigationController.Type?, from: UIViewControllerType?, animated: Bool, completion: (() -> Void)?) -> UIViewController? {
         
-        if from == nil, let viewController = viewController(for: route) {
+        if from == nil {
+            guard let viewController = viewController(for: route) else { return nil }
             // Switch the windows rootViewController when `from` is nil
-            UIApplication.shared.presentedWindow?.switchRootViewController(viewController, animated: animated, duration: 0.5, options: .transitionFlipFromRight, completion: completion)
+            if let wrapClass = wrap {
+                let navigationController = wrapClass.init()
+                navigationController.pushViewController(viewController, animated: false)
+                UIApplication.shared.presentedWindow?
+                    .switchRootViewController(viewController,
+                                              animated: animated,
+                                              duration: 0.5,
+                                              options: .transitionFlipFromRight,
+                                              completion: { success in
+                                                if success {
+                                                    completion?()
+                                                }
+                    })
+                return navigationController
+            } else {
+                UIApplication.shared.presentedWindow?
+                    .switchRootViewController(viewController,
+                                              animated: animated,
+                                              duration: 0.5,
+                                              options: .transitionFlipFromRight,
+                                              completion: { success in
+                                                if success {
+                                                    completion?()
+                                                }
+                    })
+                return viewController
+            }
         } else {
-            present(route.pattern, context: nil, wrap: wrap, from: from, animated: animated, completion: completion)
+            return present(route.pattern, context: nil, wrap: wrap, from: from, animated: animated, completion: completion)
         }
         
+    }
+    
+    func push(_ route: AppRoute, context: Any?, from: UINavigationControllerType?, animated: Bool) {
+        
+        _ = push(route.pattern, context: context, from: from, animated: animated)
     }
     
     // MARK: - Private API
     
     private func registerPaths() {
         
-        for route in AppRoute.all() {
+        for route in iterateEnum(AppRoute.self) {
             register(route.pattern, viewControllerFactory(for: route))
         }
         
@@ -95,21 +144,25 @@ class AppRouter: Navigator {
                 return WelcomeViewController()
             case .login:
                 return LoginViewController()
+            case .logout:
+                User.logoutInBackground(nil)
+                return self.viewController(for: .welcome)
             case .signup:
                 return SignUpViewController()
             case .onboarding:
                 return RWViewController() // TODO Add Onboarding
             case .explore, .wallet, .notifications, .account:
                 let index = [.explore, .wallet, .notifications, .account].index(of: route)!
-                let tabBarController = MainContainerController(viewControllers: [
-                    ExploreViewController(),
-                    WalletViewController(),
-                    NotificationsViewController(),
-                    AccountViewController(),
-                    NFCTableViewController(),
-                ])
+                let viewControllers = [ExploreViewController(), WalletViewController(), NotificationsViewController(), AccountViewController()].map {
+                        return PrimaryNavigationController(rootViewController: $0)
+                }
+                let tabBarController = MainContainerController(viewControllers: viewControllers)
                 tabBarController.displayViewController(at: index, animated: false)
-                return RWNavigationController(rootViewController: tabBarController)
+                return tabBarController
+            case .profile:
+                return RWViewController()
+            case .about:
+                return RWViewController()
             }
         }
     }

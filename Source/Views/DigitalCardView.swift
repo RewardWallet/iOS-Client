@@ -19,7 +19,7 @@ class DigitalCardView: CardView {
     
     let subtitleLabel = UILabel(style: Stylesheet.Labels.subheader)
     
-    let logoImageView = UIImageView(style: Stylesheet.ImageView.roundedSquare)
+    let logoImageView = UIImageView(style: Stylesheet.ImageViews.roundedSquare)
     
     let gradientView = GradientView()
     

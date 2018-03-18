@@ -27,7 +27,7 @@ final class LabelSectionController: ListSectionController {
         guard let cell = collectionContext?.dequeueReusableCell(of: LabelCell.self, for: self, at: index) as? LabelCell else {
             fatalError()
         }
-        cell.text = object
+        cell.label.text = object
         return cell
     }
 

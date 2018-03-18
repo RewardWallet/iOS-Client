@@ -1,7 +1,7 @@
 /*
  MIT License
  
- Copyright © 2017 Nathan Tannar.
+ Copyright © 2018 Nathan Tannar.
  
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,22 +24,45 @@
 
 import UIKit
 
-extension UIWindow {
+open class RoundedView: UIView {
     
-    func switchRootViewController(_ viewController: UIViewController,  animated: Bool = true, duration: TimeInterval = 0.5, options: UIViewAnimationOptions = .transitionCrossDissolve, completion: ((Bool) -> Void)? = nil) {
-        
-        guard animated else {
-            rootViewController = viewController
-            return
+    open var fullyCurved: Bool = true {
+        didSet {
+            layoutSubviews()
         }
-        
-        UIView.transition(with: self, duration: duration, options: options, animations: {
-            let oldState = UIView.areAnimationsEnabled
-            UIView.setAnimationsEnabled(false)
-            self.rootViewController = viewController
-            UIView.setAnimationsEnabled(oldState)
-        }) { success in
-            completion?(success)
+    }
+    
+    open var cornerRadius: CGFloat = 0 {
+        didSet {
+            layoutSubviews()
         }
+    }
+    
+    open var roundedCorners: UIRectCorner = .allCorners {
+        didSet {
+            layoutSubviews()
+        }
+    }
+    
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        if fullyCurved {
+            round(corners: roundedCorners, radius: bounds.height / 2)
+        } else {
+            round(corners: roundedCorners, radius: cornerRadius)
+        }
+    }
+    
+}
+
+fileprivate extension UIView {
+    
+    @discardableResult
+    func round(corners: UIRectCorner, radius: CGFloat) -> CAShapeLayer {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        self.layer.mask = mask
+        return mask
     }
 }

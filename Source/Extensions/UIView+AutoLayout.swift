@@ -22,17 +22,19 @@
  SOFTWARE.
  */
 
-
 import UIKit
 
 public extension UIView {
     
     func fillSuperview(inSafeArea: Bool = false) {
         
-        guard let superview = self.superview else { return }
+        guard let superview = self.superview else {
+            print("💥 Could not constraints for \(self), did you add it to the view?")
+            return
+        }
         translatesAutoresizingMaskIntoConstraints = false
         
-        if inSafeArea {
+        if inSafeArea, #available(iOS 11.0, *) {
             NSLayoutConstraint.activate([
                 leftAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leftAnchor),
                 rightAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.rightAnchor),
@@ -63,6 +65,11 @@ public extension UIView {
     
     @discardableResult
     func anchor(_ top: NSLayoutYAxisAnchor? = nil, left: NSLayoutXAxisAnchor? = nil, bottom: NSLayoutYAxisAnchor? = nil, right: NSLayoutXAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0, widthConstant: CGFloat = 0, heightConstant: CGFloat = 0) -> [NSLayoutConstraint] {
+        
+        guard superview != nil else {
+            print("💥 Could not constraints for \(self), did you add it to the view?")
+            return []
+        }
         
         translatesAutoresizingMaskIntoConstraints = false
         var anchors = [NSLayoutConstraint]()
@@ -107,20 +114,46 @@ public extension UIView {
         return anchors
     }
     
+    @discardableResult
+    func anchorAbove(_ view: UIView, top: NSLayoutYAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0, heightConstant: CGFloat = 0) -> [NSLayoutConstraint] {
+        return anchor(topAnchor, left: view.leftAnchor, bottom: view.topAnchor, right: view.rightAnchor, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: 0, heightConstant: heightConstant)
+    }
+    
+    @discardableResult
+    func anchorBelow(_ view: UIView, bottom: NSLayoutYAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0, heightConstant: CGFloat = 0) -> [NSLayoutConstraint] {
+        return anchor(view.bottomAnchor, left: view.leftAnchor, bottom: bottom, right: view.rightAnchor, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: 0, heightConstant: heightConstant)
+    }
+    
+    @discardableResult
+    func anchorLeftOf(_ view: UIView, left: NSLayoutXAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0, widthConstant: CGFloat = 0) -> [NSLayoutConstraint] {
+        return anchor(view.topAnchor, left: left, bottom: view.bottomAnchor, right: view.leftAnchor, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: widthConstant, heightConstant: 0)
+    }
+    
+    @discardableResult
+    func anchorRightOf(_ view: UIView, right: NSLayoutXAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0, widthConstant: CGFloat = 0) -> [NSLayoutConstraint] {
+        return anchor(view.topAnchor, left: view.rightAnchor, bottom: view.bottomAnchor, right: right, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: widthConstant, heightConstant: 0)
+    }
+    
     func anchorCenterXToSuperview(constant: CGFloat = 0) {
         
-        translatesAutoresizingMaskIntoConstraints = false
-        if let anchor = superview?.centerXAnchor {
-            centerXAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
+        guard let superview = self.superview else {
+            print("💥 Could not constraints for \(self), did you add it to the view?")
+            return
         }
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: constant).isActive = true
     }
     
     func anchorCenterYToSuperview(constant: CGFloat = 0) {
+        
+        guard let superview = self.superview else {
+            print("💥 Could not constraints for \(self), did you add it to the view?")
+            return
+        }
       
         translatesAutoresizingMaskIntoConstraints = false
-        if let anchor = superview?.centerYAnchor {
-            centerYAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
-        }
+        centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: constant).isActive = true
     }
     
     func anchorCenterToSuperview() {

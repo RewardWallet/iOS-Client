@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import IGListKit
 import Parse
 
 class User: PFUser {
     
 //    @NSManaged var someValue: String?
+    
+    @NSManaged var profileImage: PFFile?
  
     override class func current() -> User? {
         return PFUser.current() as? User
@@ -63,6 +66,18 @@ class User: PFUser {
             completion?(error == nil, error)
             PushNotication.shared.unregisterDeviceInstallation()
         }
+    }
+    
+}
+
+extension User: ListDiffable {
+    
+    func diffIdentifier() -> NSObjectProtocol {
+        return self
+    }
+    
+    func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
+        return isEqual(object)
     }
     
 }

@@ -173,7 +173,7 @@ open class UILoginViewController: UIViewController {
     }
     
     open func presentError(_ text: String?) {
-        print(text)
+        print(text ?? "Error")
     }
     
     // MARK: - User Actions
