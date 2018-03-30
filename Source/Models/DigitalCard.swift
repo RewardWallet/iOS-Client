@@ -18,6 +18,6 @@ class DigitalCard: PFObject {
 extension DigitalCard: PFSubclassing {
     
     static func parseClassName() -> String {
-        return "DigitalCards"
+        return "DigitalCard"
     }
 }

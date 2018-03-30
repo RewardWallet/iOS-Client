@@ -17,7 +17,7 @@ enum AppRoute {
     case welcome, login, signup, onboarding, logout
     
     // Explore
-    case explore
+    case explore, business
     
     // Wallet
     case wallet
@@ -42,6 +42,7 @@ enum AppRoute {
         case .onboarding: return urlScheme + "onboarding"
         case .logout: return urlScheme + "logout"
         case .explore: return urlScheme + "explore"
+        case .business : return urlScheme + "business"
         case .wallet: return urlScheme + "wallet"
         case .notifications: return urlScheme + "notifications"
         case .account: return urlScheme + "account"
@@ -162,6 +163,8 @@ class AppRouter: Navigator {
             case .profile:
                 return RWViewController()
             case .about:
+                return RWViewController()
+            case .business:
                 return RWViewController()
             }
         }

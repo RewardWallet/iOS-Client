@@ -56,16 +56,14 @@ class DigitalCardView: CardView {
         titleLabel.text = Lorem.words().capitalized
         subtitleLabel.text = "\(Randoms.randomInt(100, 4000)) Points"
         
-        let images: [UIImage] = [#imageLiteral(resourceName: "Starbucks"), #imageLiteral(resourceName: "Boston Pizza"), #imageLiteral(resourceName: "FedEx"), #imageLiteral(resourceName: "Ikea"), #imageLiteral(resourceName: "Steamworks"), #imageLiteral(resourceName: "McDonalds"), #imageLiteral(resourceName: "TimHortons")]
+        let images: [UIImage] = [#imageLiteral(resourceName: "Starbucks"), #imageLiteral(resourceName: "Boston Pizza"), #imageLiteral(resourceName: "TimHortons")]
         let image = images[Randoms.randomInt(0, images.count - 1)]
         logoImageView.image = image
         
-        isHidden = true
         image.getColors { [weak self] (colors) in
             self?.gradientView.colors = [colors.background, colors.background.darker()]
             self?.titleLabel.textColor = colors.primary
             self?.subtitleLabel.textColor = colors.secondary
-            self?.isHidden = false
         }
     }
     

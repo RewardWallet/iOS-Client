@@ -40,7 +40,7 @@ final class RestaurantOverviewView: RWCollectionReusableView {
     }()
     
     private let titleLabel = UILabel(style: Stylesheet.Labels.header) {
-        $0.text = "Restaurant Name"
+        $0.text = " Business Name"
         $0.font = Stylesheet.headerFont.withSize(26)
     }
     

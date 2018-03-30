@@ -53,7 +53,7 @@ final class ExploreViewController: RWViewController {
 //        collectionView.scrollIndicatorInsets.top = 200
 //        collectionView.contentInset.top = 200
         collectionView.alwaysBounceVertical = true
-        collectionView.backgroundColor = .offWhite
+        collectionView.backgroundColor = .white
         mapView.backgroundColor = .groupTableViewBackground // remove later
 //        view.addSubview(mapView)
         view.addSubview(collectionView)
@@ -74,21 +74,7 @@ final class ExploreViewController: RWViewController {
 extension ExploreViewController: ListAdapterDataSource {
     
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        
-//        var objects: [ListDiffable] = []
-//        if searchFilter == "" {
-//            objects = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20] as [ListDiffable]
-//        } else {
-//            // TODO: Filter the objects
-//            objects = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20] as [ListDiffable]
-//        }
-//        if isLoading {
-//            objects.append(spinnerToken as ListDiffable)
-//        }
-//        objects.insert(searchToken, at: 0)
-//        return objects
-        let num: NSNumber = 42
-        return [num]
+        return [FeaturedSection(for: .recommended)]
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
@@ -101,7 +87,7 @@ extension ExploreViewController: ListAdapterDataSource {
 //        } else {
 //            return LabelSectionController()
 //        }
-        return RestaurantOverviewSectionController()
+        return ExploreSectionController()
     }
     
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
@@ -125,18 +111,6 @@ extension ExploreViewController: UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        
-        let offset = scrollView.contentOffset.y
-        print(offset)
-        if offset >= 0 {
-            navigationController?.navigationBar.layer.shadowOpacity = 0
-        } else {
-            navigationController?.navigationBar.layer.shadowOpacity = 0.3
-        }
-//        if offset <= 0 {
-//            mapView.frame = CGRect(x: 0, y: 0, width: view.bounds.width,
-//                                   height: collectionView.contentInset.top - scrollView.contentOffset.y)
-//        }
         
     }
     

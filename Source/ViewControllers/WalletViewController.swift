@@ -65,12 +65,7 @@ class WalletViewController: RWViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCard))
         
-        var cardViews = [DigitalCardView]()
-        for _ in 1...10 {
-            let card = DigitalCardView()
-            cardViews.append(card)
-        }
-        
+        let cardViews = [DigitalCardView(), DigitalCardView(), DigitalCardView()]
         walletView.reload(cardViews: cardViews)
     }
     
@@ -79,6 +74,6 @@ class WalletViewController: RWViewController {
     
     @objc
     func addCard() {
-        walletView.insert(cardView: DigitalCardView(), animated: true, presented: true)
+        
     }
 }

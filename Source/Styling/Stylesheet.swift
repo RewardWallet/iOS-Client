@@ -178,7 +178,6 @@ enum Stylesheet {
             $0.tintColor = .white
             $0.barStyle = .black
             $0.isTranslucent = false
-            $0.setBackgroundImage(UIImage(), for: .default)
             $0.shadowImage = UIImage()
         }
         
@@ -187,7 +186,6 @@ enum Stylesheet {
             $0.tintColor = .primaryColor
             $0.barStyle = .default
             $0.isTranslucent = false
-            $0.setBackgroundImage(UIImage(), for: .default)
             $0.shadowImage = UIImage()
         }
         
@@ -196,7 +194,6 @@ enum Stylesheet {
             $0.tintColor = .primaryColor
             $0.barStyle = .default
             $0.isTranslucent = true
-            $0.setBackgroundImage(UIImage(), for: .default)
             $0.shadowImage = UIImage()
         }
     }

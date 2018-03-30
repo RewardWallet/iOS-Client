@@ -25,7 +25,7 @@ class LoginViewController: UILoginViewController {
         
         #if DEBUG
             emailTextField.text = "ntannar@sfu.ca"
-            passwordTextField.text = "password"
+            passwordTextField.text = "oR3Jp5YMyxS"
         #endif
     }
     

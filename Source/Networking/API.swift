@@ -32,9 +32,9 @@ class API: NSObject {
     
     func initialize() {
         let config = ParseClientConfiguration {
-            $0.applicationId = "bgLNDAw0XZhLF1lWYdll8pByveBqh9IBtTMJZOqa"
-            $0.clientKey = "FZnarnKjQxFYDNKryh3IV4O0m2mNhxIM73hP6b3f"
-            $0.server = "https://parseapi.back4app.com/"
+            $0.applicationId = "5++ejBLY/kzVaVibHAIIQZvbawrEywUCNqpD+FVpHgU="
+            $0.clientKey = "oR3Jp5YMyxSBu6r6nh9xuYQD5AcsdubQmvATY1OEtXo="
+            $0.server = "https://nathantannar.me/api/dev/"
         }
         Parse.initialize(with: config)
     }
@@ -60,6 +60,22 @@ class API: NSObject {
         PFCloud.callFunction(inBackground: "testTransaction", withParameters: [:]) { (response, error) in
             block(response, error)
         }
+        
+    }
+    
+    func fetchRecommendedBusinesses(inBackground completion: @escaping ([Business])->Void) {
+        
+        guard let query = User.query() else { return }
+        query.findObjectsInBackground { (businesses, error) in
+            print(businesses, error)
+//            guard let businesses = businesses, error == nil else { return }
+//            DispatchQueue.main.async {
+//                completion(businesses)
+//            }
+        }
+    }
+    
+    func fetchDigitalCards(inBackground: ([DigitalCard])->Void) {
         
     }
     

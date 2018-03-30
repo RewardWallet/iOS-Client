@@ -18,6 +18,6 @@ class Transaction: PFObject {
 extension Transaction: PFSubclassing {
     
     static func parseClassName() -> String {
-        return "Transactions"
+        return "Transaction"
     }
 }
