@@ -20,7 +20,7 @@ enum AppRoute {
     case explore, business
     
     // Wallet
-    case wallet
+    case wallet, redeem
     
     // Notifications
     case notifications
@@ -36,18 +36,19 @@ enum AppRoute {
         let urlScheme = "rewardWallet://rewardwallet.io/"
         
         switch self {
-        case .welcome: return urlScheme + "welcome"
-        case .login: return urlScheme + "login"
-        case .signup: return urlScheme + "signup"
-        case .onboarding: return urlScheme + "onboarding"
-        case .logout: return urlScheme + "logout"
-        case .explore: return urlScheme + "explore"
-        case .business : return urlScheme + "business"
-        case .wallet: return urlScheme + "wallet"
-        case .notifications: return urlScheme + "notifications"
-        case .account: return urlScheme + "account"
-        case .profile: return urlScheme + "profile"
-        case .about: return urlScheme + "about"
+        case .welcome: return urlScheme + "welcome/"
+        case .login: return urlScheme + "login/"
+        case .signup: return urlScheme + "signup/"
+        case .onboarding: return urlScheme + "onboarding/"
+        case .logout: return urlScheme + "logout/"
+        case .explore: return urlScheme + "explore/"
+        case .business : return urlScheme + "business/"
+        case .wallet: return urlScheme + "wallet/"
+        case .redeem: return urlScheme + "redeem/"
+        case .notifications: return urlScheme + "notifications/"
+        case .account: return urlScheme + "account/"
+        case .profile: return urlScheme + "profile/"
+        case .about: return urlScheme + "about/"
         }
     }
     
@@ -166,6 +167,8 @@ class AppRouter: Navigator {
                 return RWViewController()
             case .business:
                 return RWViewController()
+            case .redeem:
+                return RedeemViewController()
             }
         }
     }

@@ -12,12 +12,20 @@ import Parse
 
 class User: PFUser {
     
-//    @NSManaged var someValue: String?
-    
     @NSManaged var profileImage: PFFile?
  
     override class func current() -> User? {
         return PFUser.current() as? User
+    }
+    
+    func addDigitalCard(for business: Business, completion: PFBooleanResultBlock? = nil) {
+        let digitalCard = DigitalCard()
+        digitalCard.user = User.current()
+        digitalCard.business = business
+        digitalCard.points = 0
+        digitalCard.saveInBackground { (success, error) in
+            completion?(success, error)
+        }
     }
     
     /// Saves the object to the server
@@ -46,6 +54,12 @@ class User: PFUser {
         
     }
     
+    /// Signs up a user in the background using their email as their username
+    ///
+    /// - Parameters:
+    ///   - email: Email
+    ///   - password: Password (8 character min)
+    ///   - completion: Result
     class func signUpInBackground(email: String, password: String, completion: ((Bool, Error?) -> Void)?) {
         
         let user = User()
@@ -60,11 +74,14 @@ class User: PFUser {
         }
     }
     
+    /// Logs out the user in the background and unregisters the devices installation token
+    ///
+    /// - Parameter completion: Result
     class func logoutInBackground(_ completion: ((Bool, Error?) -> Void)?) {
         
         PFUser.logOutInBackground { (error) in
-            completion?(error == nil, error)
             PushNotication.shared.unregisterDeviceInstallation()
+            completion?(error == nil, error)
         }
     }
     

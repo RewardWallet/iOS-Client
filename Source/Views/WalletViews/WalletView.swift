@@ -116,7 +116,7 @@ open class WalletView: UIView, UIScrollViewDelegate {
         return scrollView
     }()
     
-    private let observerContext = UnsafeMutableRawPointer.allocate(bytes: 4, alignedTo: 1)
+    private let observerContext = UnsafeMutableRawPointer.allocate(byteCount: 4, alignment: 1)
     
     private var grabbedCardViewOriginalY: CGFloat = 0
     private var collapsedCardViewStackHeight:   CGFloat = 0
@@ -156,7 +156,7 @@ open class WalletView: UIView, UIScrollViewDelegate {
     deinit {
         scrollView.removeObserver(self, forKeyPath: #keyPath(UIScrollView.frame))
         scrollView.removeObserver(self, forKeyPath: #keyPath(UIScrollView.bounds))
-        observerContext.deallocate(bytes: 4, alignedTo: 1)
+        observerContext.deallocate()
     }
     
     // MARK: - Setup

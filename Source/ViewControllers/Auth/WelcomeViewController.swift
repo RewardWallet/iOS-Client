@@ -180,32 +180,6 @@ class WelcomeViewController: RWViewController {
         
         AppRouter.shared.present(.signup, wrap: PrimaryNavigationController.self,
                                  from: self, animated: true, completion: nil)
-        
-//        let emitter = CAEmitterLayer()
-//        emitter.emitterPosition = CGPoint(x: view.frame.size.width / 2.0, y: 0)
-//        emitter.emitterShape = kCAEmitterLayerLine
-//        emitter.emitterSize = CGSize(width: view.frame.size.width, height: 1)
-//        emitter.emitterCells = (0..<5).map({ _ in
-//            let intensity = Float(0.5)
-//
-//            let cell = CAEmitterCell()
-//
-//            cell.birthRate = 6.0 * intensity
-//            cell.lifetime = 14.0 * intensity
-//            cell.lifetimeRange = 0
-//            cell.velocity = CGFloat(350.0 * intensity)
-//            cell.velocityRange = CGFloat(80.0 * intensity)
-//            cell.emissionLongitude = .pi
-//            cell.emissionRange = .pi / 4
-//            cell.spin = CGFloat(3.5 * intensity)
-//            cell.spinRange = CGFloat(4.0 * intensity)
-//            cell.scaleRange = CGFloat(intensity)
-//            cell.scaleSpeed = CGFloat(-0.1 * intensity)
-//            cell.contents = UIColor.red.toImage?.cgImage
-//
-//            return cell
-//        })
-//        view.layer.addSublayer(emitter)
     }
     
 }

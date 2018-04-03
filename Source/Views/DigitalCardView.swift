@@ -43,6 +43,9 @@ class DigitalCardView: CardView {
         addSubview(subtitleLabel)
         addSubview(logoImageView)
         
+        titleLabel.textColor = .white
+        subtitleLabel.textColor = UIColor.white.darker()
+        gradientView.colors = [.secondaryColor, UIColor.secondaryColor.darker()]
         gradientView.layer.cornerRadius = 10
         gradientView.clipsToBounds = true
         gradientView.fillSuperview()
@@ -51,30 +54,17 @@ class DigitalCardView: CardView {
         logoImageViewConstraints = logoImageView.anchor(topAnchor, left: leftAnchor, topConstant: inset, leftConstant: inset, widthConstant: 40, heightConstant: 40)
         titleLabel.anchor(logoImageView.topAnchor, left: logoImageView.rightAnchor, bottom: subtitleLabel.topAnchor, right: rightAnchor, leftConstant: inset, rightConstant: inset)
         subtitleLabel.anchor(titleLabel.bottomAnchor, left: titleLabel.leftAnchor, bottom: nil, right: titleLabel.rightAnchor)
-        
-        // Fake Data
-        titleLabel.text = Lorem.words().capitalized
-        subtitleLabel.text = "\(Randoms.randomInt(100, 4000)) Points"
-        
-        let images: [UIImage] = [#imageLiteral(resourceName: "Starbucks"), #imageLiteral(resourceName: "Boston Pizza"), #imageLiteral(resourceName: "TimHortons")]
-        let image = images[Randoms.randomInt(0, images.count - 1)]
-        logoImageView.image = image
-        
-        image.getColors { [weak self] (colors) in
-            self?.gradientView.colors = [colors.background, colors.background.darker()]
-            self?.titleLabel.textColor = colors.primary
-            self?.subtitleLabel.textColor = colors.secondary
-        }
     }
     
     private func syncViewWithModel() {
-        
+        titleLabel.text = model?.business?.name
+        subtitleLabel.text = "\(model?.points ?? 0) Points"
     }
     
     override func presentedDidUpdate() {
+        super.presentedDidUpdate()
         
         let duration: TimeInterval = 0.3
-        
         UIView.animate(withDuration: duration, animations: {
             let constant: CGFloat = self.presented ? 80 : 40
             self.logoImageViewConstraints?
@@ -82,7 +72,6 @@ class DigitalCardView: CardView {
                 .forEach { $0.constant = constant }
             self.layoutIfNeeded()
         })
-        
     }
     
     // MARK: - User Actions

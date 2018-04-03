@@ -113,7 +113,7 @@ public extension Date {
         
         let dateFormatter:DateFormatter = DateFormatter()
         let timeZone: NSTimeZone = NSTimeZone(name: "UTC")!
-        dateFormatter.timeZone = timeZone as TimeZone!
+        dateFormatter.timeZone = timeZone as TimeZone?
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
         let dateString: String = dateFormatter.string(from: localDate as Date)
         return dateString

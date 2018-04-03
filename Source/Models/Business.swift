@@ -18,6 +18,7 @@ class Business: PFObject {
     @NSManaged var address: String?
     @NSManaged var category: String?
     @NSManaged var email: String?
+    @NSManaged var about: String?
     @NSManaged var distributionModel: NSNumber?
     
 }

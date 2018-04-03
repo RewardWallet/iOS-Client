@@ -11,7 +11,9 @@ import Parse
 
 class DigitalCard: PFObject {
     
-//    @NSManaged var someValue: String?
+    @NSManaged var business: Business?
+    @NSManaged var user: User?
+    @NSManaged var points: NSNumber?
     
 }
 

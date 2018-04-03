@@ -12,8 +12,7 @@ import SVProgressHUD
 
 class API: NSObject {
     
-    typealias CompletionBlock = (_ response: Any?, _ error: Error?)->Void
-    
+    // Shared Singleton
     static let shared = API()
     
     private var isIgnoreingUserInteraction: Bool {
@@ -27,14 +26,25 @@ class API: NSObject {
         super.init()
         SVProgressHUD.setHapticsEnabled(true)
         SVProgressHUD.setRingRadius(30)
+        SVProgressHUD.setMinimumSize(CGSize(width: 75, height: 75))
         SVProgressHUD.setBackgroundColor(UIColor(r: 250, g: 250, b: 250))
     }
     
     func initialize() {
+        
+        [Transaction.self, Business.self, DigitalCard.self].forEach { $0.registerSubclass() }
+        Parse.setLogLevel(.debug)
+        Parse.enableLocalDatastore()
         let config = ParseClientConfiguration {
+            //            $0.applicationId = "DQio2428A9u4ALxC3ojgQsGYreBSXlrFTn0NgwvI"
+            //            $0.clientKey = "ESXPiX6zYuXodoKTDxSbc8NSBTHNIKqx8mXQ3gPq"
+            //            $0.server = "https://parseapi.back4app.com/"
             $0.applicationId = "5++ejBLY/kzVaVibHAIIQZvbawrEywUCNqpD+FVpHgU="
             $0.clientKey = "oR3Jp5YMyxSBu6r6nh9xuYQD5AcsdubQmvATY1OEtXo="
             $0.server = "https://nathantannar.me/api/dev/"
+            //            $0.applicationId = "myAppId"
+            //            $0.clientKey = "myMasterKey"
+            //            $0.server = "https://nathantannar.me/api/prod/"
         }
         Parse.initialize(with: config)
     }
@@ -55,27 +65,44 @@ class API: NSObject {
         }
     }
     
-    func testTransaction(block: @escaping CompletionBlock) {
-        
-        PFCloud.callFunction(inBackground: "testTransaction", withParameters: [:]) { (response, error) in
-            block(response, error)
-        }
-        
+    func showSuccessHUD(for duration: TimeInterval = 1) {
+        SVProgressHUD.showSuccess(withStatus: "Success")
+        SVProgressHUD.dismiss(withDelay: duration)
     }
     
     func fetchRecommendedBusinesses(inBackground completion: @escaping ([Business])->Void) {
         
-        guard let query = User.query() else { return }
-        query.findObjectsInBackground { (businesses, error) in
-            print(businesses, error)
-//            guard let businesses = businesses, error == nil else { return }
-//            DispatchQueue.main.async {
-//                completion(businesses)
-//            }
+        guard let query = Business.query() as? PFQuery<Business> else { fatalError() }
+        query.findObjectsInBackground { (objects, error) in
+            guard let businesses = objects, error == nil else {
+                print(error ?? "Error")
+                return
+            }
+            completion(businesses)
         }
     }
     
-    func fetchDigitalCards(inBackground: ([DigitalCard])->Void) {
+    func fetchDigitalCards(inBackground completion: @escaping ([DigitalCard])->Void) {
+        
+        guard let user = User.current(), let query = DigitalCard.query() as? PFQuery<DigitalCard> else { fatalError() }
+        query.whereKey("user", equalTo: user)
+        query.includeKeys(["business"])
+        query.findObjectsInBackground { (objects, error) in
+            guard let digitalCards = objects, error == nil else {
+                print(error ?? "Error")
+                return
+            }
+            completion(digitalCards)
+        }
+    }
+    
+    func closeTransaction(transactionId: String, inBackground block: ((Bool, Error?)->Void)?) {
+
+        guard let userId = User.current()?.objectId else { return }
+        let params: [AnyHashable: Any] = ["transactionId": transactionId, "userId": userId]
+        PFCloud.callFunction(inBackground: "closeTransaction", withParameters: params) { (response, error) in
+            print(response, error)
+        }
         
     }
     

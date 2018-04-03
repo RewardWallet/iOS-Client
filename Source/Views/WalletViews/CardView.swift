@@ -12,10 +12,16 @@
 
 import UIKit
 
+public protocol CardViewDelegate: class {
+    func cardView(_ cardView: CardView, presentedDidUpdateTo presented: Bool)
+}
+
 /// The CardView class defines the attributes and behavior of the cards that appear in WalletView objects.
 open class CardView: UIView {
     
     // MARK: - Properties [Public]
+    
+    open weak var delegate: CardViewDelegate?
     
     /// A Boolean value that determines whether the view is presented.
     open var presented: Bool = false { didSet { presentedDidUpdate() } }
@@ -65,7 +71,7 @@ open class CardView: UIView {
     
     /// Override for any logic when the presentation state changes
     open func presentedDidUpdate() {
-        
+        delegate?.cardView(self, presentedDidUpdateTo: presented)
     }
     
     /// This method is called when the card view is tapped.

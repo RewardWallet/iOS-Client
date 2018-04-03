@@ -9,6 +9,7 @@
 import UIKit
 import IGListKit
 import MapKit
+import Parse
 
 final class ExploreViewController: RWViewController {
     
@@ -18,8 +19,6 @@ final class ExploreViewController: RWViewController {
         return ListAdapter(updater: ListAdapterUpdater(), viewController: self)
     }()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    
-    let mapView = UIView() // Some background content
     
     fileprivate let searchToken: NSNumber = 123
     fileprivate var searchFilter: String = ""
@@ -50,22 +49,18 @@ final class ExploreViewController: RWViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        collectionView.scrollIndicatorInsets.top = 200
-//        collectionView.contentInset.top = 200
         collectionView.alwaysBounceVertical = true
         collectionView.backgroundColor = .white
-        mapView.backgroundColor = .groupTableViewBackground // remove later
-//        view.addSubview(mapView)
         view.addSubview(collectionView)
         adapter.collectionView = collectionView
         adapter.dataSource = self
         adapter.scrollViewDelegate = self
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.frame = view.bounds
-//        mapView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: collectionView.contentInset.top)
     }
     
 }
@@ -78,15 +73,6 @@ extension ExploreViewController: ListAdapterDataSource {
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-//        if let num = object as? NSNumber, num == searchToken {
-//            let sectionController = SearchSectionController()
-//            sectionController.delegate = self
-//            return sectionController
-//        } else if let num = object as? NSNumber, num == spinnerToken {
-//            return SpinnerSectionController()
-//        } else {
-//            return LabelSectionController()
-//        }
         return ExploreSectionController()
     }
     

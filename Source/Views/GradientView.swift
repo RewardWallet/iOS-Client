@@ -195,13 +195,13 @@ import UIKit
             let colorSpace = CGColorSpaceCreateDeviceRGB()
             let colorSpaceModel = colorSpace.model
             
-            let gradientColors = colors.map { (color: UIColor) -> AnyObject! in
+            let gradientColors = colors.map { (color: UIColor) -> AnyObject? in
                 let cgColor = color.cgColor
                 let cgColorSpace = cgColor.colorSpace ?? colorSpace
                 
                 // The color's color space is RGB, simply add it.
                 if cgColorSpace.model == colorSpaceModel {
-                    return cgColor as AnyObject!
+                    return cgColor as AnyObject?
                 }
                 
                 // Convert to RGB. There may be a more efficient way to do this.
@@ -210,8 +210,8 @@ import UIKit
                 var green: CGFloat = 0
                 var alpha: CGFloat = 0
                 color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-                return UIColor(red: red, green: green, blue: blue, alpha: alpha).cgColor as AnyObject!
-                } as NSArray
+                return UIColor(red: red, green: green, blue: blue, alpha: alpha).cgColor as AnyObject?
+            } as NSArray
             
             gradient = CGGradient(colorsSpace: colorSpace, colors: gradientColors, locations: locations)
         }

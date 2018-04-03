@@ -41,6 +41,8 @@ class WalletViewController: RWViewController {
         return view
     }()
     
+    private var cards: [DigitalCard] = []
+    
     // MARK: - Initialization
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -65,15 +67,89 @@ class WalletViewController: RWViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCard))
         
-        let cardViews = [DigitalCardView(), DigitalCardView(), DigitalCardView()]
-        walletView.reload(cardViews: cardViews)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        fetchDigitalCards()
+    }
+    
+    // MARK: - Networks
+    
+    private func fetchDigitalCards() {
+        
+        API.shared.fetchDigitalCards { (cards) in
+            self.cards = cards
+            let cardViews: [DigitalCardView] = cards.map {
+                let view = DigitalCardView()
+                view.model = $0
+                view.delegate = self
+                return view
+            }
+            self.walletView.reload(cardViews: cardViews)
+        }
     }
     
     
     // MARK: - User Actions
     
     @objc
-    func addCard() {
+    private func addCard() {
         
+        animateSuccess()
     }
+    
+}
+
+extension WalletViewController: CardViewDelegate {
+    
+    func cardView(_ cardView: CardView, presentedDidUpdateTo presented: Bool) {
+        
+        if presented {
+            NFCManager.shared.beginReading(callback: { url in
+                // TODO: Better handling
+                guard url.path.contains("redeem") else { return }
+                API.shared.closeTransaction(transactionId: url.lastPathComponent, inBackground: { (success, error) in
+                    print(success, error)
+                })
+            })
+        } else {
+            NFCManager.shared.endReading()
+        }
+    }
+    
+    private func animateSuccess() {
+        API.shared.showSuccessHUD(for: 3)
+        let emitter = CAEmitterLayer()
+        emitter.emitterPosition = CGPoint(x: view.frame.size.width / 2.0, y: 0)
+        emitter.emitterShape = kCAEmitterLayerLine
+        emitter.emitterSize = CGSize(width: view.frame.size.width, height: 1)
+        emitter.emitterCells = (0..<10).map({ _ in
+            let intensity = Float(0.5)
+            
+            let cell = CAEmitterCell()
+            
+            cell.birthRate = 6.0 * intensity
+            cell.lifetime = 14.0 * intensity
+            cell.lifetimeRange = 0
+            cell.velocity = CGFloat(350.0 * intensity)
+            cell.velocityRange = CGFloat(80.0 * intensity)
+            cell.emissionLongitude = .pi
+            cell.emissionRange = .pi / 4
+            cell.spin = CGFloat(3.5 * intensity)
+            cell.spinRange = CGFloat(4.0 * intensity)
+            cell.scaleRange = CGFloat(intensity)
+            cell.scaleSpeed = CGFloat(-0.1 * intensity)
+            let colors: [UIColor] = [UIColor.secondaryColor.darker(), UIColor.secondaryColor.lighter(), UIColor.primaryColor.darker(), UIColor.primaryColor.lighter()]
+            let index = Int.random(0, 3)
+            cell.contents = colors[index].toImage?.cgImage
+            
+            return cell
+        })
+        navigationController?.view.layer.addSublayer(emitter)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            emitter.removeFromSuperlayer()
+        }
+    }
+    
 }

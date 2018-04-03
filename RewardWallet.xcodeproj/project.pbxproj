@@ -36,7 +36,7 @@
 		384613C32048C4760087A38E /* PlainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384613C22048C4760087A38E /* PlainNavigationController.swift */; };
 		384B024F206D99480068C879 /* ExploreBusinessSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384B024D206D99470068C879 /* ExploreBusinessSectionController.swift */; };
 		384B0250206D99480068C879 /* ExploreSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384B024E206D99480068C879 /* ExploreSectionController.swift */; };
-		384B0253206D99F50068C879 /* RestaurantViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384B0251206D99F50068C879 /* RestaurantViewCell.swift */; };
+		384B0253206D99F50068C879 /* BusinessViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384B0251206D99F50068C879 /* BusinessViewCell.swift */; };
 		384B0254206D99F50068C879 /* ExploreHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384B0252206D99F50068C879 /* ExploreHeaderViewCell.swift */; };
 		384B0256206D9A090068C879 /* ExploreSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384B0255206D9A090068C879 /* ExploreSection.swift */; };
 		385C1E052048CA1D0080FE19 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C1E042048CA1D0080FE19 /* ExploreViewController.swift */; };
@@ -79,6 +79,7 @@
 		38C6E3DD203D3B9400DCD00D /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6E3D2203D3B9300DCD00D /* Date+Extensions.swift */; };
 		38C6E3DE203D3B9400DCD00D /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6E3D3203D3B9300DCD00D /* UIColor+Extensions.swift */; };
 		38C6E3DF203D3B9400DCD00D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6E3D4203D3B9400DCD00D /* String+Extensions.swift */; };
+		38E988D72071CB160089C7A6 /* RedeemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E988D62071CB160089C7A6 /* RedeemViewController.swift */; };
 		38ED9F3A203D4859008B410B /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ED9F39203D4859008B410B /* NotificationsViewController.swift */; };
 		38ED9F3C203D4CAD008B410B /* MainContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ED9F3B203D4CAD008B410B /* MainContainerController.swift */; };
 		38EF5C4220473D6500FD4EBF /* UIAnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF5C4020473D6500FD4EBF /* UIAnimatedTextField.swift */; };
@@ -128,7 +129,7 @@
 		384613C22048C4760087A38E /* PlainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainNavigationController.swift; sourceTree = "<group>"; };
 		384B024D206D99470068C879 /* ExploreBusinessSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreBusinessSectionController.swift; sourceTree = "<group>"; };
 		384B024E206D99480068C879 /* ExploreSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreSectionController.swift; sourceTree = "<group>"; };
-		384B0251206D99F50068C879 /* RestaurantViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantViewCell.swift; sourceTree = "<group>"; };
+		384B0251206D99F50068C879 /* BusinessViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessViewCell.swift; sourceTree = "<group>"; };
 		384B0252206D99F50068C879 /* ExploreHeaderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreHeaderViewCell.swift; sourceTree = "<group>"; };
 		384B0255206D9A090068C879 /* ExploreSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreSection.swift; sourceTree = "<group>"; };
 		385C1E042048CA1D0080FE19 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +178,8 @@
 		38C6E3D2203D3B9300DCD00D /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		38C6E3D3203D3B9300DCD00D /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		38C6E3D4203D3B9400DCD00D /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		38DCEBF520719CBA00C00BD6 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		38E988D62071CB160089C7A6 /* RedeemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemViewController.swift; sourceTree = "<group>"; };
 		38ED9F39203D4859008B410B /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		38ED9F3B203D4CAD008B410B /* MainContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerController.swift; sourceTree = "<group>"; };
 		38EE18022016EB8000D126C0 /* RewardWallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RewardWallet.entitlements; sourceTree = "<group>"; };
@@ -246,6 +249,7 @@
 			children = (
 				386178BD1FBD527F0059FE89 /* AppDelegate.swift */,
 				3837352A2028C8E100E592F0 /* AppRouter.swift */,
+				38DCEBF520719CBA00C00BD6 /* Playground.playground */,
 				38C6E3C3203D3A6000DCD00D /* Styling */,
 				38764C93201E716C005DDD82 /* Networking */,
 				386178DE1FBD52FE0059FE89 /* Models */,
@@ -303,6 +307,7 @@
 				385CDF8F202FBE9000623793 /* WalletViewController.swift */,
 				38ED9F39203D4859008B410B /* NotificationsViewController.swift */,
 				387F323F20492B38001EA599 /* AccountViewController.swift */,
+				38E988D62071CB160089C7A6 /* RedeemViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -367,7 +372,7 @@
 				3862F9A3204935CF00F3A70A /* SearchCell.swift */,
 				3862F9A4204935CF00F3A70A /* SpinnerCell.swift */,
 				384B0252206D99F50068C879 /* ExploreHeaderViewCell.swift */,
-				384B0251206D99F50068C879 /* RestaurantViewCell.swift */,
+				384B0251206D99F50068C879 /* BusinessViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -526,7 +531,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Nathan Tannar";
 				TargetAttributes = {
 					386178B91FBD527F0059FE89 = {
@@ -611,6 +616,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RewardWallet/Pods-RewardWallet-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AlertHUDKit/AlertHUDKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/DeckTransition/DeckTransition.framework",
 				"${BUILT_PRODUCTS_DIR}/DynamicTabBarController/DynamicTabBarController.framework",
@@ -623,6 +629,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlertHUDKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeckTransition.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicTabBarController.framework",
@@ -758,7 +765,7 @@
 				3862F9A6204935CF00F3A70A /* SpinnerCell.swift in Sources */,
 				382E180B205F04810008B6E4 /* UIView+AutoLayout.swift in Sources */,
 				38C6E3C8203D3AFC00DCD00D /* Constants.swift in Sources */,
-				384B0253206D99F50068C879 /* RestaurantViewCell.swift in Sources */,
+				384B0253206D99F50068C879 /* BusinessViewCell.swift in Sources */,
 				38EF5C4320473D6500FD4EBF /* UILoginViewController.swift in Sources */,
 				3837352B2028C8E100E592F0 /* AppRouter.swift in Sources */,
 				3819923C203D63DF00D7B7D1 /* UILabel.swift in Sources */,
@@ -772,6 +779,7 @@
 				38C6E3C7203D3AFC00DCD00D /* UIView+Style.swift in Sources */,
 				382E1815205F16010008B6E4 /* EmbeddedCollectionViewCell.swift in Sources */,
 				38199238203D571700D7B7D1 /* Lorem.swift in Sources */,
+				38E988D72071CB160089C7A6 /* RedeemViewController.swift in Sources */,
 				386ACB3620257DC300B71C50 /* CardView.swift in Sources */,
 				381534D82048B9F0004572A5 /* SplashScreenView.swift in Sources */,
 				38C6E3C9203D3AFC00DCD00D /* Stylesheet.swift in Sources */,
@@ -830,6 +838,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -837,6 +846,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -887,6 +897,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -894,6 +905,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

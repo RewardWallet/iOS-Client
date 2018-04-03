@@ -53,7 +53,7 @@ final class BusinessViewCell: RWCollectionViewCell {
         
         let stackView = UIStackView(arrangedSubviews: [nameLabel, categoryLabel, addressLabel, captionLabel, rewardModelLabel])
         stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fillEqually
         stackView.alignment = .fill
         stackView.spacing = 2
         contentView.addSubview(stackView)
@@ -66,7 +66,10 @@ extension BusinessViewCell: ListBindable {
     
     func bindViewModel(_ viewModel: Any) {
         guard let business = viewModel as? Business else { return }
-        
+        nameLabel.text = business.name
+        categoryLabel.text = business.email
+        addressLabel.text = business.address
+        captionLabel.text = business.about
     }
     
 }

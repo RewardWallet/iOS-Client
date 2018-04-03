@@ -19,6 +19,10 @@ target 'RewardWallet' do
   # https://github.com/SVProgressHUD/SVProgressHUD
   pod 'SVProgressHUD'
   
+  # My alert framework
+  # https://github.com/nathantannar4/AlertHUDKit
+  pod 'AlertHUDKit'
+  
   # Used for easily registering URL routes and navigating to them
   # https://github.com/devxoul/URLNavigator
   pod 'URLNavigator'
