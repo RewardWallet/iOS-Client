@@ -58,7 +58,7 @@ class DigitalCardView: CardView {
     
     private func syncViewWithModel() {
         titleLabel.text = model?.business?.name
-        subtitleLabel.text = "\(model?.points ?? 0) Points"
+        subtitleLabel.text = "\(Int(model?.points ?? 0)) Points"
     }
     
     override func presentedDidUpdate() {

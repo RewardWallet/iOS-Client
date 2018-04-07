@@ -74,6 +74,11 @@ class WalletViewController: RWViewController {
         fetchDigitalCards()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        walletView.dismissPresentedCardView(animated: animated)
+    }
+    
     // MARK: - Networks
     
     private func fetchDigitalCards() {
@@ -95,7 +100,6 @@ class WalletViewController: RWViewController {
     
     @objc
     private func addCard() {
-        
         animateSuccess()
     }
     
@@ -108,9 +112,18 @@ extension WalletViewController: CardViewDelegate {
         if presented {
             NFCManager.shared.beginReading(callback: { url in
                 // TODO: Better handling
-                guard url.path.contains("redeem") else { return }
-                API.shared.closeTransaction(transactionId: url.lastPathComponent, inBackground: { (success, error) in
-                    print(success, error)
+                guard url.path.contains("redeem/") else { return }
+                API.shared.closeTransaction(transactionId: url.lastPathComponent, inBackground: { (response, error) in
+                    print(response)
+                    if error == nil {
+                        if let digitalCardView = cardView as? DigitalCardView {
+                            let newPoints = response?["pointsAdded"] as? Double ?? 0
+                            let points: Double = (digitalCardView.model?.points as? Double) ?? 0
+                            digitalCardView.model?.points = NSNumber(value: points + newPoints)
+                            digitalCardView.subtitleLabel.text = "\(Int(points + newPoints)) Points"
+                        }
+                        self.animateSuccess()
+                    }
                 })
             })
         } else {
@@ -150,6 +163,7 @@ extension WalletViewController: CardViewDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             emitter.removeFromSuperlayer()
         }
+        walletView.dismissPresentedCardView(animated: true)
     }
     
 }

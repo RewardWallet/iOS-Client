@@ -36,15 +36,9 @@ class API: NSObject {
         Parse.setLogLevel(.debug)
         Parse.enableLocalDatastore()
         let config = ParseClientConfiguration {
-            //            $0.applicationId = "DQio2428A9u4ALxC3ojgQsGYreBSXlrFTn0NgwvI"
-            //            $0.clientKey = "ESXPiX6zYuXodoKTDxSbc8NSBTHNIKqx8mXQ3gPq"
-            //            $0.server = "https://parseapi.back4app.com/"
             $0.applicationId = "5++ejBLY/kzVaVibHAIIQZvbawrEywUCNqpD+FVpHgU="
             $0.clientKey = "oR3Jp5YMyxSBu6r6nh9xuYQD5AcsdubQmvATY1OEtXo="
             $0.server = "https://nathantannar.me/api/dev/"
-            //            $0.applicationId = "myAppId"
-            //            $0.clientKey = "myMasterKey"
-            //            $0.server = "https://nathantannar.me/api/prod/"
         }
         Parse.initialize(with: config)
     }
@@ -96,12 +90,13 @@ class API: NSObject {
         }
     }
     
-    func closeTransaction(transactionId: String, inBackground block: ((Bool, Error?)->Void)?) {
+    func closeTransaction(transactionId: String, inBackground block: (([String:Any]?, Error?)->Void)?) {
 
         guard let userId = User.current()?.objectId else { return }
         let params: [AnyHashable: Any] = ["transactionId": transactionId, "userId": userId]
         PFCloud.callFunction(inBackground: "closeTransaction", withParameters: params) { (response, error) in
-            print(response, error)
+            print(response)
+            block?(response as? [String:Any], error)
         }
         
     }
