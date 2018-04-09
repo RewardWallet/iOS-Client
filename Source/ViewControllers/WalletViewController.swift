@@ -114,7 +114,6 @@ extension WalletViewController: CardViewDelegate {
                 // TODO: Better handling
                 guard url.path.contains("redeem/") else { return }
                 API.shared.closeTransaction(transactionId: url.lastPathComponent, inBackground: { (response, error) in
-                    print(response)
                     if error == nil {
                         if let digitalCardView = cardView as? DigitalCardView {
                             let newPoints = response?["pointsAdded"] as? Double ?? 0

@@ -76,6 +76,21 @@ class API: NSObject {
         }
     }
     
+    func fetchTransactions(inBackground completion: @escaping ([Transaction])->Void) {
+        
+        guard let user = User.current(), let query = Transaction.query() as? PFQuery<Transaction> else { fatalError() }
+        query.whereKey("user", equalTo: user)
+        query.addDescendingOrder("updatedAt")
+        query.includeKeys(["business"])
+        query.findObjectsInBackground { (objects, error) in
+            guard let transactions = objects, error == nil else {
+                print(error ?? "Error")
+                return
+            }
+            completion(transactions)
+        }
+    }
+    
     func fetchDigitalCards(inBackground completion: @escaping ([DigitalCard])->Void) {
         
         guard let user = User.current(), let query = DigitalCard.query() as? PFQuery<DigitalCard> else { fatalError() }
@@ -95,7 +110,6 @@ class API: NSObject {
         guard let userId = User.current()?.objectId else { return }
         let params: [AnyHashable: Any] = ["transactionId": transactionId, "userId": userId]
         PFCloud.callFunction(inBackground: "closeTransaction", withParameters: params) { (response, error) in
-            print(response)
             block?(response as? [String:Any], error)
         }
         

@@ -8,8 +8,9 @@
 
 import Foundation
 import Parse
+import IGListKit
 
-class DigitalCard: PFObject {
+final class DigitalCard: PFObject {
     
     @NSManaged var business: Business?
     @NSManaged var user: User?
@@ -22,4 +23,16 @@ extension DigitalCard: PFSubclassing {
     static func parseClassName() -> String {
         return "DigitalCard"
     }
+}
+
+extension DigitalCard: ListDiffable {
+    
+    func diffIdentifier() -> NSObjectProtocol {
+        return self
+    }
+    
+    func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
+        return isEqual(object)
+    }
+    
 }

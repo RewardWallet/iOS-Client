@@ -61,6 +61,7 @@
 		387F324020492B38001EA599 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F323F20492B38001EA599 /* AccountViewController.swift */; };
 		387F324520492F7D001EA599 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F324420492F7D001EA599 /* Transaction.swift */; };
 		387F324720492F92001EA599 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F324620492F92001EA599 /* Business.swift */; };
+		38929B9C207BC8CA00C35468 /* TransactionSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38929B9B207BC8CA00C35468 /* TransactionSectionController.swift */; };
 		38AD2B47206D924100B276A1 /* NFCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AD2B46206D924100B276A1 /* NFCManager.swift */; };
 		38C0C8412030AF7E0009B230 /* RWNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0C8402030AF7E0009B230 /* RWNavigationController.swift */; };
 		38C0C8432030AF8F0009B230 /* RWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0C8422030AF8F0009B230 /* RWViewController.swift */; };
@@ -158,6 +159,7 @@
 		387F323F20492B38001EA599 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		387F324420492F7D001EA599 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		387F324620492F92001EA599 /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
+		38929B9B207BC8CA00C35468 /* TransactionSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSectionController.swift; sourceTree = "<group>"; };
 		3896A1B1203D3E1100267EC5 /* xcode-build-bump.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "xcode-build-bump.sh"; sourceTree = "<group>"; };
 		3896A1B3203D3E1500267EC5 /* xcode-version-bump.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "xcode-version-bump.sh"; sourceTree = "<group>"; };
 		38AD2B46206D924100B276A1 /* NFCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCManager.swift; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 				382E1801205F02E30008B6E4 /* AccountSectionController.swift */,
 				384B024D206D99470068C879 /* ExploreBusinessSectionController.swift */,
 				384B024E206D99480068C879 /* ExploreSectionController.swift */,
+				38929B9B207BC8CA00C35468 /* TransactionSectionController.swift */,
 			);
 			path = SectionControllers;
 			sourceTree = "<group>";
@@ -754,6 +757,7 @@
 				385C1E052048CA1D0080FE19 /* ExploreViewController.swift in Sources */,
 				38C6E3D5203D3B9400DCD00D /* UIDevice+Extensions.swift in Sources */,
 				38C6E3DE203D3B9400DCD00D /* UIColor+Extensions.swift in Sources */,
+				38929B9C207BC8CA00C35468 /* TransactionSectionController.swift in Sources */,
 				382E1806205F042A0008B6E4 /* AccountHeaderViewCell.swift in Sources */,
 				385CDF90202FBE9000623793 /* WalletViewController.swift in Sources */,
 				38C6E3D7203D3B9400DCD00D /* UIApplication+Extensions.swift in Sources */,

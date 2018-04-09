@@ -10,7 +10,7 @@ import Foundation
 import Parse
 import IGListKit
 
-class Business: PFObject {
+final class Business: PFObject {
     
     @NSManaged var username: String?
     @NSManaged var name: String?

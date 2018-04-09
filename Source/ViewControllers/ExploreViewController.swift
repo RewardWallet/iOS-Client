@@ -56,11 +56,19 @@ final class ExploreViewController: RWViewController {
         adapter.dataSource = self
         adapter.scrollViewDelegate = self
         
+        let rc = UIRefreshControl()
+        rc.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        collectionView.refreshControl = rc
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.frame = view.bounds
+    }
+    
+    @objc
+    func handleRefresh() {
+        
     }
     
 }

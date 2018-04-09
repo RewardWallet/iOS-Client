@@ -73,7 +73,7 @@ extension NFCManager: NFCNDEFReaderSessionDelegate {
 //            }
 //        }
 //
-        guard var urlString = URL(dataRepresentation: messages[0].records[0].payload, relativeTo: nil)?.absoluteString.replacingOccurrences(of: "%00", with: "") else {
+        guard let urlString = URL(dataRepresentation: messages[0].records[0].payload, relativeTo: nil)?.absoluteString.replacingOccurrences(of: "%00", with: "") else {
             print("Failed to convert to URL string")
             return
         }
