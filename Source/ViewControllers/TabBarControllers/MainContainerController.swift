@@ -20,29 +20,30 @@ class MainContainerController: DynamicTabBarController {
         
         title = "RewardWallet"
         view.backgroundColor = .backgroundColor
-        tabBar.activeTintColor = .secondaryColor
+        tabBar.backgroundColor = .primaryColor
+        tabBar.activeTintColor = .white
         
         tabBar.layer.shadowRadius = 3
-        tabBar.layer.shadowColor = UIColor.darkGray.cgColor
+        tabBar.layer.shadowColor = UIColor.gray.cgColor
         tabBar.layer.shadowOpacity = 0.2
         tabBar.layer.shadowOffset = CGSize(width: 0, height: -2)
         
-        let coinItem: UIBarButtonItem = {
-            let itemWidth: CGFloat = 40
-            let itemHeight: CGFloat = 40
-            let contentView = UIView(frame: CGRect(x: 0, y: 0, width: itemWidth, height: itemHeight))
-            let button = UIButton(frame: CGRect(x: 0, y: 5, width: itemHeight - 10, height: itemHeight - 10))
-            button.setImage(.coin, for: .normal)
-            button.imageView?.contentMode = .scaleAspectFit
-            button.addTarget(self, action: #selector(didTapHelp), for: .touchUpInside)
-            contentView.addSubview(button)
-            return UIBarButtonItem(customView: contentView)
-        }()
-        navigationItem.leftBarButtonItem = coinItem
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
-                                                            target: nil,
-                                                            action: nil)
+//        let coinItem: UIBarButtonItem = {
+//            let itemWidth: CGFloat = 40
+//            let itemHeight: CGFloat = 40
+//            let contentView = UIView(frame: CGRect(x: 0, y: 0, width: itemWidth, height: itemHeight))
+//            let button = UIButton(frame: CGRect(x: 0, y: 5, width: itemHeight - 10, height: itemHeight - 10))
+//            button.setImage(.coin, for: .normal)
+//            button.imageView?.contentMode = .scaleAspectFit
+//            button.addTarget(self, action: #selector(didTapHelp), for: .touchUpInside)
+//            contentView.addSubview(button)
+//            return UIBarButtonItem(customView: contentView)
+//        }()
+//        navigationItem.leftBarButtonItem = coinItem
+//
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+//                                                            target: nil,
+//                                                            action: nil)
     }
     
     @objc

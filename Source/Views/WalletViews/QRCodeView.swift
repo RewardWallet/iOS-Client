@@ -33,7 +33,9 @@ open class QRCodeView: UIView {
     
     open var value: String? { didSet { generateQRCodeImage() } }
     
-    // MARK: - Properties [Private]
+    open var insets: UIEdgeInsets = .zero
+    
+    // MARK: - Subviews
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -65,8 +67,12 @@ open class QRCodeView: UIView {
     /// Override to set up additional subviews in the BarcodeView
     open func setupViews() {
         backgroundColor = .white
-        imageView.frame = frame
         addSubview(imageView)
+    }
+    
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        imageView.frame = UIEdgeInsetsInsetRect(bounds, insets)
     }
     
     // MARK: - Methods [Private]

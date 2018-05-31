@@ -8,30 +8,48 @@
 
 import UIKit
 import UIImageColors
+import DeckTransition
 
 class DigitalCardView: CardView {
     
-    // MARK: - Properties [Public]
+    // MARK: - Properties
     
-    weak var model: DigitalCard? { didSet { syncViewWithModel() } }
-    
-    let titleLabel = UILabel(style: Stylesheet.Labels.header)
-    
-    let subtitleLabel = UILabel(style: Stylesheet.Labels.subheader)
-    
-    let logoImageView = UIImageView(style: Stylesheet.ImageViews.roundedSquare)
-    
-    let gradientView = GradientView()
-    
-    // MARK: - Properties [Private]
+    weak var digitalCard: DigitalCard? { didSet { updateViewForDigitalCard() } }
     
     private var logoImageViewConstraints: [NSLayoutConstraint]?
+    
+    // MARK: - Subviews
+    
+    private let titleLabel = UILabel(style: Stylesheet.Labels.header)
+    
+    private let subtitleLabel = UILabel(style: Stylesheet.Labels.subheader)
+    
+    private let logoImageView = UIImageView(style: Stylesheet.ImageViews.roundedSquare)
+    
+    private let gradientView = GradientView()
+    
+    private let scanButton = RippleButton(style: Stylesheet.RippleButtons.roundedWhite) {
+        $0.setTitle("Scan", for: .normal)
+        $0.setImage(UIImage.iconCollect, for: .normal)
+        $0.trackTouchLocation = true
+        $0.alpha = 0
+        $0.addTarget(self, action: #selector(DigitalCardView.viewCardDetails), for: .touchUpInside)
+    }
+    
+    private let detailButton = RippleButton(style: Stylesheet.RippleButtons.roundedWhite) {
+        $0.setTitle("Details", for: .normal)
+        $0.setImage(UIImage.iconBusinessDetails, for: .normal)
+        $0.trackTouchLocation = true
+        $0.alpha = 0
+        $0.addTarget(self, action: #selector(DigitalCardView.viewBusinessDetails), for: .touchUpInside)
+    }
     
     // MARK: - View Setup
     
     override func setupViews() {
         super.setupViews()
         
+        alpha = 0
         layer.cornerRadius = 10
         layer.shadowRadius = 3
         layer.shadowColor = UIColor.darkGray.cgColor
@@ -43,9 +61,17 @@ class DigitalCardView: CardView {
         addSubview(subtitleLabel)
         addSubview(logoImageView)
         
+        let stackView = UIStackView(arrangedSubviews: [scanButton, detailButton])
+        stackView.alignment = .fill
+        stackView.axis = .horizontal
+        stackView.spacing = 36
+        stackView.distribution = .fillEqually
+        addSubview(stackView)
+        
         titleLabel.textColor = .white
         subtitleLabel.textColor = UIColor.white.darker()
-        gradientView.colors = [.secondaryColor, UIColor.secondaryColor.darker()]
+        gradientView.alpha = 0.75
+        gradientView.colors = [.primaryColor, UIColor.primaryColor.darker()]
         gradientView.layer.cornerRadius = 10
         gradientView.clipsToBounds = true
         gradientView.fillSuperview()
@@ -54,11 +80,24 @@ class DigitalCardView: CardView {
         logoImageViewConstraints = logoImageView.anchor(topAnchor, left: leftAnchor, topConstant: inset, leftConstant: inset, widthConstant: 40, heightConstant: 40)
         titleLabel.anchor(logoImageView.topAnchor, left: logoImageView.rightAnchor, bottom: subtitleLabel.topAnchor, right: rightAnchor, leftConstant: inset, rightConstant: inset)
         subtitleLabel.anchor(titleLabel.bottomAnchor, left: titleLabel.leftAnchor, bottom: nil, right: titleLabel.rightAnchor)
+        
+        stackView.anchor(nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 32, bottomConstant: 16, rightConstant: 32, widthConstant: 0, heightConstant: 44)
     }
     
-    private func syncViewWithModel() {
-        titleLabel.text = model?.business?.name
-        subtitleLabel.text = "\(Int(truncating: model?.points ?? 0)) Points"
+    private func updateViewForDigitalCard() {
+        titleLabel.text = digitalCard?.business?.name
+        subtitleLabel.text = "\(Int(truncating: digitalCard?.points ?? 0)) Points"
+        logoImageView.kf.indicatorType = .activity
+        logoImageView.kf.setImage(with: digitalCard?.business?.image, placeholder: nil, options: [.fromMemoryCacheOrRefresh], progressBlock: nil) { [weak self] (image, _, _, _) in
+            if let image = image {
+                let colors = image.getColors()
+                self?.backgroundColor = colors.background
+                self?.gradientView.colors = [colors.primary, colors.secondary]
+            }
+            UIView.animate(withDuration: 0.3, animations: {
+                self?.alpha = 1
+            })
+        }
     }
     
     override func presentedDidUpdate() {
@@ -66,19 +105,36 @@ class DigitalCardView: CardView {
         
         let duration: TimeInterval = 0.3
         UIView.animate(withDuration: duration, animations: {
-            let constant: CGFloat = self.presented ? 80 : 40
+            let constant: CGFloat = self.isPresented ? 80 : 40
+            self.detailButton.alpha = self.isPresented ? 1 : 0
+            self.scanButton.alpha = self.isPresented ? 1 : 0
             self.logoImageViewConstraints?
                 .filter { $0.identifier == "height" || $0.identifier == "width" }
                 .forEach { $0.constant = constant }
             self.layoutIfNeeded()
         })
+        
     }
     
     // MARK: - User Actions
     
     @objc
-    func deleteCard() {
+    private func deleteCard() {
         walletView?.remove(cardView: self, animated: true, completion: nil)
+    }
+    
+    @objc
+    private func viewCardDetails() {
+        let transitionDelegate = DeckTransitioningDelegate()
+        guard let detailViewController = AppRouter.shared.viewController(for: .redeem, context: digitalCard) else { return }
+        detailViewController.modalPresentationStyle = .custom
+        detailViewController.transitioningDelegate = transitionDelegate
+        AppRouter.shared.present(detailViewController, from: viewController, animated: true, completion: nil)
+    }
+    
+    @objc
+    private func viewBusinessDetails() {
+        AppRouter.shared.push(.business, context: digitalCard?.business, from: viewController?.navigationController, animated: true)
     }
     
     

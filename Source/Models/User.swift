@@ -12,20 +12,14 @@ import Parse
 
 class User: PFUser {
     
-    @NSManaged var profileImage: PFFile?
- 
+    @NSManaged var picture: PFFile?
+    @NSManaged var fullname: String?
+    @NSManaged var fullname_lower: String?
+    @NSManaged var address: String?
+    @NSManaged var phone: NSNumber?
+    
     override class func current() -> User? {
         return PFUser.current() as? User
-    }
-    
-    func addDigitalCard(for business: Business, completion: PFBooleanResultBlock? = nil) {
-        let digitalCard = DigitalCard()
-        digitalCard.user = User.current()
-        digitalCard.business = business
-        digitalCard.points = 0
-        digitalCard.saveInBackground { (success, error) in
-            completion?(success, error)
-        }
     }
     
     /// Saves the object to the server
@@ -83,18 +77,6 @@ class User: PFUser {
             PushNotication.shared.unregisterDeviceInstallation()
             completion?(error == nil, error)
         }
-    }
-    
-}
-
-extension User: ListDiffable {
-    
-    func diffIdentifier() -> NSObjectProtocol {
-        return self
-    }
-    
-    func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
-        return isEqual(object)
     }
     
 }

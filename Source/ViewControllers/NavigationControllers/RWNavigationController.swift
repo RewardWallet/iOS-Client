@@ -25,13 +25,6 @@ class RWNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationBar.isTranslucent = false
-        navigationBar.setBackgroundImage(nil, for: .default)
-        navigationBar.shadowImage = UIImage()
-//        navigationBar.layer.shadowRadius = 3
-//        navigationBar.layer.shadowColor = UIColor.darkGray.cgColor
-//        navigationBar.layer.shadowOpacity = 0.3
-//        navigationBar.layer.shadowOffset = CGSize(width: 0, height: 1)
         
     }
 

@@ -38,7 +38,7 @@ final class FeaturedBusinessSectionController: ListSectionController {
 
     override func didSelectItem(at index: Int) {
 
-//        AppRouter.shared.push(.business, context: business, from: viewController?.navigationController, animated: true)
+        AppRouter.shared.push(.business, context: business, from: viewController?.navigationController, animated: true)
 //        let alert = UIAlertController(title: "Add to Wallet", message: nil, preferredStyle: .alert)
 //        alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { _ in
 //            guard let business = self.business else { return }

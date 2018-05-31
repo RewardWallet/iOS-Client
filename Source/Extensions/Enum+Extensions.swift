@@ -1,6 +1,6 @@
 //
 //  Enum+Extensions.swift
-//  Flashh
+//  RewardWallet
 //
 //  Created by Nathan Tannar on 3/11/18.
 //  Copyright © 2018 Nathan Tannar. All rights reserved.

@@ -16,6 +16,17 @@ final class DigitalCard: PFObject {
     @NSManaged var user: User?
     @NSManaged var points: NSNumber?
     
+    override init() {
+        super.init()
+    }
+    
+    convenience init(business: Business?, user: User?) {
+        self.init()
+        self.business = business
+        self.user = user
+        self.points = NSNumber(value: 0)
+    }
+    
 }
 
 extension DigitalCard: PFSubclassing {
@@ -23,16 +34,4 @@ extension DigitalCard: PFSubclassing {
     static func parseClassName() -> String {
         return "DigitalCard"
     }
-}
-
-extension DigitalCard: ListDiffable {
-    
-    func diffIdentifier() -> NSObjectProtocol {
-        return self
-    }
-    
-    func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
-        return isEqual(object)
-    }
-    
 }

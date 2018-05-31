@@ -42,6 +42,20 @@ target 'RewardWallet' do
   # Popular image cache library
   # https://github.com/onevcat/Kingfisher
   pod 'Kingfisher'
+  
+  # Image View
+  pod 'ImageSlideshow'
+  pod 'ImageSlideshow/Kingfisher'
+  
+  # Transition
+  # https://github.com/HarshilShah/DeckTransition
+  pod 'DeckTransition'
+  
+  pod 'FeedbackGenerator'
+  
+  pod 'M13Checkbox'
+  pod 'PhoneNumberKit'
+  pod 'Former'
 
   target 'RewardWalletTests' do
     inherit! :search_paths

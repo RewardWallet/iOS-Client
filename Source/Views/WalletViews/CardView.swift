@@ -5,9 +5,6 @@
 //  Created by Nathan Tannar on 11/27/17.
 //  Copyright © 2017 Nathan Tannar. All rights reserved.
 //
-//  Forked from https://github.com/rshevchuk/Wallet
-//
-//  DO NOT MAKE MODIFICATIONS TO THIS FILE
 //
 
 import UIKit
@@ -23,8 +20,12 @@ open class CardView: UIView {
     
     open weak var delegate: CardViewDelegate?
     
+    open var viewController: UIViewController? {
+        return walletView?.viewController
+    }
+    
     /// A Boolean value that determines whether the view is presented.
-    open var presented: Bool = false { didSet { presentedDidUpdate() } }
+    open var isPresented: Bool = false { didSet { presentedDidUpdate() } }
     
     /// A parent wallet view object, or nil if the card view is not visible.
     public var walletView: WalletView? {
@@ -71,7 +72,7 @@ open class CardView: UIView {
     
     /// Override for any logic when the presentation state changes
     open func presentedDidUpdate() {
-        delegate?.cardView(self, presentedDidUpdateTo: presented)
+        delegate?.cardView(self, presentedDidUpdateTo: isPresented)
     }
     
     /// This method is called when the card view is tapped.
@@ -138,9 +139,9 @@ open class CardView: UIView {
     
     private func updateGrabbedCardViewOffset(gestureRecognizer: UIPanGestureRecognizer) {
         let offset = gestureRecognizer.translation(in: walletView).y
-        if presented && offset > 0 {
+        if isPresented && offset > 0 {
             walletView?.updateGrabbedCardView(offset: offset)
-        } else if !presented {
+        } else if !isPresented {
             walletView?.updateGrabbedCardView(offset: offset)
         }
     }
@@ -154,9 +155,9 @@ extension CardView: UIGestureRecognizerDelegate {
     ///  - parameter gestureRecognizer: An instance of a subclass of the abstract base class UIGestureRecognizer. This gesture-recognizer object is about to begin processing touches to determine if its gesture is occurring.
     open override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         
-        if gestureRecognizer == forceTouchGestureRecognizer && presented {
+        if gestureRecognizer == forceTouchGestureRecognizer && isPresented {
             return false
-        } else if gestureRecognizer == panGestureRecognizer && !presented && walletView?.grabbedCardView != self {
+        } else if gestureRecognizer == panGestureRecognizer && !isPresented && walletView?.grabbedCardView != self {
             return false
         }
         return true

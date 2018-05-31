@@ -32,13 +32,13 @@ class API: NSObject {
     
     func initialize() {
         
-        [Transaction.self, Business.self, DigitalCard.self].forEach { $0.registerSubclass() }
+        [User.self, BusinessUser.self, Transaction.self, Business.self, DigitalCard.self].forEach { $0.registerSubclass() }
         Parse.setLogLevel(.debug)
         Parse.enableLocalDatastore()
         let config = ParseClientConfiguration {
-            $0.applicationId = "5++ejBLY/kzVaVibHAIIQZvbawrEywUCNqpD+FVpHgU="
-            $0.clientKey = "oR3Jp5YMyxSBu6r6nh9xuYQD5AcsdubQmvATY1OEtXo="
-            $0.server = "https://nathantannar.me/api/dev/"
+            $0.applicationId = "5ejBLYkzVaVibHAIIQZvbawrEywUCNqpDFVpHgU"
+            $0.clientKey = "oR3Jp5YMyxSBu6r6nh9xuYQD5AcsdubQmvATY1OEtXo"
+            $0.server = "https://nathantannar.me/api/prod/"
         }
         Parse.initialize(with: config)
     }
@@ -113,6 +113,17 @@ class API: NSObject {
             block?(response as? [String:Any], error)
         }
         
+    }
+    
+    func fetchDigitalCard(for business: Business, completion: @escaping (DigitalCard?)->Void) {
+        
+        guard let user = User.current(), let query = DigitalCard.query() as? PFQuery<DigitalCard> else { fatalError() }
+        query.whereKey("user", equalTo: user)
+        query.whereKey("business", equalTo: business)
+        query.includeKeys(["business"])
+        query.getFirstObjectInBackground { (digitalCard, error) in
+            completion(digitalCard)
+        }
     }
     
 }

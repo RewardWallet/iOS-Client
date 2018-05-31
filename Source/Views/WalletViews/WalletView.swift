@@ -23,6 +23,10 @@ open class WalletView: UIView, UIScrollViewDelegate {
     
     // MARK: - Properties [Public]
     
+    
+    /// The UIViewController that holds the WalletView
+    open weak var viewController: UIViewController?
+    
     /// The desirable card view height value. Used when the wallet view has enough space.
     open var preferableCardViewHeight: CGFloat = .greatestFiniteMagnitude { didSet { calculateLayoutValues() } }
     
@@ -75,8 +79,8 @@ open class WalletView: UIView, UIScrollViewDelegate {
     ///  The card view that is presented by this wallet view.
     public var presentedCardView: CardView? {
         didSet {
-            oldValue?.presented = false
-            presentedCardView?.presented = true
+            oldValue?.isPresented = false
+            presentedCardView?.isPresented = true
             didUpdatePresentedCardViewBlock?(presentedCardView)
         }
     }
@@ -351,7 +355,7 @@ open class WalletView: UIView, UIScrollViewDelegate {
         }
         
         if let grabbedCardView = grabbedCardView,
-            grabbedCardView == presentedCardView && grabbedCardView.presented == true,
+            grabbedCardView == presentedCardView && grabbedCardView.isPresented == true,
             grabbedCardView.frame.origin.y > grabbedCardViewOriginalY + maximumCardViewHeight / 4 {
             
             let presentationCenter = convert(self.presentationCenter, from: scrollView)
@@ -360,7 +364,7 @@ open class WalletView: UIView, UIScrollViewDelegate {
             let animationDuration = min(dismissingAnimationSpeed * 1.5, TimeInterval(yPoints / velocityY))
             dismissPresentedCardView(animated: true, animationDuration: animationDuration)
         } else if let grabbedCardView = grabbedCardView,
-            presentedCardView == nil && grabbedCardView.presented == false,
+            presentedCardView == nil && grabbedCardView.isPresented == false,
             grabbedCardView.frame.origin.y < grabbedCardViewOriginalY - maximumCardViewHeight / 4 {
             present(cardView: grabbedCardView, animated: true)
         } else {

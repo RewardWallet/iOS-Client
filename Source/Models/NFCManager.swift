@@ -77,7 +77,10 @@ extension NFCManager: NFCNDEFReaderSessionDelegate {
             print("Failed to convert to URL string")
             return
         }
-        let url = URL(string: urlString)!
+        guard let url = URL(string: urlString) else {
+            print("Failed to convert to URL")
+            return
+        }
         executeCallback(with: url)
     }
 }

@@ -13,6 +13,8 @@ import DynamicTabBarController
 
 enum AppRoute {
     
+    case dispatch
+    
     // Auth
     case welcome, login, signup, onboarding, logout
     
@@ -20,7 +22,7 @@ enum AppRoute {
     case explore, business
     
     // Wallet
-    case wallet, redeem
+    case wallet, redeem, addToWallet
     
     // Notifications
     case notifications
@@ -29,26 +31,29 @@ enum AppRoute {
     case account, profile
     
     // RewardWallet
-    case about
+    case about, termsOfService
     
     var pattern: URLPattern {
         
         let urlScheme = "rewardWallet://rewardwallet.io/"
         
         switch self {
+        case .dispatch: return urlScheme
         case .welcome: return urlScheme + "welcome/"
+        case .onboarding: return urlScheme + "welcome/onboarding/"
         case .login: return urlScheme + "login/"
         case .signup: return urlScheme + "signup/"
-        case .onboarding: return urlScheme + "onboarding/"
         case .logout: return urlScheme + "logout/"
         case .explore: return urlScheme + "explore/"
         case .business : return urlScheme + "business/"
         case .wallet: return urlScheme + "wallet/"
-        case .redeem: return urlScheme + "redeem/"
+        case .addToWallet: return urlScheme + "wallet/add/"
+        case .redeem: return urlScheme + "wallet/redeem/"
         case .notifications: return urlScheme + "notifications/"
         case .account: return urlScheme + "account/"
         case .profile: return urlScheme + "profile/"
         case .about: return urlScheme + "about/"
+        case .termsOfService: return urlScheme + "about/terms-and-service"
         }
     }
     
@@ -67,15 +72,15 @@ class AppRouter: Navigator {
     
     // MARK: - Public API
     
-    func viewController(for route: AppRoute) -> UIViewController? {
-        return viewController(for: route.pattern)
+    func viewController(for route: AppRoute, context: Any? = nil) -> UIViewController? {
+        return viewController(for: route.pattern, context: context)
     }
     
     @discardableResult
-    func present(_ route: AppRoute, wrap: UINavigationController.Type?, from: UIViewControllerType?, animated: Bool, completion: (() -> Void)?) -> UIViewController? {
+    func present(_ route: AppRoute, context: Any? = nil, wrap: UINavigationController.Type?, from: UIViewControllerType?, animated: Bool, completion: (() -> Void)?) -> UIViewController? {
         
         if from == nil {
-            guard let viewController = viewController(for: route) else { return nil }
+            guard let viewController = viewController(for: route, context: context) else { return nil }
             // Switch the windows rootViewController when `from` is nil
             if let wrapClass = wrap {
                 let navigationController = wrapClass.init()
@@ -105,7 +110,7 @@ class AppRouter: Navigator {
                 return viewController
             }
         } else {
-            return present(route.pattern, context: nil, wrap: wrap, from: from, animated: animated, completion: completion)
+            return present(route.pattern, context: context, wrap: wrap, from: from, animated: animated, completion: completion)
         }
         
     }
@@ -142,6 +147,8 @@ class AppRouter: Navigator {
         return { (url, values, context) -> UIViewController? in
             // Code
             switch route {
+            case .dispatch:
+                return DispatchViewController()
             case .welcome:
                 return WelcomeViewController()
             case .login:
@@ -162,14 +169,23 @@ class AppRouter: Navigator {
                 tabBarController.displayViewController(at: index, animated: false)
                 return tabBarController
             case .profile:
-                return RWViewController()
+                guard let user = User.current() else { return self.viewController(for: .login) }
+                return EditProfileViewController(user: user)
+            case .business:
+                guard let business = context as? Business else { fatalError("Business nil in context") }
+                return BusinessViewController(for: business)
+            case .addToWallet:
+                guard let business = context as? Business else { fatalError("Business nil in context") }
+                return AddToWalletViewController(for: business)
+            case .redeem:
+                guard let digitalCard = context as? DigitalCard else { fatalError("DigitalCard nil in context") }
+                return RedeemViewController(for: digitalCard)
             case .about:
                 return RWViewController()
-            case .business:
-                return RWViewController()
-            case .redeem:
-                return RedeemViewController()
+            case .termsOfService:
+                return TermsOfServiceViewController()
             }
+            
         }
     }
     

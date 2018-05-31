@@ -26,22 +26,22 @@ import Foundation
 
 import UIKit
 
-@objc public protocol FloatRatingViewDelegate {
+@objc public protocol RatingViewDelegate {
     /// Returns the rating value when touch events end
-    @objc optional func floatRatingView(_ ratingView: FloatRatingView, didUpdate rating: Double)
+    @objc optional func floatRatingView(_ ratingView: RatingView, didUpdate rating: Double)
     
     /// Returns the rating value as the user pans
-    @objc optional func floatRatingView(_ ratingView: FloatRatingView, isUpdating rating: Double)
+    @objc optional func floatRatingView(_ ratingView: RatingView, isUpdating rating: Double)
 }
 
 /// A simple rating view that can set whole, half or floating point ratings.
 @IBDesignable
 @objcMembers
-open class FloatRatingView: UIView {
+open class RatingView: UIView {
     
     // MARK: Properties
     
-    open weak var delegate: FloatRatingViewDelegate?
+    open weak var delegate: RatingViewDelegate?
     
     /// Array of empty image views
     private var emptyImageViews: [UIImageView] = []
@@ -116,7 +116,7 @@ open class FloatRatingView: UIView {
     @IBInspectable open var editable: Bool = true
     
     // MARK: Type
-    @objc public enum FloatRatingViewType: Int {
+    @objc public enum RatingViewType: Int {
         /// Integer rating
         case wholeRatings
         /// Double rating in increments of 0.5
@@ -131,7 +131,7 @@ open class FloatRatingView: UIView {
     }
     
     /// Float rating view type
-    @IBInspectable open var type: FloatRatingViewType = .wholeRatings
+    @IBInspectable open var type: RatingViewType = .wholeRatings
     
     // MARK: Initializations
     

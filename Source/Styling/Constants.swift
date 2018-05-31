@@ -11,15 +11,17 @@ import UIKit
 extension UIColor {
     
     static var primaryColor: UIColor {
-        return UIColor(r: 39, g: 111, b: 251)
+        return UIColor(hex: "795548")
+//        return UIColor(r: 39, g: 111, b: 251)
     }
     
     static var secondaryColor: UIColor {
-        return UIColor(r: 159, g: 65, b: 251)
+        return UIColor(hex: "8D6E63")
+//        return UIColor(r: 159, g: 65, b: 251)
     }
     
     static var tertiaryColor: UIColor {
-        return .red
+        return .yellowColor
     }
     
     static var greenColor: UIColor {
@@ -66,6 +68,8 @@ extension UIColor {
 
 extension UIImage {
     
+    static var defaultRenderingMode: UIImageRenderingMode = .alwaysTemplate
+    
     static var logo: UIImage? {
         return UIImage(named: "Logo")
     }
@@ -78,32 +82,36 @@ extension UIImage {
         return UIImage(named: "Coin")
     }
     
+    static var iconCoins: UIImage? {
+        return UIImage(named: "Coins")?.withRenderingMode(defaultRenderingMode)
+    }
+    
     static var coin_wireframe: UIImage? {
         return UIImage(named: "Coin-Wireframe")?.withRenderingMode(.alwaysTemplate)
     }
     
     static var icon_shop: UIImage? {
-        return UIImage(named: "Shop")
+        return UIImage(named: "Shop")?.withRenderingMode(defaultRenderingMode)
     }
     
     static var icon_user: UIImage? {
-        return UIImage(named: "User")
+        return UIImage(named: "User")?.withRenderingMode(defaultRenderingMode)
     }
     
     static var icon_logOut: UIImage? {
-        return UIImage(named: "Logout")
+        return UIImage(named: "Logout")?.withRenderingMode(defaultRenderingMode)
     }
     
     static var icon_wallet: UIImage? {
-        return UIImage(named: "Bank Card Back Side")
+        return UIImage(named: "Bank Card Back Side")?.withRenderingMode(defaultRenderingMode)
     }
     
     static var icon_about: UIImage? {
-        return UIImage(named: "About")
+        return UIImage(named: "About")?.withRenderingMode(defaultRenderingMode)
     }
     
     static var icon_bell: UIImage? {
-        return UIImage(named: "Appointment Reminders")
+        return UIImage(named: "Appointment Reminders")?.withRenderingMode(defaultRenderingMode)
     }
     
     static var iconStar: UIImage? {
@@ -112,6 +120,62 @@ extension UIImage {
     
     static var iconStarFilled: UIImage? {
         return UIImage(named: "icon-star-filled")
+    }
+    
+    static var iconCollect: UIImage? {
+        return UIImage(named: "POS Terminal")?.withRenderingMode(defaultRenderingMode)
+    }
+    
+    static var iconTransaction: UIImage? {
+        return UIImage(named: "Check")?.withRenderingMode(defaultRenderingMode)
+    }
+    
+    static var iconBusinessDetails: UIImage? {
+        return UIImage(named: "Agreement")?.withRenderingMode(defaultRenderingMode)
+    }
+    
+    static var iconNFC: UIImage? {
+        return UIImage(named: "icon-nfc_sign")?.withRenderingMode(.alwaysTemplate)
+    }
+    
+    static var facebookLogo: UIImage? {
+        return UIImage(named: "facebook-letter")?.withRenderingMode(.alwaysTemplate)
+    }
+    
+    static var googleLogo: UIImage? {
+        return UIImage(named: "googleplus-letter")
+    }
+    
+    static var iconClose: UIImage? {
+        return UIImage(named: "icon_close")
+    }
+    
+    static var iconEmail: UIImage? {
+        return UIImage(named: "mail-icon")?.withRenderingMode(defaultRenderingMode)
+    }
+    
+    static var iconPerson: UIImage? {
+        return UIImage(named: "person-icon")?.withRenderingMode(defaultRenderingMode)
+    }
+    
+    static var iconPhone: UIImage? {
+        return UIImage(named: "phone-icon")?.withRenderingMode(defaultRenderingMode)
+    }
+    
+    static var iconLock: UIImage? {
+        return UIImage(named: "lock-icon")?.withRenderingMode(defaultRenderingMode)
+    }
+    
+    static var iconCheckLock: UIImage? {
+        return UIImage(named: "lock-check-icon")?.withRenderingMode(defaultRenderingMode)
+    }
+    
+    static var iconReview: UIImage? {
+        return UIImage(named: "Search Property")?.withRenderingMode(defaultRenderingMode)
+    }
+    
+    static var iconCoupons: UIImage? {
+        return UIImage(named: "Check")?.withRenderingMode(defaultRenderingMode)
     }
     
 }

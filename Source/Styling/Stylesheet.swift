@@ -200,6 +200,16 @@ enum Stylesheet {
     
     enum Buttons {
         
+        static let regular = Style<UIButton> {
+            $0.titleLabel?.font = buttonFont
+            $0.titleLabel?.numberOfLines = 0
+            $0.titleLabel?.textAlignment = .center
+            $0.imageView?.tintColor = .lightGray
+            $0.imageView?.contentMode = .scaleAspectFit
+            $0.setTitleColor(UIColor.darkGray, for: .normal)
+            $0.setTitleColor(UIColor.darkGray.withAlphaComponent(0.3), for: .highlighted)
+        }
+        
         static let primary = Style<UIButton> {
             $0.backgroundColor = .primaryColor
             let titleColor: UIColor = UIColor.primaryColor.isLight ? .black : .white
@@ -235,5 +245,128 @@ enum Stylesheet {
             $0.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
         }
         
+        static let close = Style<UIButton> {
+            $0.setImage(.iconClose, for: .normal)
+            $0.imageView?.apply(Stylesheet.ImageViews.fitted)
+        }
+        
+        static let facebook = Style<UIButton> {
+            let normalTitle = NSMutableAttributedString().normal("Connect with ", font: buttonFont.withSize(12), color: .white).bold("Facebook", size: 14, color: .white)
+            let highlightedTitle = NSMutableAttributedString().normal("Connect with ", font: buttonFont.withSize(12), color: UIColor.white.withAlphaComponent(0.3)).bold("Facebook", size: 14, color: UIColor.white.withAlphaComponent(0.3))
+            $0.setAttributedTitle(normalTitle, for: .normal)
+            $0.setAttributedTitle(highlightedTitle, for: .highlighted)
+            $0.contentHorizontalAlignment = .center
+            $0.setImage(.facebookLogo, for: .normal)
+            $0.imageView?.apply(Stylesheet.ImageViews.fitted)
+            $0.imageView?.tintColor = .white
+            $0.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+            $0.titleEdgeInsets.left = 12
+            $0.backgroundColor = .facebookBlue
+        }
+        
+        static let google = Style<UIButton> {
+            let normalTitle = NSMutableAttributedString().normal("Connect with ", font: buttonFont.withSize(12), color: .black).bold("Google", size: 14, color: .black)
+            let highlightedTitle = NSMutableAttributedString().normal("Connect with ", font: buttonFont.withSize(12), color: UIColor.black.withAlphaComponent(0.3)).bold("Google", size: 14, color: UIColor.black.withAlphaComponent(0.3))
+            $0.setAttributedTitle(normalTitle, for: .normal)
+            $0.setAttributedTitle(highlightedTitle, for: .highlighted)
+            $0.contentHorizontalAlignment = .center
+            $0.setImage(.googleLogo, for: .normal)
+            $0.imageView?.apply(Stylesheet.ImageViews.fitted)
+            $0.imageEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+            $0.titleEdgeInsets.left = 6
+            $0.backgroundColor = .googleOffWhite
+        }
+        
+        static let termsAndConditions = Style<UIButton> {
+            let title = "By proceeding you agree to the "
+            let normalTitle = NSMutableAttributedString().normal(title, font: Stylesheet.buttonFont.withSize(10), color: .black).bold("Terms of Use", size: 10, color: .primaryColor)
+            let highlightedTitle = NSMutableAttributedString().normal(title, font: Stylesheet.buttonFont.withSize(10), color: UIColor.black.withAlphaComponent(0.3)).bold("Terms of Use", size: 10, color: UIColor.primaryColor.withAlphaComponent(0.3))
+            $0.setAttributedTitle(normalTitle, for: .normal)
+            $0.setAttributedTitle(highlightedTitle, for: .highlighted)
+            $0.backgroundColor = .white
+        }
+        
     }
+    
+    enum RippleButtons {
+        
+        static let primary = Style<RippleButton> {
+            $0.apply(Stylesheet.Buttons.primary)
+        }
+        
+        static let secondary = Style<RippleButton> {
+            $0.apply(Stylesheet.Buttons.secondary)
+        }
+        
+        static let link = Style<RippleButton> {
+            $0.apply(Stylesheet.Buttons.link)
+        }
+        
+        static let roundedWhite = Style<RippleButton> {
+            $0.apply(Stylesheet.Buttons.roundedWhite)
+        }
+        
+    }
+    
+    enum TextViews {
+        
+        static let regular = Style<UITextView> {
+            $0.tintColor = .primaryColor
+            $0.font = Stylesheet.descriptionFont
+        }
+        
+        static let nonEditable = Style<UITextView> {
+            $0.apply(Stylesheet.TextViews.regular)
+            $0.isEditable = false
+        }
+    }
+    
+    enum TextFields {
+        
+        static let primary = Style<UIAnimatedTextField> {
+            $0.placeholderColor = .grayColor
+            $0.borderActiveColor = .primaryColor
+            $0.borderInactiveColor = .grayColor
+            $0.tintColor = .primaryColor
+            $0.isSecureTextEntry = false
+            $0.autocorrectionType = .default
+            $0.clearButtonMode = .whileEditing
+        }
+        
+        static let search = Style<UIAnimatedTextField> {
+            $0.apply(Stylesheet.TextFields.primary)
+            $0.tintColor = .primaryColor
+            $0.isSecureTextEntry = false
+            $0.autocorrectionType = .default
+            $0.clearButtonMode = .whileEditing
+            $0.placeholder = "Search"
+        }
+        
+        static let email = Style<UIAnimatedTextField> {
+            $0.apply(Stylesheet.TextFields.primary)
+            $0.placeholder = "Email"
+            $0.keyboardType = .emailAddress
+            $0.autocorrectionType = .no
+        }
+        
+        static let phone = Style<UIAnimatedPhoneNumberTextField> {
+            $0.placeholderColor = .grayColor
+            $0.borderActiveColor = .primaryColor
+            $0.borderInactiveColor = .grayColor
+            $0.placeholder = "Phone Number"
+            $0.keyboardType = .phonePad
+            $0.autocorrectionType = .no
+            $0.tintColor = .primaryColor
+            $0.clearButtonMode = .whileEditing
+        }
+        
+        static let password = Style<UIAnimatedTextField> {
+            $0.apply(Stylesheet.TextFields.primary)
+            $0.placeholder = "Password"
+            $0.isSecureTextEntry = true
+            $0.autocorrectionType = .no
+        }
+        
+    }
+    
 }

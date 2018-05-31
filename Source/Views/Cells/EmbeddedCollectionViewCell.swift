@@ -1,6 +1,6 @@
 //
 //  FeaturedSectionController.swift
-//  Flashh
+//  RewardWallet
 //
 //  Created by Nathan Tannar on 3/7/18.
 //  Copyright © 2018 Nathan Tannar. All rights reserved.
