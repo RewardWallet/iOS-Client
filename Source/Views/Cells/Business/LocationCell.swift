@@ -8,10 +8,11 @@
 
 import UIKit
 import MapKit
+import Parse
 import IGListKit
 import CoreLocation
 
-class LocationCell: RWCollectionViewCell {
+final class LocationCell: RWCollectionViewCell {
     
     // MARK: - Properties
     
@@ -55,19 +56,20 @@ class LocationCell: RWCollectionViewCell {
         })
     }
     
+    func plotGeoPoint(_ geoPoint: PFGeoPoint) {
+        
+        let annotation = MKPointAnnotation()
+        let coordinate = CLLocationCoordinate2D(latitude: geoPoint.latitude, longitude: geoPoint.longitude)
+        annotation.coordinate = coordinate
+        mapView.addAnnotation(annotation)
+        centerMapTo(coordinate: coordinate)
+    }
+    
     func centerMapTo(coordinate: CLLocationCoordinate2D) {
         
         let span = MKCoordinateSpanMake(0.04, 0.04)
         let region = MKCoordinateRegion(center: coordinate, span: span)
         mapView.setRegion(region, animated: false)
-    }
-}
-
-extension LocationCell: ListBindable {
-    
-    func bindViewModel(_ viewModel: Any) {
-        guard let location = viewModel as? String else { return }
-        plotOnMap(address: location)
     }
 }
 
@@ -86,7 +88,7 @@ extension LocationCell: MKMapViewDelegate {
             }
             else {
                 let av = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                av.tintColor = .tertiaryColor
+                av.markerTintColor = .secondaryColor
                 av.canShowCallout = true
                 return av
             }
@@ -99,7 +101,7 @@ extension LocationCell: MKMapViewDelegate {
             }
             else {
                 let av = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                av.tintColor = .tertiaryColor
+                av.pinTintColor = .secondaryColor
                 av.canShowCallout = true
                 return av
             }

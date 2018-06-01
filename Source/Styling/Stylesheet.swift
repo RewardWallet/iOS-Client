@@ -204,43 +204,46 @@ enum Stylesheet {
             $0.titleLabel?.font = buttonFont
             $0.titleLabel?.numberOfLines = 0
             $0.titleLabel?.textAlignment = .center
-            $0.imageView?.tintColor = .lightGray
+            $0.imageView?.tintColor = .gray
             $0.imageView?.contentMode = .scaleAspectFit
             $0.setTitleColor(UIColor.darkGray, for: .normal)
             $0.setTitleColor(UIColor.darkGray.withAlphaComponent(0.3), for: .highlighted)
         }
         
         static let primary = Style<UIButton> {
+            $0.apply(Stylesheet.Buttons.regular)
             $0.backgroundColor = .primaryColor
             let titleColor: UIColor = UIColor.primaryColor.isLight ? .black : .white
-            $0.titleLabel?.font = buttonFont
+            $0.imageView?.tintColor = titleColor
             $0.setTitleColor(titleColor, for: .normal)
             $0.setTitleColor(titleColor.withAlphaComponent(0.3), for: .highlighted)
             $0.titleLabel?.font = .boldSystemFont(ofSize: 14)
         }
         
         static let secondary = Style<UIButton> {
+            $0.apply(Stylesheet.Buttons.regular)
             $0.backgroundColor = .secondaryColor
             let titleColor: UIColor = UIColor.secondaryColor.isLight ? .black : .white
-            $0.titleLabel?.font = buttonFont
+            $0.imageView?.tintColor = titleColor
             $0.setTitleColor(titleColor, for: .normal)
             $0.setTitleColor(titleColor.withAlphaComponent(0.3), for: .highlighted)
             $0.titleLabel?.font = .boldSystemFont(ofSize: 14)
         }
         
         static let link = Style<UIButton> {
+            $0.apply(Stylesheet.Buttons.regular)
             $0.contentHorizontalAlignment = .left
             let titleColor: UIColor = UIColor.primaryColor
-            $0.titleLabel?.font = buttonFont
+            $0.imageView?.tintColor = titleColor
             $0.setTitleColor(titleColor, for: .normal)
             $0.setTitleColor(titleColor.withAlphaComponent(0.3), for: .highlighted)
             $0.titleLabel?.font = .boldSystemFont(ofSize: 14)
         }
         
         static let roundedWhite = Style<UIButton> {
+            $0.apply(Stylesheet.Buttons.regular)
             $0.layer.cornerRadius = 22
             $0.backgroundColor = .white
-            $0.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
             $0.setTitleColor(.black, for: .normal)
             $0.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
         }

@@ -37,13 +37,11 @@ final class AccountHeaderViewCell: RWCollectionReusableView {
         $0.textColor = .white
     }
     
-    private let nameLabelBackground: GradientView = {
-        let view = GradientView()
-        view.colors = [.primaryColor, UIColor.primaryColor.darker(by: 3)]
-        view.locations = [0, 0.4]
-        return view
-    }()
-    
+    private let memberDateLabel = UILabel(style: Stylesheet.Labels.caption) {
+        $0.textAlignment = .center
+        $0.textColor = UIColor.white.darker(by: 3)
+    }
+
     override func setupView() {
         
         backgroundColor = .primaryColor
@@ -51,25 +49,27 @@ final class AccountHeaderViewCell: RWCollectionReusableView {
         
         addSubview(backgroundImageView)
         addSubview(backgroundImageViewOverlay)
-        addSubview(nameLabelBackground)
         addSubview(profileImageView)
-        nameLabelBackground.addSubview(nameLabel)
+        addSubview(nameLabel)
+        addSubview(memberDateLabel)
         
-        backgroundImageView.anchor(topAnchor, left: leftAnchor, bottom: profileImageView.centerYAnchor, right: rightAnchor)
-        backgroundImageViewOverlay.anchor(topAnchor, left: leftAnchor, bottom: profileImageView.centerYAnchor, right: rightAnchor)
+        backgroundImageView.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
+        backgroundImageViewOverlay.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
         
         profileImageView.anchorCenterXToSuperview()
         profileImageView.anchor(bottom: bottomAnchor, bottomConstant: 50, widthConstant: 100, heightConstant: 100)
         
-        nameLabelBackground.anchor(profileImageView.centerYAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
-        nameLabel.anchor(profileImageView.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 3, bottomConstant: 3)
+        nameLabel.anchor(profileImageView.bottomAnchor, left: leftAnchor, bottom: memberDateLabel.topAnchor, right: rightAnchor, topConstant: 6, leftConstant: 12, bottomConstant: 2, rightConstant: 12, widthConstant: 0, heightConstant: 0)
+        memberDateLabel.anchorBelow(nameLabel, bottom: bottomAnchor, topConstant: 2, bottomConstant: 8)
+        nameLabel.anchorHeightToItem(memberDateLabel)
     }
     
     // MARK: - Stretchy Scale API
     
     func stretchImageView(to scale: CGFloat, offsetBy offset: CGFloat) {
-        backgroundImageView.transform = CGAffineTransform(scaleX: scale, y: scale).concatenating(CGAffineTransform(translationX: 0, y: offset/2))
-        backgroundImageViewOverlay.transform = CGAffineTransform(scaleX: scale, y: scale).concatenating(CGAffineTransform(translationX: 0, y: offset/2))
+        let translation = offset/2
+        backgroundImageView.transform = CGAffineTransform(translationX: 0, y: translation).scaledBy(x: scale, y: scale)
+        backgroundImageViewOverlay.transform = CGAffineTransform(translationX: 0, y: translation).scaledBy(x: scale, y: scale)
         let alpha = sqrt(1 - abs(offset / bounds.height / 3))
         backgroundImageViewOverlay.alpha = alpha < 1 ? alpha : 1
     }
@@ -81,8 +81,10 @@ extension AccountHeaderViewCell: ListBindable {
     func bindViewModel(_ viewModel: Any) {
         guard let user = viewModel as? User else { return }
         nameLabel.text = user.fullname ?? user.username
+        memberDateLabel.text = "Member Since " + (user.createdAt?.string(dateStyle: .medium, timeStyle: .none) ?? "Today")
         profileImageView.kf.indicatorType = .activity
         profileImageView.kf.setImage(with: user.picture)
+        backgroundImageView.kf.setImage(with: user.picture)
     }
     
 }

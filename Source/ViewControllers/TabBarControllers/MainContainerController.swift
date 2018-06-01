@@ -20,8 +20,7 @@ class MainContainerController: DynamicTabBarController {
         
         title = "RewardWallet"
         view.backgroundColor = .backgroundColor
-        tabBar.backgroundColor = .primaryColor
-        tabBar.activeTintColor = .white
+        tabBar.activeTintColor = .secondaryColor
         
         tabBar.layer.shadowRadius = 3
         tabBar.layer.shadowColor = UIColor.gray.cgColor

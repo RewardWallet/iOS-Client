@@ -64,7 +64,7 @@ final class AddToWalletViewController: RWViewController {
         digitalCardViewBottomConstraint = digitalCardView.anchor(nil, left: view.leftAnchor, bottom: view.centerYAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 16, bottomConstant: 32, rightConstant: 16, widthConstant: 0, heightConstant: 220)[1]
         digitalCardView.anchorCenterXToSuperview()
         addButton.anchor(nil, left: view.layoutMarginsGuide.leftAnchor, bottom: view.layoutMarginsGuide.bottomAnchor, right: view.layoutMarginsGuide.rightAnchor, topConstant: 0, leftConstant: 64, bottomConstant: 64, rightConstant: 64, widthConstant: 0, heightConstant: 44)
-        cancelButton.anchorBelow(addButton, bottom: nil, topConstant: 8, leftConstant: 0, bottomConstant: 0, rightConstant: 0, heightConstant: 20)
+        cancelButton.anchorBelow(addButton, bottom: nil, topConstant: 12, leftConstant: 0, bottomConstant: 0, rightConstant: 0, heightConstant: 30)
     }
     
     // MARK: - User Action

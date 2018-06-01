@@ -120,7 +120,7 @@ extension ExploreSectionController: ListSupplementaryViewSource {
     
     func viewForSupplementaryElement(ofKind elementKind: String, at index: Int) -> UICollectionReusableView {
         
-        guard let view = collectionContext?.dequeueReusableSupplementaryView(ofKind: elementKind, for: self, class: ExploreHeaderViewCell.self, at: index) as? ExploreHeaderViewCell else {
+        guard let view = collectionContext?.dequeueReusableSupplementaryView(ofKind: elementKind, for: self, class: HeaderViewCell.self, at: index) as? HeaderViewCell else {
             fatalError()
         }
         view.title = source?.title

@@ -28,19 +28,27 @@ class DigitalCardView: CardView {
     
     private let gradientView = GradientView()
     
-    private let scanButton = RippleButton(style: Stylesheet.RippleButtons.roundedWhite) {
+    private let scanButton = UIButton(style: Stylesheet.Buttons.roundedWhite) {
         $0.setTitle("Scan", for: .normal)
-        $0.setImage(UIImage.iconCollect, for: .normal)
-        $0.trackTouchLocation = true
+//        $0.setImage(UIImage.iconCollect, for: .normal)
+        $0.backgroundColor = .clear
+        $0.layer.borderColor = UIColor.white.cgColor
+        $0.layer.borderWidth = 2
         $0.alpha = 0
+        $0.setTitleColor(UIColor.white, for: .normal)
+        $0.setTitleColor(UIColor.white.withAlphaComponent(0.3), for: .highlighted)
         $0.addTarget(self, action: #selector(DigitalCardView.viewCardDetails), for: .touchUpInside)
     }
     
-    private let detailButton = RippleButton(style: Stylesheet.RippleButtons.roundedWhite) {
+    private let detailButton = UIButton(style: Stylesheet.Buttons.roundedWhite) {
         $0.setTitle("Details", for: .normal)
-        $0.setImage(UIImage.iconBusinessDetails, for: .normal)
-        $0.trackTouchLocation = true
+//        $0.setImage(UIImage.iconBusinessDetails, for: .normal)
+        $0.backgroundColor = .clear
+        $0.layer.borderColor = UIColor.white.cgColor
+        $0.layer.borderWidth = 2
         $0.alpha = 0
+        $0.setTitleColor(UIColor.white, for: .normal)
+        $0.setTitleColor(UIColor.white.withAlphaComponent(0.3), for: .highlighted)
         $0.addTarget(self, action: #selector(DigitalCardView.viewBusinessDetails), for: .touchUpInside)
     }
     
@@ -70,7 +78,6 @@ class DigitalCardView: CardView {
         
         titleLabel.textColor = .white
         subtitleLabel.textColor = UIColor.white.darker()
-        gradientView.alpha = 0.75
         gradientView.colors = [.primaryColor, UIColor.primaryColor.darker()]
         gradientView.layer.cornerRadius = 10
         gradientView.clipsToBounds = true
@@ -91,8 +98,9 @@ class DigitalCardView: CardView {
         logoImageView.kf.setImage(with: digitalCard?.business?.image, placeholder: nil, options: [.fromMemoryCacheOrRefresh], progressBlock: nil) { [weak self] (image, _, _, _) in
             if let image = image {
                 let colors = image.getColors()
-                self?.backgroundColor = colors.background
-                self?.gradientView.colors = [colors.primary, colors.secondary]
+                let top = (colors.primary.isLight ? colors.background : colors.primary) ?? .primaryColor
+                let bottom = top.darker()
+                self?.gradientView.colors = [top, bottom]
             }
             UIView.animate(withDuration: 0.3, animations: {
                 self?.alpha = 1

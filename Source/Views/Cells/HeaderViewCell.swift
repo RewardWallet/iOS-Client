@@ -1,5 +1,5 @@
 //
-//  ExploreHeaderViewCell.swift
+//  HeaderViewCell.swift
 //  RewardWallet
 //
 //  Created by Nathan Tannar on 3/7/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ExploreHeaderViewCell: RWCollectionReusableView {
+final class HeaderViewCell: RWCollectionReusableView {
     
     // MARK: - Properties
     

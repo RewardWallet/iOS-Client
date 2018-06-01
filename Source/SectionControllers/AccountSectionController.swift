@@ -96,7 +96,7 @@ extension AccountSectionController: ListScrollDelegate {
     
     func listAdapter(_ listAdapter: ListAdapter, didScroll sectionController: ListSectionController) {
         guard let yOffset = listAdapter.collectionView?.contentOffset.y, yOffset <= 0 else { return }
-        let headerHeight = sizeForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: 0).height - 100 // 100 is the total image view bottom inset in the cell
+        let headerHeight = (sizeForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: 0).height - 24) * 0.75
         let scale: CGFloat = 1 - (yOffset/headerHeight)
         headerView?.stretchImageView(to: scale, offsetBy: yOffset)
     }

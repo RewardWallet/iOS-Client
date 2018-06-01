@@ -32,7 +32,7 @@ class API: NSObject {
     
     func initialize() {
         
-        [User.self, BusinessUser.self, Transaction.self, Business.self, DigitalCard.self].forEach { $0.registerSubclass() }
+        [User.self, Transaction.self, Business.self, DigitalCard.self].forEach { $0.registerSubclass() }
         Parse.setLogLevel(.debug)
         Parse.enableLocalDatastore()
         let config = ParseClientConfiguration {

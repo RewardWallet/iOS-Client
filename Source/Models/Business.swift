@@ -17,6 +17,7 @@ final class Business: PFObject {
     @NSManaged var name: String?
     @NSManaged var image: PFFile?
     @NSManaged var address: String?
+    @NSManaged var location: PFGeoPoint?
     @NSManaged var categories: [String]?
     @NSManaged var email: String?
     @NSManaged var about: String?

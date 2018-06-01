@@ -22,6 +22,11 @@ class EmbeddedCollectionViewCell: RWCollectionViewCell {
         self.contentView.addSubview(view)
         return view
     }()
+    
+    override func setupView() {
+        super.setupView()
+        backgroundColor = .clear
+    }
 
     override func layoutSubviews() {
         super.layoutSubviews()

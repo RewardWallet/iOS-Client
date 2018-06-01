@@ -11,13 +11,14 @@ import UIKit
 extension UIColor {
     
     static var primaryColor: UIColor {
-        return UIColor(hex: "795548")
-//        return UIColor(r: 39, g: 111, b: 251)
+//        return .offWhite
+//        return UIColor(hex: "795548")
+        return UIColor(r: 39, g: 111, b: 251)
     }
     
     static var secondaryColor: UIColor {
-        return UIColor(hex: "8D6E63")
-//        return UIColor(r: 159, g: 65, b: 251)
+//        return UIColor(hex: "8D6E63")
+        return UIColor(r: 159, g: 65, b: 251)
     }
     
     static var tertiaryColor: UIColor {
@@ -68,7 +69,7 @@ extension UIColor {
 
 extension UIImage {
     
-    static var defaultRenderingMode: UIImageRenderingMode = .alwaysTemplate
+    static var defaultRenderingMode: UIImageRenderingMode = .alwaysOriginal
     
     static var logo: UIImage? {
         return UIImage(named: "Logo")

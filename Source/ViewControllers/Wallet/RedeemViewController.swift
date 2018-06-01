@@ -73,12 +73,13 @@ final class RedeemViewController: RWViewController {
         backgroundImageView.kf.setImage(with: digitalCard.business?.image, placeholder: nil, options: [.fromMemoryCacheOrRefresh], progressBlock: nil) { [weak self] (image, _, _, _) in
             if let image = image {
                 image.getColors { (colors) in
-                    self?.nfcScanButton.backgroundColor = colors.primary
+                    let color = (colors.primary.isLight ? colors.background : colors.primary) ?? .primaryColor
+                    self?.nfcScanButton.backgroundColor = color
                     UIView.animate(withDuration: 0.3, animations: {
                         self?.titleLabel.alpha = 1
                         self?.subtitleLabel.alpha = 1
                         self?.nfcScanButton.alpha = 1
-                        self?.backgroundImageViewOverlay.backgroundColor = colors.primary.withAlphaComponent(0.75)
+                        self?.backgroundImageViewOverlay.backgroundColor = color.withAlphaComponent(0.75)
                     })
                 }
             } else {

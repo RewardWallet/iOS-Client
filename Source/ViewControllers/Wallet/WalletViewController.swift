@@ -66,11 +66,14 @@ final class WalletViewController: RWViewController {
         view.addSubview(walletView)
         walletView.fillSuperview(inSafeArea: true)
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(fetchDigitalCards))
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        fetchDigitalCards()
+        if cards.isEmpty {
+            fetchDigitalCards()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -80,10 +83,10 @@ final class WalletViewController: RWViewController {
     
     // MARK: - Networks
     
+    @objc
     private func fetchDigitalCards() {
         
         API.shared.fetchDigitalCards { (cards) in
-            
             self.cards = cards
             let cardViews: [DigitalCardView] = cards.map {
                 let view = DigitalCardView()

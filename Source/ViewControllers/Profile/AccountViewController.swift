@@ -48,6 +48,7 @@ final class AccountViewController: ListViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        adapter.reloadData(completion: nil)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
