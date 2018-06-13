@@ -104,6 +104,7 @@ final class SignUpViewController: RWViewController {
         #if DEBUG
         emailField.text = "ntannar@sfu.ca"
         passwordField.text = "oR3Jp5YMyxS"
+        confirmPasswordField.text = "oR3Jp5YMyxS"
         #endif
         
         setupView()
@@ -190,7 +191,7 @@ final class SignUpViewController: RWViewController {
     
     @objc
     private func didTapTermsButton() {
-        AppRouter.shared.present(.termsOfService, wrap: RWNavigationController.self, from: self, animated: true, completion: nil)
+        AppRouter.shared.present(.termsOfService, wrap: PrimaryNavigationController.self, from: self, animated: true, completion: nil)
     }
     
     @objc
@@ -231,7 +232,7 @@ final class SignUpViewController: RWViewController {
                 user.fullname_lower = self?.nameField.text?.lowercased()
                 user.saveEventually()
             }
-            AppRouter.shared.present(.onboarding, wrap: nil, from: nil, animated: true, completion: nil)
+            AppRouter.shared.present(.explore, wrap: nil, from: nil, animated: true, completion: nil)
         }
     }
     
