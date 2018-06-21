@@ -32,7 +32,7 @@ class API: NSObject {
     
     func initialize() {
         
-        [User.self, Transaction.self, Business.self, DigitalCard.self].forEach { $0.registerSubclass() }
+        [User.self, Transaction.self, Business.self, DigitalCard.self, ActivityNotification.self, RewardModel.self].forEach { $0.registerSubclass() }
         Parse.setLogLevel(.debug)
         Parse.enableLocalDatastore()
         let config = ParseClientConfiguration {
@@ -67,8 +67,36 @@ class API: NSObject {
     func fetchRecommendedBusinesses(inBackground completion: @escaping ([Business])->Void) {
         
         guard let query = Business.query() as? PFQuery<Business> else { fatalError() }
+        query.includeKey("rewardModel")
         query.findObjectsInBackground { (objects, error) in
             guard let businesses = objects, error == nil else {
+                print(error ?? "Error")
+                return
+            }
+            completion(businesses)
+        }
+    }
+    
+    func fetchBusinesses(filtered filter: String, completion: @escaping ([Business])->Void) {
+        
+        var queries = [PFQuery<PFObject>]()
+        
+        guard let nameQuery = Business.query() else { fatalError() }
+        nameQuery.whereKey("name", contains: filter)
+        queries.append(nameQuery)
+        
+        guard let addressQuery = Business.query() else { fatalError() }
+        addressQuery.whereKey("address", contains: filter)
+        queries.append(addressQuery)
+        
+        guard let categoryQuery = Business.query() else { fatalError() }
+        categoryQuery.whereKey("categories", contains: filter)
+        queries.append(categoryQuery)
+        
+        let query = PFQuery.orQuery(withSubqueries: queries)
+        query.includeKey("rewardModel")
+        query.findObjectsInBackground { (objects, error) in
+            guard let businesses = objects as? [Business], error == nil else {
                 print(error ?? "Error")
                 return
             }
@@ -105,6 +133,20 @@ class API: NSObject {
         }
     }
     
+    func fetchNotifications(inBackground completion: @escaping ([ActivityNotification])->Void) {
+        
+        guard let user = User.current(), let query = ActivityNotification.query() as? PFQuery<ActivityNotification> else { fatalError() }
+        query.whereKey("user", equalTo: user)
+        query.addDescendingOrder("createdAt")
+        query.findObjectsInBackground { (objects, error) in
+            guard let notifications = objects, error == nil else {
+                print(error ?? "Error")
+                return
+            }
+            completion(notifications)
+        }
+    }
+    
     func closeTransaction(transactionId: String, inBackground block: (([String:Any]?, Error?)->Void)?) {
 
         guard let userId = User.current()?.objectId else { return }
@@ -124,6 +166,17 @@ class API: NSObject {
         query.getFirstObjectInBackground { (digitalCard, error) in
             completion(digitalCard)
         }
+    }
+    
+    func availableCouponsQuery(for business: Business, for user: User) -> PFQuery<Coupon> {
+        
+        let privateCouponQuery = user.availableCoupons.query()
+        let publicCouponQuery = Coupon.query() as! PFQuery<Coupon>
+        publicCouponQuery.whereKey("isPublic", equalTo: true)
+        
+        let query = PFQuery.orQuery(withSubqueries: [privateCouponQuery, publicCouponQuery] as! [PFQuery<PFObject>])
+        query.whereKey("expireDate", greaterThan: Date())
+        return query as! PFQuery<Coupon>
     }
     
 }

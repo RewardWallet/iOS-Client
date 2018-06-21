@@ -16,9 +16,9 @@ final class ExploreViewController: ListViewController {
     // MARK: - Properties
     
     fileprivate var timer: Timer? = nil
-    fileprivate var filterText: String?
     fileprivate let searchToken: NSNumber = 123
     fileprivate var searchFilter: String = ""
+    fileprivate var searchResults: [Business] = []
     fileprivate let spinnerToken: NSNumber = 456
     fileprivate var isSearching: Bool = false {
         didSet {
@@ -94,7 +94,10 @@ final class ExploreViewController: ListViewController {
     @objc
     func updateSearchResults() {
         timer?.invalidate()
-        // Make Search
+        API.shared.fetchBusinesses(filtered: searchFilter) { [weak self] in
+            self?.searchResults = $0
+            self?.adapter.performUpdates(animated: true, completion: nil)
+        }
     }
     
 }
@@ -103,25 +106,21 @@ final class ExploreViewController: ListViewController {
 extension ExploreViewController: ListAdapterDataSource {
     
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
+        if isSearching {
+            return searchResults
+        }
         return [FeaturedSection(for: .recommended), FeaturedSection(for: .recentlyAdded)]
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
+        if isSearching {
+            return SearchResultSectionController()
+        }
         return ExploreSectionController()
     }
     
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return nil
-    }
-    
-}
-
-// MARK: SearchSectionControllerDelegate
-extension ExploreViewController: SearchSectionControllerDelegate {
-    
-    func searchSectionController(_ sectionController: SearchSectionController, didChangeText text: String) {
-        searchFilter = text
-        adapter.performUpdates(animated: true, completion: nil)
     }
     
 }
@@ -161,13 +160,15 @@ extension ExploreViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         isSearching = false
         textField.text = nil
+        timer?.invalidate()
+        timer = nil
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         guard let newString = textField.text as NSString? else { return true }
         let newFilter = newString.replacingCharacters(in: range, with: string)
-        filterText = newFilter
+        searchFilter = newFilter
         timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateSearchResults), userInfo: nil, repeats: false)
         
         return true

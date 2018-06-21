@@ -71,6 +71,7 @@ extension BusinessViewCell: ListBindable {
         categoryLabel.text = business.email
         addressLabel.text = business.address
         captionLabel.text = business.about
+        rewardModelLabel.text = business.rewardModel?.modelTypeDescription()
         imageView.kf.indicatorType = .activity
         imageView.kf.setImage(with: business.image)
     }

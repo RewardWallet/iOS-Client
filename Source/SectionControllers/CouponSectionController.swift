@@ -1,62 +1,59 @@
 //
-//  PhotoSectionController.swift
-//  Flashh
+//  CouponSectionController.swift
+//  RewardWallet
 //
-//  Created by Nathan Tannar on 3/11/18.
+//  Created by Nathan Tannar on 2018-06-21.
 //  Copyright © 2018 Nathan Tannar. All rights reserved.
 //
 
 import UIKit
 import IGListKit
-import Parse
 
-final class PhotoSectionController: ListSectionController {
+final class CouponSectionController: ListSectionController {
     
-    // MARK: - Properties
-    
-    private var file: PFFile?
-
-    // MARK: - Initialization
+    private var coupon: Coupon?
     
     override init() {
         super.init()
-        inset = UIEdgeInsets(top: 4, left: 12, bottom: 4, right: 12)
+        inset = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
     }
     
     override func didUpdate(to object: Any) {
-        file = object as? PFFile
+        coupon = object as? Coupon
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
-        let size = CGSize(width: collectionContext!.containerSize.width - 50, height: collectionContext!.containerSize.height)
+        let size = CGSize(width: collectionContext!.containerSize.width - 100, height: collectionContext!.containerSize.height)
         return CGSize(width: size.width - inset.right - inset.left,
                       height: size.height - inset.top - inset.bottom)
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
-        guard let cell = collectionContext?.dequeueReusableCell(of: PhotoCell.self, for: self, at: index) as? PhotoCell else {
+        guard let cell = collectionContext?.dequeueReusableCell(of: BusinessViewCell.self, for: self, at: index) as? BusinessViewCell else {
             fatalError()
         }
-        cell.bindViewModel(file as Any)
+        cell.bindViewModel(coupon as Any)
         return cell
     }
     
     override func didSelectItem(at index: Int) {
         
+//        AppRouter.shared.push(.business, context: business, from: viewController?.navigationController, animated: true)
     }
     
     override func didHighlightItem(at index: Int) {
         guard let cell = collectionContext?.cellForItem(at: index, sectionController: self) else { return }
         UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 5, options: [.allowUserInteraction, .curveEaseOut], animations: {
-            cell.contentView.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            cell.contentView.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
         }, completion: nil)
     }
     
     override func didUnhighlightItem(at index: Int) {
         guard let cell = collectionContext?.cellForItem(at: index, sectionController: self) else { return }
-        UIView.animate(withDuration: 0.15) {
+        UIView.animate(withDuration: 0.3) {
             cell.contentView.transform = .identity
         }
     }
     
 }
+

@@ -51,6 +51,8 @@ final class RedeemViewController: RWViewController {
         $0.alpha = 0
     }
     
+    private var timer: Timer?
+    
     // MARK: - Initialization
     
     init(for digitalCard: DigitalCard) {
@@ -68,7 +70,7 @@ final class RedeemViewController: RWViewController {
         super.viewDidLoad()
         
         titleLabel.text = digitalCard.business?.name
-        subtitleLabel.text = "\(digitalCard.points?.intValue ?? 0) Points"
+        subtitleLabel.text = (digitalCard.points?.doubleValue.roundTwoDecimal() ?? "0") + " Points"
         backgroundImageView.kf.indicatorType = .activity
         backgroundImageView.kf.setImage(with: digitalCard.business?.image, placeholder: nil, options: [.fromMemoryCacheOrRefresh], progressBlock: nil) { [weak self] (image, _, _, _) in
             if let image = image {
@@ -94,7 +96,9 @@ final class RedeemViewController: RWViewController {
         }
         let inset: CGFloat = 10
         qrCodeView.insets = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
-        qrCodeView.value = (digitalCard.objectId ?? "") + "-" + (digitalCard.user?.objectId ?? "")
+        if let businessId = digitalCard.business?.objectId, let userId = digitalCard.user?.objectId {
+            qrCodeView.value = businessId + "-" + userId
+        }
         
         view.backgroundColor = .offWhite
         view.addSubview(backgroundImageView)
@@ -117,6 +121,16 @@ final class RedeemViewController: RWViewController {
         nfcScanButton.anchorCenterXToSuperview()
         nfcScanButton.anchor(qrCodeView.bottomAnchor, topConstant: 32, widthConstant: 200, heightConstant: 44)
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        startTimer()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        endTimer()
     }
     
     // MARK: - User Actions
@@ -142,8 +156,38 @@ final class RedeemViewController: RWViewController {
 
     }
     
+    // MARK: - Timer
+    
+    private func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(handleTimer), userInfo: nil, repeats: true)
+    }
+    
+    private func endTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    /// If they use the QR code still show some confetti
+    @objc
+    private func handleTimer() {
+        
+        let currentPoints = digitalCard.points?.doubleValue ?? 0
+        digitalCard.fetchInBackground { [weak self] (object, error) in
+            guard let updatedCard = object as? DigitalCard else { return }
+            let newPoints = updatedCard.points?.doubleValue ?? 0
+            if newPoints > currentPoints {
+                self?.digitalCard.points = NSNumber(value: newPoints)
+                self?.animateSuccess()
+            }
+        }
+    }
+    
+    // MARK: - Confetti
+    
     private func animateSuccess() {
         API.shared.showSuccessHUD(for: 3)
+        subtitleLabel.text = (digitalCard.points?.doubleValue.roundTwoDecimal() ?? "0") + " Points"
+        
         let emitter = CAEmitterLayer()
         emitter.emitterPosition = CGPoint(x: view.frame.size.width / 2.0, y: 0)
         emitter.emitterShape = kCAEmitterLayerLine
@@ -170,7 +214,7 @@ final class RedeemViewController: RWViewController {
             
             return cell
         })
-        navigationController?.view.layer.addSublayer(emitter)
+        view.layer.addSublayer(emitter)
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             emitter.removeFromSuperlayer()
         }

@@ -30,4 +30,8 @@ extension Double {
         return String(format: "$%.02f", self)
     }
     
+    func roundTwoDecimal() -> String {
+        return String(format: "%.02f", self)
+    }
+    
 }

@@ -22,19 +22,19 @@ final class Business: PFObject {
     @NSManaged var email: String?
     @NSManaged var about: String?
     @NSManaged var rating: NSNumber?
-    @NSManaged var distributionModel: NSNumber?
+    @NSManaged var rewardModel: RewardModel?
     
-    private var cachedPrimaryColor: UIColor?
-    var primaryColor: UIColor {
-        if let cachedColor = cachedPrimaryColor {
-            return cachedColor
-        }
-        guard let key = image?.cacheKey else { return .primaryColor }
-        guard let image = KingfisherManager.shared.cache.retrieveImageInMemoryCache(forKey: key) else { return .primaryColor }
-        let colors = image.getColors()
-        cachedPrimaryColor = colors.background.isLight ? colors.primary : colors.background
-        return cachedPrimaryColor!
-    }
+//    private var cachedPrimaryColor: UIColor?
+//    var primaryColor: UIColor {
+//        if let cachedColor = cachedPrimaryColor {
+//            return cachedColor
+//        }
+//        guard let key = image?.cacheKey else { return .primaryColor }
+//        guard let image = KingfisherManager.shared.cache.retrieveImageInMemoryCache(forKey: key) else { return .primaryColor }
+//        let colors = image.getColors()
+//        cachedPrimaryColor = colors.background.isLight ? colors.primary : colors.background
+//        return cachedPrimaryColor!
+//    }
 
 }
 

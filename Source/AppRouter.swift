@@ -162,7 +162,8 @@ class AppRouter: Navigator {
                 return RWViewController() // TODO Add Onboarding
             case .explore, .wallet, .notifications, .account:
                 let index = [.explore, .wallet, .notifications, .account].index(of: route)!
-                let viewControllers = [ExploreViewController(), WalletViewController(), NotificationsViewController(), AccountViewController()].map {
+                let historyTBVC = HistoryTabBarController(viewControllers: [TransactionsViewController(), NotificationsViewController()])
+                let viewControllers = [ExploreViewController(), WalletViewController(), historyTBVC, AccountViewController()].map {
                         return PrimaryNavigationController(rootViewController: $0)
                 }
                 let tabBarController = MainContainerController(viewControllers: viewControllers)

@@ -1,19 +1,37 @@
 //
-//  ExploreSectionController.swift
+//  CouponSectionController.swift
 //  RewardWallet
 //
-//  Created by Nathan Tannar on 3/7/18.
+//  Created by Nathan Tannar on 2018-06-21.
 //  Copyright © 2018 Nathan Tannar. All rights reserved.
 //
 
 import UIKit
 import IGListKit
+import Parse
 
-final class ExploreSectionController: ListSectionController {
+class CouponSectionModel: ListDiffable {
+    let title: String
+    let query: PFQuery<Coupon>
+    var fetchedCoupons: [Coupon]?
+    init(title: String, query: PFQuery<Coupon>) {
+        self.title = title
+        self.query = query
+    }
+    func diffIdentifier() -> NSObjectProtocol {
+        return title as NSObjectProtocol
+    }
+    func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
+        guard let model = object as? CouponSectionModel else { return false }
+        return model.title == title
+    }
+}
+
+final class CouponListSectionController: ListSectionController {
     
     // MARK: - Properties
     
-    private var source: FeaturedSection?
+    private var model: CouponSectionModel?
     
     private lazy var adapter: ListAdapter = {
         let adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self.viewController)
@@ -34,7 +52,7 @@ final class ExploreSectionController: ListSectionController {
     
     override init() {
         super.init()
-        self.inset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        self.inset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
         self.supplementaryViewSource = self
     }
     
@@ -42,13 +60,13 @@ final class ExploreSectionController: ListSectionController {
     
     override func didUpdate(to object: Any) {
         
-        source = object as? FeaturedSection
+        model = object as? CouponSectionModel
         
         isLoading = true
-        API.shared.fetchRecommendedBusinesses { [weak self] in
-            self?.source?.fetchedBusinesses = $0
+        model?.query.findObjectsInBackground(block: { [weak self] (coupons, error) in
+            self?.model?.fetchedCoupons = coupons
             self?.isLoading = false
-        }
+        })
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
@@ -72,13 +90,13 @@ final class ExploreSectionController: ListSectionController {
 }
 
 // MARK: - ListAdapterDataSource
-extension ExploreSectionController: ListAdapterDataSource {
+extension CouponListSectionController: ListAdapterDataSource {
     
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         if isLoading {
             return loadingTokens
         }
-        return source?.fetchedBusinesses ?? loadingTokens
+        return model?.fetchedCoupons ?? []
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
@@ -112,7 +130,7 @@ extension ExploreSectionController: ListAdapterDataSource {
 }
 
 // MARK: - ListSupplementaryViewSource
-extension ExploreSectionController: ListSupplementaryViewSource {
+extension CouponListSectionController: ListSupplementaryViewSource {
     
     func supportedElementKinds() -> [String] {
         return [UICollectionElementKindSectionHeader]
@@ -123,7 +141,7 @@ extension ExploreSectionController: ListSupplementaryViewSource {
         guard let view = collectionContext?.dequeueReusableSupplementaryView(ofKind: elementKind, for: self, class: HeaderViewCell.self, at: index) as? HeaderViewCell else {
             fatalError()
         }
-        view.title = source?.title
+        view.title = model?.title
         return view
     }
     

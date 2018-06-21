@@ -12,7 +12,10 @@ import IGListKit
 
 final class Transaction: PFObject {
     
-    //    @NSManaged var someValue: String?
+    @NSManaged var text: String?
+    @NSManaged var isRedeeming: NSNumber?
+    @NSManaged var business: Business?
+    
     
 }
 

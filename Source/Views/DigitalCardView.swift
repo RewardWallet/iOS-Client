@@ -93,7 +93,7 @@ class DigitalCardView: CardView {
     
     private func updateViewForDigitalCard() {
         titleLabel.text = digitalCard?.business?.name
-        subtitleLabel.text = "\(Int(truncating: digitalCard?.points ?? 0)) Points"
+        subtitleLabel.text = (digitalCard?.points?.doubleValue.roundTwoDecimal() ?? "0") + " Points"
         logoImageView.kf.indicatorType = .activity
         logoImageView.kf.setImage(with: digitalCard?.business?.image, placeholder: nil, options: [.fromMemoryCacheOrRefresh], progressBlock: nil) { [weak self] (image, _, _, _) in
             if let image = image {

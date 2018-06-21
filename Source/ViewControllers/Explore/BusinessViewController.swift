@@ -20,16 +20,8 @@ final class BusinessViewController: ListViewController {
     }
     
     fileprivate let business: Business
-    
-    fileprivate lazy var businessPageNavigationToken = BusinessPageNavSectionModel(pages: Array(iterateEnum(BusinessPage.self)), business: business)
  
     fileprivate var isLoading: Bool = false {
-        didSet {
-            adapter.performUpdates(animated: false, completion: nil)
-        }
-    }
-    
-    fileprivate var currentPage: BusinessPage = .details {
         didSet {
             adapter.performUpdates(animated: false, completion: nil)
         }
@@ -68,7 +60,7 @@ final class BusinessViewController: ListViewController {
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
-        collectionView.backgroundColor = .offWhite
+        collectionView.backgroundColor = .white
         collectionView.contentInset.bottom = 100
         adapter.dataSource = self
         adapter.scrollViewDelegate = self
@@ -138,46 +130,24 @@ final class BusinessViewController: ListViewController {
 extension BusinessViewController: ListAdapterDataSource {
     
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        var objects: [ListDiffable] = [business, businessPageNavigationToken]
-        if currentPage == .details {
-            objects.append(BusinessDetailsViewModel(for: business))
-            if let location = business.location {
-                objects.append(location)
-            }
-            if let file = business.image {
-                objects.append(ImageCollectionViewModel(files: [file]))
-            }
-        }
-        return objects
+        return [business, BusinessDetailsViewModel(for: business), CouponSectionModel(title: "Coupons", query: API.shared.availableCouponsQuery(for: business, for: User.current()!))]
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         if object is Business {
             return BusinessSectionController()
-        } else if object is BusinessPageNavSectionModel {
-            let sectionController = BusinessPageNavSectionController()
-            sectionController.delegate = self
-            return sectionController
         } else if object is BusinessDetailsViewModel {
             return BusinessDetailsSectionController()
         } else if object is PFGeoPoint {
             return MapSectionController()
-        } else if object is ImageCollectionViewModel {
-            return PhotoCollectionSectionController()
+        } else if object is CouponSectionModel {
+            return CouponListSectionController()
         }
         fatalError()
     }
     
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return nil
-    }
-    
-}
-
-extension BusinessViewController: BusinessPageNavSectionControllerDelegate {
-    
-    func pageNavSectionController(_ sectionController: ListSectionController, didSelectPage page: BusinessPage) {
-        currentPage = page
     }
     
 }
@@ -194,7 +164,7 @@ extension BusinessViewController: UIScrollViewDelegate {
         let headerHeight = adapter.sizeForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: IndexPath(item: 0, section: 0)).height
         var alpha = yOffset / ((headerHeight/4) + 20)
         alpha = alpha < 0.994 ? alpha : 0.994 // Going to 1.0 makes it semi transparent due to isTranslucent = true
-        let color = business.primaryColor.withAlphaComponent(alpha)
+        let color =  UIColor.primaryColor.withAlphaComponent(alpha)
         navigationController?.navigationBar.setBackgroundImage(color.toImage ?? UIImage(), for: .default)
         let showTitles = yOffset >= (headerHeight/3)
         title = showTitles ? business.name : nil

@@ -76,7 +76,10 @@ class RWViewController: UIViewController {
     // MARK: - Error/Success HUD
     
     func handleError(_ error: String?) {
-        let error = error ?? "Unknown Error"
+        var error = error ?? "Unknown Error"
+        if error == "The data couldn’t be read because it isn’t in the correct format." {
+            error = "The server could not be reached"
+        }
         print(error)
         Ping(text: error, style: .danger).show(animated: true, duration: 3)
     }

@@ -80,7 +80,7 @@ final class BusinessPageNavSectionController: ListSectionController {
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         guard let cell = collectionContext?.dequeueReusableCell(of: EmbeddedCollectionViewCell.self, for: self, at: index) as? EmbeddedCollectionViewCell else { fatalError() }
-        cell.backgroundColor = model?.business?.primaryColor
+        cell.backgroundColor = UIColor.primaryColor
         cell.collectionView.alwaysBounceHorizontal = false
         cell.collectionView.contentInset.left = 16
         cell.collectionView.contentInset.right = 16

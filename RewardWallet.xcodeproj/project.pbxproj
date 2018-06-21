@@ -15,10 +15,7 @@
 		3819923A203D5D8C00D7B7D1 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38199239203D5D8C00D7B7D1 /* GradientView.swift */; };
 		3819923C203D63DF00D7B7D1 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3819923B203D63DF00D7B7D1 /* UILabel.swift */; };
 		382030D020C09B2000247FA5 /* BusinessDetailsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382030CF20C09B2000247FA5 /* BusinessDetailsSectionController.swift */; };
-		382030D220C09B4D00247FA5 /* PhotoCollectionSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382030D120C09B4D00247FA5 /* PhotoCollectionSectionController.swift */; };
 		382030D420C09B5E00247FA5 /* MapSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382030D320C09B5E00247FA5 /* MapSectionController.swift */; };
-		382030D620C09B7900247FA5 /* PhotoSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382030D520C09B7900247FA5 /* PhotoSectionController.swift */; };
-		382030D820C09C2500247FA5 /* ImageCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382030D720C09C2400247FA5 /* ImageCollectionViewModel.swift */; };
 		382030DA20C09C8600247FA5 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382030D920C09C8600247FA5 /* PhotoCell.swift */; };
 		382E1800205EFD0E0008B6E4 /* Enum+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382E17FF205EFD0E0008B6E4 /* Enum+Extensions.swift */; };
 		382E1802205F02E30008B6E4 /* AccountSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382E1801205F02E30008B6E4 /* AccountSectionController.swift */; };
@@ -79,6 +76,10 @@
 		38AD2B47206D924100B276A1 /* NFCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AD2B46206D924100B276A1 /* NFCManager.swift */; };
 		38C0C8412030AF7E0009B230 /* RWNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0C8402030AF7E0009B230 /* RWNavigationController.swift */; };
 		38C0C8432030AF8F0009B230 /* RWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0C8422030AF8F0009B230 /* RWViewController.swift */; };
+		38C2AE7420D2447A00F8079E /* HistoryTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C2AE7320D2447A00F8079E /* HistoryTabBarController.swift */; };
+		38C2AE7620D2455C00F8079E /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C2AE7520D2455C00F8079E /* TransactionsViewController.swift */; };
+		38C2AE7820D2458D00F8079E /* ActivityNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C2AE7720D2458D00F8079E /* ActivityNotification.swift */; };
+		38C2AE7A20D2E78C00F8079E /* RewardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C2AE7920D2E78C00F8079E /* RewardModel.swift */; };
 		38C6E3C0203D31D100DCD00D /* DigitalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6E3BF203D31D100DCD00D /* DigitalCardView.swift */; };
 		38C6E3C2203D320100DCD00D /* DigitalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6E3C1203D320100DCD00D /* DigitalCard.swift */; };
 		38C6E3C7203D3AFC00DCD00D /* UIView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6E3C4203D3AFB00DCD00D /* UIView+Style.swift */; };
@@ -147,6 +148,12 @@
 		38EF5C4220473D6500FD4EBF /* UIAnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF5C4020473D6500FD4EBF /* UIAnimatedTextField.swift */; };
 		38EF5C4320473D6500FD4EBF /* UILoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF5C4120473D6500FD4EBF /* UILoginViewController.swift */; };
 		38EF5C4820473DBA00FD4EBF /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF5C4720473DBA00FD4EBF /* WelcomeViewController.swift */; };
+		38F14CDF20DC1B4800E7CBEB /* CouponListSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F14CDE20DC1B4800E7CBEB /* CouponListSectionController.swift */; };
+		38F14CE120DC1CA700E7CBEB /* Coupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F14CE020DC1CA700E7CBEB /* Coupon.swift */; };
+		38F14CE320DC1DFB00E7CBEB /* CouponSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F14CE220DC1DFB00E7CBEB /* CouponSectionController.swift */; };
+		38F14CE520DC204200E7CBEB /* SearchResultSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F14CE420DC204100E7CBEB /* SearchResultSectionController.swift */; };
+		38F14CE720DC206100E7CBEB /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F14CE620DC206100E7CBEB /* SearchResultCell.swift */; };
+		38F14CE920DC2BE800E7CBEB /* NotificationSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F14CE820DC2BE800E7CBEB /* NotificationSectionController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,10 +175,7 @@
 		38199239203D5D8C00D7B7D1 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		3819923B203D63DF00D7B7D1 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		382030CF20C09B2000247FA5 /* BusinessDetailsSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessDetailsSectionController.swift; sourceTree = "<group>"; };
-		382030D120C09B4D00247FA5 /* PhotoCollectionSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionSectionController.swift; sourceTree = "<group>"; };
 		382030D320C09B5E00247FA5 /* MapSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSectionController.swift; sourceTree = "<group>"; };
-		382030D520C09B7900247FA5 /* PhotoSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSectionController.swift; sourceTree = "<group>"; };
-		382030D720C09C2400247FA5 /* ImageCollectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewModel.swift; sourceTree = "<group>"; };
 		382030D920C09C8600247FA5 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		382E17FF205EFD0E0008B6E4 /* Enum+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Enum+Extensions.swift"; sourceTree = "<group>"; };
 		382E1801205F02E30008B6E4 /* AccountSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSectionController.swift; sourceTree = "<group>"; };
@@ -238,6 +242,10 @@
 		38AD2B46206D924100B276A1 /* NFCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCManager.swift; sourceTree = "<group>"; };
 		38C0C8402030AF7E0009B230 /* RWNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWNavigationController.swift; sourceTree = "<group>"; };
 		38C0C8422030AF8F0009B230 /* RWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWViewController.swift; sourceTree = "<group>"; };
+		38C2AE7320D2447A00F8079E /* HistoryTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTabBarController.swift; sourceTree = "<group>"; };
+		38C2AE7520D2455C00F8079E /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
+		38C2AE7720D2458D00F8079E /* ActivityNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityNotification.swift; sourceTree = "<group>"; };
+		38C2AE7920D2E78C00F8079E /* RewardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardModel.swift; sourceTree = "<group>"; };
 		38C6E3BF203D31D100DCD00D /* DigitalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalCardView.swift; sourceTree = "<group>"; };
 		38C6E3C1203D320100DCD00D /* DigitalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalCard.swift; sourceTree = "<group>"; };
 		38C6E3C4203D3AFB00DCD00D /* UIView+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Style.swift"; sourceTree = "<group>"; };
@@ -308,6 +316,12 @@
 		38EF5C4020473D6500FD4EBF /* UIAnimatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAnimatedTextField.swift; sourceTree = "<group>"; };
 		38EF5C4120473D6500FD4EBF /* UILoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILoginViewController.swift; sourceTree = "<group>"; };
 		38EF5C4720473DBA00FD4EBF /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		38F14CDE20DC1B4800E7CBEB /* CouponListSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponListSectionController.swift; sourceTree = "<group>"; };
+		38F14CE020DC1CA700E7CBEB /* Coupon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coupon.swift; sourceTree = "<group>"; };
+		38F14CE220DC1DFB00E7CBEB /* CouponSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponSectionController.swift; sourceTree = "<group>"; };
+		38F14CE420DC204100E7CBEB /* SearchResultSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultSectionController.swift; sourceTree = "<group>"; };
+		38F14CE620DC206100E7CBEB /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		38F14CE820DC2BE800E7CBEB /* NotificationSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSectionController.swift; sourceTree = "<group>"; };
 		3E670663E5803CDC7EBD5AE2 /* Pods-RewardWalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RewardWalletTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RewardWalletTests/Pods-RewardWalletTests.debug.xcconfig"; sourceTree = "<group>"; };
 		46B4E69B4F4BCECF6079DD62 /* Pods-RewardWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RewardWallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RewardWallet/Pods-RewardWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		8A62C2EEC39E426F1F92380C /* Pods-RewardWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RewardWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-RewardWallet/Pods-RewardWallet.release.xcconfig"; sourceTree = "<group>"; };
@@ -435,7 +449,7 @@
 				38EF5C4620473DA200FD4EBF /* Auth */,
 				38CB76F920B8B4260084F546 /* Explore */,
 				38CB76F820B8B4200084F546 /* Wallet */,
-				38CB76FA20B8B42B0084F546 /* Notifications */,
+				38CB76FA20B8B42B0084F546 /* History */,
 				38CB76F720B8B4070084F546 /* Profile */,
 			);
 			path = ViewControllers;
@@ -463,10 +477,12 @@
 				387F324620492F92001EA599 /* Business.swift */,
 				387F324420492F7D001EA599 /* Transaction.swift */,
 				38CB775220BB58C90084F546 /* Review.swift */,
+				38C2AE7920D2E78C00F8079E /* RewardModel.swift */,
+				38F14CE020DC1CA700E7CBEB /* Coupon.swift */,
 				38C6E3C1203D320100DCD00D /* DigitalCard.swift */,
+				38C2AE7720D2458D00F8079E /* ActivityNotification.swift */,
 				38AD2B46206D924100B276A1 /* NFCManager.swift */,
 				384460D320BE7A6100C0B043 /* LocationManager.swift */,
-				382030D720C09C2400247FA5 /* ImageCollectionViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -536,6 +552,7 @@
 			isa = PBXGroup;
 			children = (
 				38ED9F3B203D4CAD008B410B /* MainContainerController.swift */,
+				38C2AE7320D2447A00F8079E /* HistoryTabBarController.swift */,
 			);
 			path = TabBarControllers;
 			sourceTree = "<group>";
@@ -553,18 +570,20 @@
 			isa = PBXGroup;
 			children = (
 				3862F99F204935BF00F3A70A /* SearchSectionController.swift */,
+				38F14CE420DC204100E7CBEB /* SearchResultSectionController.swift */,
 				3862F9A0204935BF00F3A70A /* SpinnerSectionController.swift */,
 				3862F9962049318100F3A70A /* LabelSectionController.swift */,
 				382E1810205F14B80008B6E4 /* BusinessSectionController.swift */,
 				3874107D20BF8FD50052E897 /* BusinessPageNavSectionController.swift */,
 				382030CF20C09B2000247FA5 /* BusinessDetailsSectionController.swift */,
-				382030D120C09B4D00247FA5 /* PhotoCollectionSectionController.swift */,
-				382030D520C09B7900247FA5 /* PhotoSectionController.swift */,
 				382030D320C09B5E00247FA5 /* MapSectionController.swift */,
 				382E1801205F02E30008B6E4 /* AccountSectionController.swift */,
 				384B024D206D99470068C879 /* ExploreBusinessSectionController.swift */,
 				384B024E206D99480068C879 /* ExploreSectionController.swift */,
 				38929B9B207BC8CA00C35468 /* TransactionSectionController.swift */,
+				38F14CDE20DC1B4800E7CBEB /* CouponListSectionController.swift */,
+				38F14CE220DC1DFB00E7CBEB /* CouponSectionController.swift */,
+				38F14CE820DC2BE800E7CBEB /* NotificationSectionController.swift */,
 			);
 			path = SectionControllers;
 			sourceTree = "<group>";
@@ -609,13 +628,14 @@
 			path = Explore;
 			sourceTree = "<group>";
 		};
-		38CB76FA20B8B42B0084F546 /* Notifications */ = {
+		38CB76FA20B8B42B0084F546 /* History */ = {
 			isa = PBXGroup;
 			children = (
 				38ED9F39203D4859008B410B /* NotificationsViewController.swift */,
+				38C2AE7520D2455C00F8079E /* TransactionsViewController.swift */,
 				38CB76FB20B8B43C0084F546 /* TransactionViewController.swift */,
 			);
-			path = Notifications;
+			path = History;
 			sourceTree = "<group>";
 		};
 		38CB770320B8B4AC0084F546 /* Alerts */ = {
@@ -710,6 +730,7 @@
 		38CB775C20BB61920084F546 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				38F14CE620DC206100E7CBEB /* SearchResultCell.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -981,6 +1002,7 @@
 				38C6E3DF203D3B9400DCD00D /* String+Extensions.swift in Sources */,
 				386179041FBD57310059FE89 /* Secrets.swift in Sources */,
 				382030D420C09B5E00247FA5 /* MapSectionController.swift in Sources */,
+				38F14CE720DC206100E7CBEB /* SearchResultCell.swift in Sources */,
 				38CB771620B8B55B0084F546 /* ProfileLabelCell.swift in Sources */,
 				382E180E205F05D60008B6E4 /* RWCollectionReusableView.swift in Sources */,
 				38CB775720BB61740084F546 /* ReviewCell.swift in Sources */,
@@ -991,10 +1013,11 @@
 				38CB770520B8B51D0084F546 /* EditProfileViewController.swift in Sources */,
 				38ED9F3C203D4CAD008B410B /* MainContainerController.swift in Sources */,
 				38C6E3DC203D3B9400DCD00D /* UIWindow+Extenions.swift in Sources */,
+				38C2AE7A20D2E78C00F8079E /* RewardModel.swift in Sources */,
 				38EF5C4820473DBA00FD4EBF /* WelcomeViewController.swift in Sources */,
+				38F14CE520DC204200E7CBEB /* SearchResultSectionController.swift in Sources */,
 				384460D020BE798100C0B043 /* SignUpViewController.swift in Sources */,
 				38ED9F3A203D4859008B410B /* NotificationsViewController.swift in Sources */,
-				382030D820C09C2500247FA5 /* ImageCollectionViewModel.swift in Sources */,
 				382E1805205F042A0008B6E4 /* AccountCell.swift in Sources */,
 				38AD2B47206D924100B276A1 /* NFCManager.swift in Sources */,
 				38CB776220BB68760084F546 /* AddToWalletViewController.swift in Sources */,
@@ -1005,19 +1028,23 @@
 				386ACB3420257DBF00B71C50 /* WalletView.swift in Sources */,
 				38CB773920B8B6240084F546 /* BusinessViewController.swift in Sources */,
 				3862F9972049318100F3A70A /* LabelSectionController.swift in Sources */,
+				38C2AE7620D2455C00F8079E /* TransactionsViewController.swift in Sources */,
 				38CB774620B8B8730084F546 /* ListViewController.swift in Sources */,
+				38F14CE120DC1CA700E7CBEB /* Coupon.swift in Sources */,
 				38CB76FF20B8B4890084F546 /* AlertViewController.swift in Sources */,
 				38C0C8412030AF7E0009B230 /* RWNavigationController.swift in Sources */,
 				38CB773120B8B5710084F546 /* FBQuadTree.swift in Sources */,
 				386ACB3820257DCC00B71C50 /* UIForcePressGestureRecognizer.swift in Sources */,
 				38CB772C20B8B5710084F546 /* FBAnnotationClusterTemplate.swift in Sources */,
 				384B0254206D99F50068C879 /* HeaderViewCell.swift in Sources */,
+				38F14CE320DC1DFB00E7CBEB /* CouponSectionController.swift in Sources */,
 				385CDF92202FBEF400623793 /* QRCodeView.swift in Sources */,
 				384B0256206D9A090068C879 /* ExploreSection.swift in Sources */,
 				384613C12048C4370087A38E /* NavigationControllers.swift in Sources */,
 				384460D620BE7CA300C0B043 /* UIAnimatedPhoneNumberTextField.swift in Sources */,
 				38EF5C4220473D6500FD4EBF /* UIAnimatedTextField.swift in Sources */,
 				382E181B205F17AF0008B6E4 /* RoundedView.swift in Sources */,
+				38F14CE920DC2BE800E7CBEB /* NotificationSectionController.swift in Sources */,
 				385CDF94202FBF1B00623793 /* QRCardView.swift in Sources */,
 				38CB772E20B8B5710084F546 /* FBAnnotationClusterView.swift in Sources */,
 				38CB775520BB5E730084F546 /* BubbleTransition.swift in Sources */,
@@ -1036,7 +1063,8 @@
 				386178BE1FBD527F0059FE89 /* AppDelegate.swift in Sources */,
 				38CB775320BB58C90084F546 /* Review.swift in Sources */,
 				38C6E3D9203D3B9400DCD00D /* UIButton+Extensions.swift in Sources */,
-				382030D620C09B7900247FA5 /* PhotoSectionController.swift in Sources */,
+				38C2AE7820D2458D00F8079E /* ActivityNotification.swift in Sources */,
+				38F14CDF20DC1B4800E7CBEB /* CouponListSectionController.swift in Sources */,
 				387F324520492F7D001EA599 /* Transaction.swift in Sources */,
 				38CB773220B8B5710084F546 /* FBBoundingBox+MapKit.swift in Sources */,
 				3862F9A6204935CF00F3A70A /* SpinnerCell.swift in Sources */,
@@ -1048,7 +1076,6 @@
 				38EF5C4320473D6500FD4EBF /* UILoginViewController.swift in Sources */,
 				38CB774020B8B7B40084F546 /* Checkbox.swift in Sources */,
 				3874107E20BF8FD50052E897 /* BusinessPageNavSectionController.swift in Sources */,
-				382030D220C09B4D00247FA5 /* PhotoCollectionSectionController.swift in Sources */,
 				3837352B2028C8E100E592F0 /* AppRouter.swift in Sources */,
 				38CB774820BB571C0084F546 /* ActionSheetCell.swift in Sources */,
 				3819923C203D63DF00D7B7D1 /* UILabel.swift in Sources */,
@@ -1070,6 +1097,7 @@
 				38CB773B20B8B6290084F546 /* MapViewController.swift in Sources */,
 				386ACB3620257DC300B71C50 /* CardView.swift in Sources */,
 				38CB775120BB58720084F546 /* ImagePickerController.swift in Sources */,
+				38C2AE7420D2447A00F8079E /* HistoryTabBarController.swift in Sources */,
 				381534D82048B9F0004572A5 /* SplashScreenView.swift in Sources */,
 				38CB774C20BB57820084F546 /* RatingView.swift in Sources */,
 				38C6E3C9203D3AFC00DCD00D /* Stylesheet.swift in Sources */,

@@ -18,10 +18,13 @@ final class TransactionSectionController: ListSectionController {
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
-        guard let cell = collectionContext?.dequeueReusableCell(of: LabelCell.self, for: self, at: index) as? LabelCell else {
+        guard let cell = collectionContext?.dequeueReusableCell(of: SearchResultCell.self, for: self, at: index) as? SearchResultCell else {
             fatalError()
         }
-        cell.label.text = transaction.debugDescription
+        cell.imageView.kf.indicatorType = .activity
+        cell.imageView.kf.setImage(with: transaction?.business?.image)
+        cell.titleLabel.text = transaction?.text
+        cell.subtitleLabel.text = transaction?.business?.name
         return cell
     }
     

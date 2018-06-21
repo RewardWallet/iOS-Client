@@ -51,8 +51,8 @@ final class BusinessDetailsSectionController: ListSectionController {
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         guard let cell = collectionContext?.dequeueReusableCell(of: LabelCell.self, for: self, at: index) as? LabelCell else { fatalError() }
-        cell.label.text = "Details"
-        cell.label.textAlignment = .center
+        cell.backgroundColor = .white
+        cell.label.text = business?.about ?? "No Description Provided"
         return cell
     }
     

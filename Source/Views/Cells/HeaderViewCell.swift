@@ -27,6 +27,7 @@ final class HeaderViewCell: RWCollectionReusableView {
     override func setupView() {
         
         backgroundColor = .white
+        apply(Stylesheet.Views.farShadowed)
         addSubview(headerLabel)
         headerLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 6, leftConstant: 12, bottomConstant: 6, rightConstant: 12)
     }
