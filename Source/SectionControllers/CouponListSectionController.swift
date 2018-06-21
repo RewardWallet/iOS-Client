@@ -64,6 +64,7 @@ final class CouponListSectionController: ListSectionController {
         
         isLoading = true
         model?.query.findObjectsInBackground(block: { [weak self] (coupons, error) in
+            print(coupons)
             self?.model?.fetchedCoupons = coupons
             self?.isLoading = false
         })

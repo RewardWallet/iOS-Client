@@ -28,14 +28,6 @@ final class BusinessHeaderView: RWCollectionReusableView {
     // MARK: - Subviews
     
     private let slideshowImageView = UIImageView()
-//        let view = ImageSlideshow()
-//        view.backgroundColor = .primaryColor
-//        view.slideshowInterval = 3
-//        view.contentScaleMode = .scaleAspectFill
-//        view.circular = true
-//        view.activityIndicator = DefaultActivityIndicator()
-//        return view
-//    }()
     
     private let contentView = UIView(style: Stylesheet.Views.roundedShadowed) {
         $0.backgroundColor = .white
@@ -95,6 +87,7 @@ final class BusinessHeaderView: RWCollectionReusableView {
         adapter.collectionView = collectionView
         adapter.dataSource = self
         
+        slideshowImageView.backgroundColor = .primaryColor
         slideshowImageView.anchor(topAnchor, left: leftAnchor, bottom: contentView.centerYAnchor, right: rightAnchor)
         
         contentViewConstraints = contentView.anchor(centerYAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 24, bottomConstant: 24, rightConstant: 24)
