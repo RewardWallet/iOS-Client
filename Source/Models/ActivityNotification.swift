@@ -21,6 +21,6 @@ final class ActivityNotification: PFObject {
 extension ActivityNotification: PFSubclassing {
     
     static func parseClassName() -> String {
-        return "ActivityNotification"
+        return "Notification"
     }
 }

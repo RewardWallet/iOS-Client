@@ -93,9 +93,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let data = userInfo["aps"] {
             let notificationMessage = (data as AnyObject).value(forKey: "alert") as? String
-            if  notificationMessage != nil {
-                print("Recieved Remote Notification: \(notificationMessage!)")
-                Ping(text: notificationMessage, style: .info).show()
+            if let message = notificationMessage {
+                print("Recieved Remote Notification: \(message)")
+                Ping(text: message, style: .info).show()
                 UIApplication.shared.applicationIconBadgeNumber += 1
             } else {
                 print("Notification was nil")
