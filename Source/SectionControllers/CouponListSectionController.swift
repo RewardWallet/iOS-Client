@@ -71,7 +71,7 @@ final class CouponListSectionController: ListSectionController {
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
-        let size = CGSize(width: collectionContext!.containerSize.width, height: 150)
+        let size = CGSize(width: collectionContext!.containerSize.width, height: 186)
         return CGSize(width: size.width - inset.right - inset.left,
                       height: size.height - inset.top - inset.bottom)
     }

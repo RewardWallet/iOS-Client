@@ -27,7 +27,7 @@ final class BusinessHeaderView: RWCollectionReusableView {
     
     // MARK: - Subviews
     
-    private let slideshowImageView = UIImageView()
+    private let slideshowImageView = UIImageView(style: Stylesheet.ImageViews.filled)
     
     private let contentView = UIView(style: Stylesheet.Views.roundedShadowed) {
         $0.backgroundColor = .white

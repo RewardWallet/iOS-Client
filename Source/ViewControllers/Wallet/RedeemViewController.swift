@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import IGListKit
 
 final class RedeemViewController: RWViewController {
     
     // MARK: - Properties
     
     private let digitalCard: DigitalCard
+    
+    lazy var adapter: ListAdapter = {
+        return ListAdapter(updater: ListAdapterUpdater(), viewController: self)
+    }()
+    
     
     // MARK: - Subviews
     
@@ -36,6 +42,14 @@ final class RedeemViewController: RWViewController {
         $0.textColor = UIColor.white.darker()
         $0.alpha = 0
     }
+    
+    private let collectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        view.backgroundColor = .white
+        view.showsVerticalScrollIndicator = false
+        view.isScrollEnabled = false
+        return view
+    }()
     
     private let qrCodeView = QRCodeView(style: Stylesheet.Views.farShadowed) {
         $0.layer.cornerRadius = 16
@@ -68,6 +82,9 @@ final class RedeemViewController: RWViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        adapter.collectionView = collectionView
+        adapter.dataSource = self
         
         titleLabel.text = digitalCard.business?.name
         subtitleLabel.text = (digitalCard.points?.doubleValue.roundTwoDecimal() ?? "0") + " Points"
@@ -104,18 +121,21 @@ final class RedeemViewController: RWViewController {
         view.addSubview(backgroundImageView)
         view.addSubview(titleLabel)
         view.addSubview(subtitleLabel)
+        view.addSubview(collectionView)
         view.addSubview(qrCodeView)
         view.addSubview(nfcScanButton)
         
         backgroundImageView.addSubview(backgroundImageViewOverlay)
         
-        backgroundImageView.anchor(view.topAnchor, left: view.leftAnchor, bottom: view.centerYAnchor, right: view.rightAnchor)
+        backgroundImageView.anchor(view.topAnchor, left: view.leftAnchor, bottom: collectionView.topAnchor, right: view.rightAnchor)
         backgroundImageViewOverlay.fillSuperview()
         
         titleLabel.anchor(nil, left: view.leftAnchor, bottom: backgroundImageView.centerYAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 32, bottomConstant: 0, rightConstant: 32, widthConstant: 0, heightConstant: 32)
         subtitleLabel.anchor(backgroundImageView.centerYAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 32, bottomConstant: 0, rightConstant: 32, widthConstant: 0, heightConstant: 32)
         
-        qrCodeView.anchor(view.centerYAnchor, topConstant: 36, widthConstant: 200, heightConstant: 200)
+        collectionView.anchor(nil, left: view.leftAnchor, bottom: view.centerYAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 180)
+        
+        qrCodeView.anchor(view.centerYAnchor, topConstant: 36, widthConstant: 200, heightConstant: 215)
         qrCodeView.anchorCenterXToSuperview()
         
         nfcScanButton.anchorCenterXToSuperview()
@@ -218,5 +238,21 @@ final class RedeemViewController: RWViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             emitter.removeFromSuperlayer()
         }
+    }
+}
+
+extension RedeemViewController: ListAdapterDataSource {
+    
+    func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
+        
+        return [CouponSectionModel(title: "Coupons", query: API.shared.availableCouponsQuery(for: digitalCard.business!, for: User.current()!))]
+    }
+    
+    func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
+        return CouponListSectionController()
+    }
+    
+    func emptyView(for listAdapter: ListAdapter) -> UIView? {
+        return nil
     }
 }
