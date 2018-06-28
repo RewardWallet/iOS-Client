@@ -23,13 +23,13 @@ final class CouponSectionController: ListSectionController {
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
-        let size = CGSize(width: collectionContext!.containerSize.width - 100, height: collectionContext!.containerSize.height)
+        let size = CGSize(width: collectionContext!.containerSize.width / 2, height: collectionContext!.containerSize.height)
         return CGSize(width: size.width - inset.right - inset.left,
                       height: size.height - inset.top - inset.bottom)
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
-        guard let cell = collectionContext?.dequeueReusableCell(of: BusinessViewCell.self, for: self, at: index) as? BusinessViewCell else {
+        guard let cell = collectionContext?.dequeueReusableCell(of: CouponCell.self, for: self, at: index) as? CouponCell else {
             fatalError()
         }
         cell.bindViewModel(coupon as Any)

@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import Parse
 import IGListKit
+import DeckTransition
 
 final class BusinessViewController: ListViewController {
     
@@ -27,6 +28,8 @@ final class BusinessViewController: ListViewController {
         }
     }
     
+    fileprivate var digitalCard: DigitalCard?
+    
     fileprivate let loadingToken: NSNumber = 10
     
     fileprivate lazy var transition = BubbleTransition(animatedView: self.subscribeButton)
@@ -38,6 +41,7 @@ final class BusinessViewController: ListViewController {
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         $0.setTitle("+", for: .normal)
         $0.alpha = 0
+        $0.layer.cornerRadius = 30
     }
     
     // MARK: - Initialization
@@ -65,6 +69,7 @@ final class BusinessViewController: ListViewController {
         adapter.dataSource = self
         adapter.scrollViewDelegate = self
         view.addSubview(subscribeButton)
+        subscribeButton.anchor(nil, left: nil, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 24, rightConstant: 24, widthConstant: 60, heightConstant: 60)
         subscribeButton.addTarget(self, action: #selector(addToWallet), for: .touchUpInside)
     }
 
@@ -82,35 +87,22 @@ final class BusinessViewController: ListViewController {
         navigationController?.navigationBar.setBackgroundImage(color.toImage ?? UIImage(), for: .default)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        let size: CGFloat = 52
-        subscribeButton.buttonCornerRadius = size / 2
-        subscribeButton.frame = CGRect(x: view.bounds.width - size - 24,
-                                       y: view.bounds.height - size - 24,
-                                       width: size, height: size)
-    }
-    
     private func checkIfCardExists() {
         // Show the subscribe button if the user hasn't added the business to their wallet yet
         API.shared.fetchDigitalCard(for: business) { [weak self] (card) in
-            let digitalCardExists = card != nil
-            if !digitalCardExists {
-                guard self?.subscribeButton.alpha == 0 else { return } // Don't reanimate
-                UIView.animate(withDuration: 0.3, delay: 0.3, options: .curveEaseOut, animations: {
-                    self?.subscribeButton.alpha = 1
-                    self?.subscribeButton.transform = CGAffineTransform(scaleX: 1.25, y: 1.25)
-                }, completion: { (_) in
-                    UIView.animate(withDuration: 0.3, animations: {
-                        self?.subscribeButton.transform = .identity
-                    })
-                })
-            } else {
-                UIView.animate(withDuration: 0.3, animations: {
-                    self?.subscribeButton.alpha = 0
-                    self?.subscribeButton.transform = CGAffineTransform(scaleX: 0, y: 0)
-                })
+            self?.digitalCard = card
+            if card != nil {
+                self?.subscribeButton.setImage(UIImage.icon_wallet?.withRenderingMode(.alwaysTemplate), for: .normal)
+                self?.subscribeButton.setTitle(nil, for: .normal)
             }
+            UIView.animate(withDuration: 0.3, delay: 0.3, options: .curveEaseOut, animations: {
+                self?.subscribeButton.alpha = 1
+                self?.subscribeButton.transform = CGAffineTransform(scaleX: 1.25, y: 1.25)
+            }, completion: { (_) in
+                UIView.animate(withDuration: 0.3, animations: {
+                    self?.subscribeButton.transform = .identity
+                })
+            })
         }
     }
     
@@ -118,10 +110,18 @@ final class BusinessViewController: ListViewController {
     
     @objc
     private func addToWallet() {
-        guard let viewController = AppRouter.shared.viewController(for: .addToWallet, context: business) else { return }
-        viewController.modalPresentationStyle = .custom
-        viewController.transitioningDelegate = self.transition
-        AppRouter.shared.present(viewController, from: self, animated: true, completion: nil)
+        if let digitalCard = digitalCard {
+            let transitionDelegate = DeckTransitioningDelegate()
+            guard let detailViewController = AppRouter.shared.viewController(for: .redeem, context: digitalCard) else { return }
+            detailViewController.modalPresentationStyle = .custom
+            detailViewController.transitioningDelegate = transitionDelegate
+            AppRouter.shared.present(detailViewController, from: self, animated: true, completion: nil)
+        } else {
+            guard let viewController = AppRouter.shared.viewController(for: .addToWallet, context: business) else { return }
+            viewController.modalPresentationStyle = .custom
+            viewController.transitioningDelegate = self.transition
+            AppRouter.shared.present(viewController, from: self, animated: true, completion: nil)
+        }
     }
     
 }

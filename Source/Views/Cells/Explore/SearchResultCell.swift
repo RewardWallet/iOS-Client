@@ -15,6 +15,7 @@ class SearchResultCell: UICollectionViewCell {
         let view = UIImageView()
         view.clipsToBounds = true
         view.contentMode = .scaleAspectFill
+        view.backgroundColor = .secondaryColor
         return view
     }()
     

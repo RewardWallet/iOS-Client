@@ -52,7 +52,7 @@ final class CouponListSectionController: ListSectionController {
     
     override init() {
         super.init()
-        self.inset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
+        self.inset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         self.supplementaryViewSource = self
     }
     
@@ -71,7 +71,7 @@ final class CouponListSectionController: ListSectionController {
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
-        let size = CGSize(width: collectionContext!.containerSize.width, height: 250)
+        let size = CGSize(width: collectionContext!.containerSize.width, height: 150)
         return CGSize(width: size.width - inset.right - inset.left,
                       height: size.height - inset.top - inset.bottom)
     }
@@ -121,7 +121,7 @@ extension CouponListSectionController: ListAdapterDataSource {
             sectionController.inset = inset
             return sectionController
         }
-        return ExploreBusinessSectionController()
+        return CouponSectionController()
     }
     
     func emptyView(for listAdapter: ListAdapter) -> UIView? {

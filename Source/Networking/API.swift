@@ -68,6 +68,21 @@ class API: NSObject {
         
         guard let query = Business.query() as? PFQuery<Business> else { fatalError() }
         query.includeKey("rewardModel")
+        query.addDescendingOrder("updatedAt")
+        query.findObjectsInBackground { (objects, error) in
+            guard let businesses = objects, error == nil else {
+                print(error ?? "Error")
+                return
+            }
+            completion(businesses)
+        }
+    }
+    
+    func fetchRecentBusinesses(inBackground completion: @escaping ([Business])->Void) {
+        
+        guard let query = Business.query() as? PFQuery<Business> else { fatalError() }
+        query.includeKey("rewardModel")
+        query.addDescendingOrder("createdAt")
         query.findObjectsInBackground { (objects, error) in
             guard let businesses = objects, error == nil else {
                 print(error ?? "Error")

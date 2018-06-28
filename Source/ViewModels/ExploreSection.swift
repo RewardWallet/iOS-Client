@@ -26,7 +26,7 @@ final class FeaturedSection: ListDiffable {
     
     var fetchedBusinesses: [Business]?
     
-    private let type: SourceType
+    let type: SourceType
     
     private let uuid: String
     

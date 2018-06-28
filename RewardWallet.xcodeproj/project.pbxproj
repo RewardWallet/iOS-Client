@@ -154,6 +154,7 @@
 		38F14CE520DC204200E7CBEB /* SearchResultSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F14CE420DC204100E7CBEB /* SearchResultSectionController.swift */; };
 		38F14CE720DC206100E7CBEB /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F14CE620DC206100E7CBEB /* SearchResultCell.swift */; };
 		38F14CE920DC2BE800E7CBEB /* NotificationSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F14CE820DC2BE800E7CBEB /* NotificationSectionController.swift */; };
+		38F14CEB20DC38CA00E7CBEB /* CouponCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F14CEA20DC38CA00E7CBEB /* CouponCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -322,6 +323,7 @@
 		38F14CE420DC204100E7CBEB /* SearchResultSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultSectionController.swift; sourceTree = "<group>"; };
 		38F14CE620DC206100E7CBEB /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		38F14CE820DC2BE800E7CBEB /* NotificationSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSectionController.swift; sourceTree = "<group>"; };
+		38F14CEA20DC38CA00E7CBEB /* CouponCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponCell.swift; sourceTree = "<group>"; };
 		3E670663E5803CDC7EBD5AE2 /* Pods-RewardWalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RewardWalletTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RewardWalletTests/Pods-RewardWalletTests.debug.xcconfig"; sourceTree = "<group>"; };
 		46B4E69B4F4BCECF6079DD62 /* Pods-RewardWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RewardWallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RewardWallet/Pods-RewardWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		8A62C2EEC39E426F1F92380C /* Pods-RewardWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RewardWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-RewardWallet/Pods-RewardWallet.release.xcconfig"; sourceTree = "<group>"; };
@@ -714,6 +716,7 @@
 				38CB775620BB61740084F546 /* ReviewCell.swift */,
 				382030D920C09C8600247FA5 /* PhotoCell.swift */,
 				38CB775820BB617B0084F546 /* LocationCell.swift */,
+				38F14CEA20DC38CA00E7CBEB /* CouponCell.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -1037,6 +1040,7 @@
 				386ACB3820257DCC00B71C50 /* UIForcePressGestureRecognizer.swift in Sources */,
 				38CB772C20B8B5710084F546 /* FBAnnotationClusterTemplate.swift in Sources */,
 				384B0254206D99F50068C879 /* HeaderViewCell.swift in Sources */,
+				38F14CEB20DC38CA00E7CBEB /* CouponCell.swift in Sources */,
 				38F14CE320DC1DFB00E7CBEB /* CouponSectionController.swift in Sources */,
 				385CDF92202FBEF400623793 /* QRCodeView.swift in Sources */,
 				384B0256206D9A090068C879 /* ExploreSection.swift in Sources */,

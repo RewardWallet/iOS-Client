@@ -44,11 +44,21 @@ final class ExploreSectionController: ListSectionController {
         
         source = object as? FeaturedSection
         
+        
+        guard let type = source?.type else { return }
         isLoading = true
-        API.shared.fetchRecommendedBusinesses { [weak self] in
-            self?.source?.fetchedBusinesses = $0
-            self?.isLoading = false
+        if type == .recommended {
+            API.shared.fetchRecommendedBusinesses { [weak self] in
+                self?.source?.fetchedBusinesses = $0
+                self?.isLoading = false
+            }
+        } else if type == .recentlyAdded {
+            API.shared.fetchRecentBusinesses { [weak self] in
+                self?.source?.fetchedBusinesses = $0
+                self?.isLoading = false
+            }
         }
+        
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
