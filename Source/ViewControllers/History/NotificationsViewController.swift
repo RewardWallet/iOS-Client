@@ -73,6 +73,7 @@ class NotificationsViewController: RWViewController {
     
     @objc
     func handleRefresh() {
+        UIApplication.shared.applicationIconBadgeNumber = 0
         collectionView.refreshControl?.endRefreshing()
         isLoading = true
         API.shared.fetchNotifications { [weak self] in

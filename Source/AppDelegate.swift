@@ -11,6 +11,8 @@ import Parse
 import URLNavigator
 import AlertHUDKit
 import Kingfisher
+import AlertHUDKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +27,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Alert.Defaults.Color.Danger = .red
         
         KingfisherManager.shared.defaultOptions = [.fromMemoryCacheOrRefresh]
+        
+        if let options = launchOptions {
+            if let notification = options[.remoteNotification] as? [NSObject : AnyObject] {
+                //notification found mean that you app is opened from notification
+            }
+        }
+
+        
+        // Push Notification Access
+        let userNotificationCenter = UNUserNotificationCenter.current()
+        userNotificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { accepted, error in
+            guard accepted else {
+                print("User declined remote notifications")
+                return
+            }
+            DispatchQueue.main.async {
+                application.registerForRemoteNotifications()
+            }
+        }
 
         window = UIWindow(frame: UIScreen.main.bounds)
         if User.current() != nil, let exploreVC = AppRouter.shared.viewController(for: .explore) {
@@ -52,6 +73,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
         return false
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let installation = PFInstallation.current()
+        installation?.setDeviceTokenFrom(deviceToken)
+        installation?.saveInBackground()
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        if (error as NSError).code == 3010 {
+            print("Push notifications are not supported in the iOS Simulator.")
+        } else {
+            print("application:didFailToRegisterForRemoteNotificationsWithError: %@", error)
+        }
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        if let data = userInfo["aps"] {
+            let notificationMessage = (data as AnyObject).value(forKey: "alert") as? String
+            if  notificationMessage != nil {
+                print("Recieved Remote Notification: \(notificationMessage!)")
+                Ping(text: notificationMessage, style: .info).show()
+                UIApplication.shared.applicationIconBadgeNumber += 1
+            } else {
+                print("Notification was nil")
+            }
+        } else {
+            print("Data was nil")
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
