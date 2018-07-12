@@ -186,15 +186,14 @@ class API: NSObject {
     
     func availableCouponsQuery(for business: Business, for user: User) -> PFQuery<Coupon> {
         
-//        let privateCouponQuery = user.availableCoupons.query()
+        let privateCouponQuery = user.availableCoupons.query()
         let publicCouponQuery = Coupon.query() as! PFQuery<Coupon>
         publicCouponQuery.whereKey("isPublic", equalTo: true)
         publicCouponQuery.whereKey("business", equalTo: business)
-        return publicCouponQuery
         
-//        let query = PFQuery.orQuery(withSubqueries: [privateCouponQuery, publicCouponQuery] as! [PFQuery<PFObject>])
-//        query.whereKey("expireDate", greaterThan: Date())
-//        return query as! PFQuery<Coupon>
+        let query = PFQuery.orQuery(withSubqueries: [privateCouponQuery, publicCouponQuery] as! [PFQuery<PFObject>])
+        query.whereKey("expireDate", greaterThan: Date())
+        return query as! PFQuery<Coupon>
     }
     
 }
