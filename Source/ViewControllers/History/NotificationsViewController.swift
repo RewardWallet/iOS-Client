@@ -118,18 +118,18 @@ extension NotificationsViewController: UIScrollViewDelegate {
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
-        let distance = scrollView.contentSize.height - (targetContentOffset.pointee.y + scrollView.bounds.height)
-        if !isLoading && distance < 200 {
-            isLoading = true
-            // Load new content here
-            DispatchQueue.global(qos: .default).async {
-                // fake background loading task
-                sleep(2)
-                DispatchQueue.main.async {
-                    self.isLoading = false
-                }
-            }
-        }
+//        let distance = scrollView.contentSize.height - (targetContentOffset.pointee.y + scrollView.bounds.height)
+//        if !isLoading && distance < 200 {
+//            isLoading = true
+//            // Load new content here
+//            DispatchQueue.global(qos: .default).async {
+//                // fake background loading task
+//                sleep(2)
+//                DispatchQueue.main.async {
+//                    self.isLoading = false
+//                }
+//            }
+//        }
     }
     
 }
