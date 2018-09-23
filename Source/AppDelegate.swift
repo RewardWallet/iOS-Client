@@ -95,6 +95,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let notificationMessage = (data as AnyObject).value(forKey: "alert") as? String
             if let message = notificationMessage {
                 print("Recieved Remote Notification: \(message)")
+                if message.lowercased().contains("thank you for your purchase") {
+                    if let view = UIApplication.shared.presentedController?.view {
+                        animatedTransactionMessage(view: view)
+                    }
+                }
                 Ping(text: message, style: .info).show()
                 UIApplication.shared.applicationIconBadgeNumber += 1
             } else {
@@ -105,6 +110,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    func animatedTransactionMessage(view: UIView) {
+        let emitter = CAEmitterLayer()
+        emitter.emitterPosition = CGPoint(x: view.frame.size.width / 2.0, y: 0)
+        emitter.emitterShape = kCAEmitterLayerLine
+        emitter.emitterSize = CGSize(width: view.frame.size.width, height: 1)
+        emitter.emitterCells = (0..<10).map({ _ in
+            let intensity = Float(0.5)
+            
+            let cell = CAEmitterCell()
+            
+            cell.birthRate = 6.0 * intensity
+            cell.lifetime = 14.0 * intensity
+            cell.lifetimeRange = 0
+            cell.velocity = CGFloat(350.0 * intensity)
+            cell.velocityRange = CGFloat(80.0 * intensity)
+            cell.emissionLongitude = .pi
+            cell.emissionRange = .pi / 4
+            cell.spin = CGFloat(3.5 * intensity)
+            cell.spinRange = CGFloat(4.0 * intensity)
+            cell.scaleRange = CGFloat(intensity)
+            cell.scaleSpeed = CGFloat(-0.1 * intensity)
+            let colors: [UIColor] = [UIColor.secondaryColor.darker(), UIColor.secondaryColor.lighter(), UIColor.primaryColor.darker(), UIColor.primaryColor.lighter()]
+            let index = Int.random(0, 3)
+            cell.contents = colors[index].toImage?.cgImage
+            
+            return cell
+        })
+        view.layer.addSublayer(emitter)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            emitter.removeFromSuperlayer()
+        }
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

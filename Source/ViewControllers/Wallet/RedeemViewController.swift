@@ -133,7 +133,7 @@ final class RedeemViewController: RWViewController {
         titleLabel.anchor(nil, left: view.leftAnchor, bottom: backgroundImageView.centerYAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 32, bottomConstant: 0, rightConstant: 32, widthConstant: 0, heightConstant: 32)
         subtitleLabel.anchor(backgroundImageView.centerYAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 32, bottomConstant: 0, rightConstant: 32, widthConstant: 0, heightConstant: 32)
         
-        collectionView.anchor(nil, left: view.leftAnchor, bottom: view.centerYAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 180)
+        collectionView.anchor(nil, left: view.leftAnchor, bottom: view.centerYAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 220)
         
         qrCodeView.anchor(view.centerYAnchor, topConstant: 36, widthConstant: 200, heightConstant: 215)
         qrCodeView.anchorCenterXToSuperview()
@@ -207,7 +207,6 @@ final class RedeemViewController: RWViewController {
     private func animateSuccess() {
         API.shared.showSuccessHUD(for: 3)
         subtitleLabel.text = (digitalCard.points?.doubleValue.roundTwoDecimal() ?? "0") + " Points"
-        
         let emitter = CAEmitterLayer()
         emitter.emitterPosition = CGPoint(x: view.frame.size.width / 2.0, y: 0)
         emitter.emitterShape = kCAEmitterLayerLine
